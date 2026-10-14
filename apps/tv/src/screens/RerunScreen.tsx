@@ -11,6 +11,7 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import type { CardView, Grade } from "@rerun/core";
 import { api, type Profile } from "../api";
 import { Focusable } from "../components/Focusable";
+import { StillFrame } from "../player/StillFrame";
 import { useVideo } from "../player/useVideo";
 import { colors, safe, type, dp } from "../theme";
 
@@ -85,6 +86,7 @@ function Review({ profile, card, position, onGraded }: { profile: Profile; card:
         videoRef.current?.pause();
       }
     }, []),
+    Boolean(card.frameUrl),
   );
   const videoRef = useRef(video);
   videoRef.current = video;
@@ -114,7 +116,8 @@ function Review({ profile, card, position, onGraded }: { profile: Profile; card:
   return (
     <View style={styles.root}>
       <View style={styles.videoBox}>
-        {video.ready && <KeplerVideoSurfaceView style={StyleSheet.absoluteFill} {...video.surface} />}
+        {video.ready && !card.frameUrl && <KeplerVideoSurfaceView style={StyleSheet.absoluteFill} {...video.surface} />}
+        {video.ready && card.frameUrl && <StillFrame uri={`${card.frameUrl}?t=${video.frameTime}`} fit="cover" />}
       </View>
       <View style={styles.panel}>
         <Text style={styles.label}>DAILY RERUN · {position}</Text>
@@ -134,7 +137,7 @@ function Review({ profile, card, position, onGraded }: { profile: Profile; card:
           <>
             <Text style={styles.question}>What does “{card.surface}” mean here?</Text>
             <View style={styles.actions}>
-              <Focusable hasTVPreferredFocus ring={profile.color} onPress={() => setRevealed(true)} style={[styles.button, { backgroundColor: profile.color }]} testID="reveal">
+              <Focusable hasTVPreferredFocus ring={colors.text} onPress={() => setRevealed(true)} style={[styles.button, { backgroundColor: profile.color }]} testID="reveal">
                 <Text style={[styles.buttonText, { color: colors.bg }]}>Show meaning</Text>
               </Focusable>
               <Focusable ring={profile.color} onPress={playClip} style={styles.button}>
@@ -182,8 +185,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   videoBox: {
-    width: dp(1000),
-    height: dp(562),
+    width: dp(860),
+    height: dp(484),
     alignSelf: "center",
     borderRadius: dp(24),
     overflow: "hidden",
@@ -224,7 +227,6 @@ const styles = StyleSheet.create({
   },
   actions: {
     flexDirection: "row",
-    flexWrap: "wrap",
     marginTop: dp(36),
   },
   button: {
@@ -239,8 +241,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.panel2,
     borderRadius: dp(16),
     paddingVertical: dp(14),
-    paddingHorizontal: dp(22),
-    marginRight: dp(14),
+    paddingHorizontal: dp(18),
+    marginRight: dp(12),
     marginTop: dp(12),
     alignItems: "center",
   },

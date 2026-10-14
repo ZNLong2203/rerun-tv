@@ -7,7 +7,7 @@
 import React, { useMemo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { isNewFor, segmentLine, type EnrichedCue, type LearningItem, type Token } from "@rerun/core";
-import { colors, type, dp } from "../theme";
+import { colors, safe, type, dp } from "../theme";
 import { Focusable } from "./Focusable";
 
 interface Props {
@@ -19,6 +19,8 @@ interface Props {
   accent: string;
   showTranslation: boolean;
   wordMode: boolean;
+  /** A card is open on the right: keep the line on the left, clear of it. */
+  beside?: boolean;
   onSelectItem: (item: LearningItem) => void;
 }
 
@@ -26,14 +28,14 @@ function text(tokens: Token[], leadingSpace: boolean): string {
   return tokens.map((t, i) => ((i > 0 || leadingSpace) && t.spaceBefore ? " " : "") + t.text).join("");
 }
 
-export function LearnerSubtitles({ cue, lang, level, known, saved, accent, showTranslation, wordMode, onSelectItem }: Props) {
+export function LearnerSubtitles({ cue, lang, level, known, saved, accent, showTranslation, wordMode, beside, onSelectItem }: Props) {
   const segments = useMemo(() => (cue ? segmentLine(cue) : []), [cue]);
   if (!cue) return null;
   const firstItem = segments.find((s) => s.kind === "item");
 
   return (
-    <View style={styles.wrap} pointerEvents="box-none">
-      <View style={[styles.box, wordMode && styles.boxWordMode]}>
+    <View style={[styles.wrap, beside && styles.wrapBeside]} pointerEvents="box-none">
+      <View style={[styles.box, wordMode && styles.boxWordMode, beside && styles.boxBeside]}>
         {wordMode ? (
           <View style={styles.wordRow}>
             {segments.map((s, i) =>
@@ -63,15 +65,16 @@ export function LearnerSubtitles({ cue, lang, level, known, saved, accent, showT
         ) : (
           <Text style={styles.line}>
             {segments.map((s, i) => {
-              const t = text(s.tokens, i > 0);
-              if (s.kind === "text") return <Text key={i}>{t}</Text>;
+              if (s.kind === "text") return <Text key={i}>{text(s.tokens, i > 0)}</Text>;
               const fresh = isNewFor(s.item, { level, known });
+              // The space before a word stays outside the underline.
+              const lead = i > 0 && s.tokens[0]?.spaceBefore ? " " : "";
               return (
-                <Text
-                  key={i}
-                  style={fresh ? [styles.newWord, { textDecorationColor: accent, color: accent }] : undefined}
-                >
-                  {t}
+                <Text key={i}>
+                  {lead}
+                  <Text style={fresh ? [styles.newWord, { textDecorationColor: accent, color: accent }] : undefined}>
+                    {text(s.tokens, false)}
+                  </Text>
                 </Text>
               );
             })}
@@ -92,6 +95,13 @@ const styles = StyleSheet.create({
     right: dp(0),
     bottom: dp(72),
     alignItems: "center",
+  },
+  wrapBeside: {
+    alignItems: "flex-start",
+    paddingLeft: safe.x,
+  },
+  boxBeside: {
+    maxWidth: dp(1920 - 760 - 96 * 2 - 48),
   },
   box: {
     maxWidth: dp(1500),

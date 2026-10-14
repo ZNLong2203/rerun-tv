@@ -9,3 +9,6 @@ export const SERVER_URL = "http://192.168.1.6:8787";
 
 /** How often the player reads the playhead to move subtitles, in ms. */
 export const PLAYHEAD_POLL_MS = 100;
+
+/** Show every remote event on screen (eventType/eventKeyAction) while testing. */
+export const DEBUG_KEYS = false;

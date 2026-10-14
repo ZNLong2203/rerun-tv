@@ -59,7 +59,7 @@ export function WordCard({ item, lang, accent, saved, onSave, onKnown, onReplay 
       ) : null}
 
       <View style={styles.actions}>
-        <Focusable hasTVPreferredFocus ring={accent} onPress={onSave} style={[styles.button, { backgroundColor: accent }]} testID="save-word">
+        <Focusable hasTVPreferredFocus ring={colors.text} onPress={onSave} style={[styles.button, { backgroundColor: accent }]} testID="save-word">
           <Text style={[styles.buttonText, styles.onAccent]}>{saved ? "Saved ✓" : "Save to my deck"}</Text>
         </Focusable>
         <Focusable ring={accent} onPress={onReplay} style={styles.button}>

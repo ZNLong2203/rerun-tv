@@ -24,6 +24,8 @@ import { api, type Profile, type TitleDetail } from "../api";
 import { LearnerSubtitles } from "../components/LearnerSubtitles";
 import { Toast, type ToastMessage } from "../components/Toast";
 import { WordCard } from "../components/WordCard";
+import { DEBUG_KEYS } from "../config";
+import { StillFrame } from "../player/StillFrame";
 import { useVideo } from "../player/useVideo";
 import { useRoom, useRoomMessages } from "../room";
 import { colors, safe, type, dp } from "../theme";
@@ -106,6 +108,7 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
     setToast({ id: toastId.current, text, tone });
   }, []);
 
+  const still = detail.meta.playback === "still" && Boolean(detail.meta.frameUrl);
   const video = useVideo(
     detail.meta.videoUrl,
     useCallback(
@@ -123,6 +126,7 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
       },
       [cues],
     ),
+    still,
   );
   const videoRef = useRef(video);
   videoRef.current = video;
@@ -218,10 +222,19 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
     [cues, video, playLine, notify, onExit],
   );
 
-  useTVEventHandler((evt: HWEvent) => {
-    if (!evt || evt.eventKeyAction !== KEY_DOWN || evt.eventType === "back") return;
-    run(commandFor(modeRef.current, evt.eventType));
-  });
+  // Vega re-subscribes whenever the handler changes, so keep one stable
+  // handler and read the latest state through refs.
+  const runRef = useRef(run);
+  runRef.current = run;
+  const onRemote = useCallback(
+    (evt: HWEvent) => {
+      if (DEBUG_KEYS) notify(`key ${evt?.eventType} / ${evt?.eventKeyAction}`, "muted");
+      if (!evt || evt.eventKeyAction !== KEY_DOWN || evt.eventType === "back") return;
+      runRef.current(commandFor(modeRef.current, evt.eventType));
+    },
+    [notify],
+  );
+  useTVEventHandler(onRemote);
 
   useEffect(() => {
     const sub = BackHandler.addEventListener("hardwareBackPress", () => {
@@ -294,7 +307,8 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
 
   return (
     <View style={styles.root}>
-      {video.ready && <KeplerVideoSurfaceView style={styles.surface} {...video.surface} />}
+      {video.ready && !still && <KeplerVideoSurfaceView style={styles.surface} {...video.surface} />}
+      {video.ready && still && <StillFrame uri={`${detail.meta.frameUrl}?t=${video.frameTime}`} fit="contain" />}
       {!video.ready && !video.error && <Centered spinner text="" />}
       {video.error && <Centered text={video.error} />}
 
@@ -307,6 +321,7 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
         accent={profile.color}
         showTranslation={showTranslation}
         wordMode={mode === "words"}
+        beside={mode === "card"}
         onSelectItem={openCard}
       />
 
@@ -340,6 +355,11 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
       )}
 
       <Toast message={toast} />
+      {DEBUG_KEYS && (
+        <Text style={styles.debugState}>
+          playing={String(video.playing)} mode={mode} ready={String(video.ready)}
+        </Text>
+      )}
     </View>
   );
 }
@@ -354,6 +374,13 @@ function Centered({ text, spinner }: { text: string; spinner?: boolean }) {
 }
 
 const styles = StyleSheet.create({
+  debugState: {
+    position: "absolute",
+    right: dp(24),
+    bottom: dp(12),
+    color: "#00FF88",
+    fontSize: dp(20),
+  },
   root: {
     flex: 1,
     backgroundColor: "#000000",

@@ -4,6 +4,11 @@
  *
  * The playhead is read on a short interval into a ref rather than state, so
  * the screen re-renders only when something visible changes (the line).
+ *
+ * In still mode there is no player at all: a JavaScript clock stands in for
+ * the playhead and the screen shows the frame for the current second. Vega's
+ * screenshot tooling cannot capture a video surface, so this is how the
+ * player UI is checked and photographed.
  */
 
 import { VideoPlayer } from "@amazon-devices/react-native-w3cmedia";
@@ -16,6 +21,8 @@ export interface VideoControls {
   error: string | undefined;
   /** Latest playhead in seconds; read it, do not render from it. */
   time: React.MutableRefObject<number>;
+  /** In still mode, the whole second whose frame is on screen. */
+  frameTime: number;
   play: () => void;
   pause: () => void;
   toggle: () => void;
@@ -26,7 +33,11 @@ export interface VideoControls {
   };
 }
 
-export function useVideo(src: string, onTick?: (previous: number, current: number) => void): VideoControls {
+export function useVideo(
+  src: string,
+  onTick?: (previous: number, current: number) => void,
+  still = false,
+): VideoControls {
   const player = useRef<VideoPlayer | null>(null);
   const time = useRef(0);
   const wantPlay = useRef(false);
@@ -34,10 +45,15 @@ export function useVideo(src: string, onTick?: (previous: number, current: numbe
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState<string>();
+  const [frameTime, setFrameTime] = useState(0);
   const tick = useRef(onTick);
   tick.current = onTick;
 
   useEffect(() => {
+    if (still) {
+      setReady(true);
+      return;
+    }
     const video = new VideoPlayer();
     player.current = video;
     let alive = true;
@@ -79,41 +95,64 @@ export function useVideo(src: string, onTick?: (previous: number, current: numbe
       }
       player.current = null;
     };
-  }, [src]);
+  }, [src, still]);
 
   useEffect(() => {
+    let last = Date.now();
     const id = setInterval(() => {
-      const video = player.current;
-      if (!video) return;
+      const now = Date.now();
+      const elapsed = (now - last) / 1000;
+      last = now;
       const previous = time.current;
-      const current = video.currentTime;
+      let current: number;
+      if (still) {
+        if (!wantPlay.current) return;
+        current = previous + elapsed;
+        if (Math.floor(current) !== Math.floor(previous)) setFrameTime(Math.floor(current));
+      } else {
+        const video = player.current;
+        if (!video) return;
+        current = video.currentTime;
+      }
       time.current = current;
       if (current !== previous) tick.current?.(previous, current);
     }, PLAYHEAD_POLL_MS);
     return () => clearInterval(id);
-  }, []);
+  }, [still]);
 
   const play = useCallback(() => {
     wantPlay.current = true;
-    if (hasSurface.current) void player.current?.play();
-  }, []);
+    if (still) setPlaying(true);
+    else if (hasSurface.current) void player.current?.play();
+  }, [still]);
 
   const pause = useCallback(() => {
     wantPlay.current = false;
-    player.current?.pause();
-  }, []);
+    if (still) setPlaying(false);
+    else player.current?.pause();
+  }, [still]);
 
   const toggle = useCallback(() => {
-    if (player.current?.paused === false) pause();
+    const isPlaying = still ? wantPlay.current : player.current?.paused === false;
+    if (isPlaying) pause();
     else play();
-  }, [play, pause]);
+  }, [still, play, pause]);
 
-  const seek = useCallback((seconds: number) => {
-    const video = player.current;
-    if (!video) return;
-    video.currentTime = Math.max(0, seconds);
-    time.current = video.currentTime;
-  }, []);
+  const seek = useCallback(
+    (seconds: number) => {
+      const target = Math.max(0, seconds);
+      if (still) {
+        time.current = target;
+        setFrameTime(Math.floor(target));
+        return;
+      }
+      const video = player.current;
+      if (!video) return;
+      video.currentTime = target;
+      time.current = video.currentTime;
+    },
+    [still],
+  );
 
   const surface = {
     onSurfaceViewCreated: useCallback((handle: string) => {
@@ -127,5 +166,5 @@ export function useVideo(src: string, onTick?: (previous: number, current: numbe
     }, []),
   };
 
-  return { ready, playing, error, time, play, pause, toggle, seek, surface };
+  return { ready, playing, error, time, frameTime, play, pause, toggle, seek, surface };
 }

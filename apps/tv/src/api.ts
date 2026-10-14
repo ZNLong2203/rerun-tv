@@ -25,7 +25,12 @@ export interface TitleSummary {
 }
 
 export interface TitleDetail {
-  meta: TitleSummary & { license: { name: string; url: string; attribution: string } };
+  meta: TitleSummary & {
+    license: { name: string; url: string; attribution: string };
+    /** "still" shows frames instead of video (STILL_VIDEO on the server). */
+    playback: "video" | "still";
+    frameUrl?: string;
+  };
   track: EnrichedTrack;
 }
 
