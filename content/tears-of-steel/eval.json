@@ -1,0 +1,350 @@
+{
+ "model": "gemini:gemini-3.8-flash",
+ "generatedAt": "2026-10-14T13:49:15.062Z",
+ "results": [
+  {
+   "lang": "es",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 72.2,
+   "worst": [
+    {
+     "cueId": 51,
+     "english": "Whoaaa!",
+     "ours": "¡Uoooh!",
+     "reference": "¡Woaaa!",
+     "chrf": 7.142857142857142
+    },
+    {
+     "cueId": 52,
+     "english": "Whoaaa!",
+     "ours": "¡Uoooh!",
+     "reference": "¡Woaaa!",
+     "chrf": 7.142857142857142
+    },
+    {
+     "cueId": 25,
+     "english": "There she is.",
+     "ours": "Ahí está.",
+     "reference": "Allí está ella.",
+     "chrf": 26.59781584015053
+    },
+    {
+     "cueId": 22,
+     "english": "That's nice.",
+     "ours": "Qué bien.",
+     "reference": "Está muy bien.",
+     "chrf": 27.30337677356319
+    },
+    {
+     "cueId": 4,
+     "english": "I'm not freaked out by- it's...",
+     "ours": "No me asusta... es que...",
+     "reference": "No estoy asustado de- es...",
+     "chrf": 27.342016162729372
+    }
+   ]
+  },
+  {
+   "lang": "id",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 51.7,
+   "worst": [
+    {
+     "cueId": 22,
+     "english": "That's nice.",
+     "ours": "Baguslah.",
+     "reference": "Ini asyik.",
+     "chrf": 5.555555555555555
+    },
+    {
+     "cueId": 50,
+     "english": "Cut!",
+     "ours": "Cut!",
+     "reference": "Hentikan!",
+     "chrf": 6.25
+    },
+    {
+     "cueId": 42,
+     "english": "Vivacissimo!",
+     "ours": "Vivacissimo!",
+     "reference": "Lincah!",
+     "chrf": 8.333333333333334
+    },
+    {
+     "cueId": 59,
+     "english": "I'm-",
+     "ours": "A-",
+     "reference": "Aku...",
+     "chrf": 9.615384615384615
+    },
+    {
+     "cueId": 26,
+     "english": "Now.",
+     "ours": "Sekarang.",
+     "reference": "Now.",
+     "chrf": 10
+    }
+   ]
+  },
+  {
+   "lang": "de",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 69.8,
+   "worst": [
+    {
+     "cueId": 26,
+     "english": "Now.",
+     "ours": "Jetzt.",
+     "reference": "Also:",
+     "chrf": 0
+    },
+    {
+     "cueId": 73,
+     "english": "You know.",
+     "ours": "Wisst ihr...",
+     "reference": "Weißt du,",
+     "chrf": 5.813953488372093
+    },
+    {
+     "cueId": 32,
+     "english": "...and, action!",
+     "ours": "… und Bitte!",
+     "reference": "...und, Action!",
+     "chrf": 11.796951970677764
+    },
+    {
+     "cueId": 52,
+     "english": "Whoaaa!",
+     "ours": "Wooooah!",
+     "reference": "Aaahhh!",
+     "chrf": 12.32101232101232
+    },
+    {
+     "cueId": 51,
+     "english": "Whoaaa!",
+     "ours": "Wooooah!",
+     "reference": "Aaahh!",
+     "chrf": 13.986895161290322
+    }
+   ]
+  },
+  {
+   "lang": "fr",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 65.4,
+   "worst": [
+    {
+     "cueId": 49,
+     "english": "Abort!",
+     "ours": "Annulez !",
+     "reference": "Arrête!",
+     "chrf": 6.944444444444444
+    },
+    {
+     "cueId": 61,
+     "english": "Good ad-lib.",
+     "ours": "Bonne impro.",
+     "reference": "Bien dit.",
+     "chrf": 9.689922480620154
+    },
+    {
+     "cueId": 26,
+     "english": "Now.",
+     "ours": "C'est le moment.",
+     "reference": "Maintenant.",
+     "chrf": 15.074465425751578
+    },
+    {
+     "cueId": 73,
+     "english": "You know.",
+     "ours": "Vous savez...",
+     "reference": "Tu sais.",
+     "chrf": 15.181691125087353
+    },
+    {
+     "cueId": 30,
+     "english": "Be honest! Eh- be tender.",
+     "ours": "Sois sincère ! Enfin... sois doux.",
+     "reference": "Soit honnête! Et- soit tendre.",
+     "chrf": 17.265942039889527
+    }
+   ]
+  },
+  {
+   "lang": "it",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 70,
+   "worst": [
+    {
+     "cueId": 50,
+     "english": "Cut!",
+     "ours": "Stop!",
+     "reference": "Taglia!",
+     "chrf": 6.06060606060606
+    },
+    {
+     "cueId": 22,
+     "english": "That's nice.",
+     "ours": "Bene così.",
+     "reference": "Perfetto.",
+     "chrf": 7.4074074074074066
+    },
+    {
+     "cueId": 23,
+     "english": "Nothing to worry about.",
+     "ours": "Niente di cui preoccuparsi.",
+     "reference": "Tutto è sotto controllo.",
+     "chrf": 7.79097109174673
+    },
+    {
+     "cueId": 10,
+     "english": "This is pretty freaky.",
+     "ours": "È una cosa parecchio inquietante.",
+     "reference": "Piuttosto bizzarro.",
+     "chrf": 11.637248647243686
+    },
+    {
+     "cueId": 26,
+     "english": "Now.",
+     "ours": "Adesso.",
+     "reference": "Ora.",
+     "chrf": 16.304347826086957
+    }
+   ]
+  },
+  {
+   "lang": "nl",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 64.2,
+   "worst": [
+    {
+     "cueId": 59,
+     "english": "I'm-",
+     "ours": "Het-",
+     "reference": "Ik-",
+     "chrf": 10.416666666666666
+    },
+    {
+     "cueId": 20,
+     "english": "Go! Move your asses! Go go go!",
+     "ours": "Gaan! Beweeg je reet! Hup, hup, hup!",
+     "reference": "Gaan! Opschieten! Gaan, gaan!",
+     "chrf": 16.084258393356585
+    },
+    {
+     "cueId": 10,
+     "english": "This is pretty freaky.",
+     "ours": "Dit is best bizar.",
+     "reference": "Dit is nogal vreemd zeg.",
+     "chrf": 18.61293708084973
+    },
+    {
+     "cueId": 22,
+     "english": "That's nice.",
+     "ours": "Mooi zo.",
+     "reference": "Dat is mooi.",
+     "chrf": 21.93828587097027
+    },
+    {
+     "cueId": 74,
+     "english": "There's a lesson to be learned from this.",
+     "ours": "Hier valt een les uit te trekken.",
+     "reference": "Hier kunnen we iets van leren.",
+     "chrf": 24.886267346493728
+    }
+   ]
+  },
+  {
+   "lang": "pl",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 61.6,
+   "worst": [
+    {
+     "cueId": 51,
+     "english": "Whoaaa!",
+     "ours": "Uooo!",
+     "reference": "Waaaa!",
+     "chrf": 3.448275862068966
+    },
+    {
+     "cueId": 52,
+     "english": "Whoaaa!",
+     "ours": "Uooo!",
+     "reference": "Waaaa!",
+     "chrf": 3.448275862068966
+    },
+    {
+     "cueId": 35,
+     "english": "Ohp- Sorry! Sorry.",
+     "ours": "Och... Przepraszam! Przepraszam.",
+     "reference": "Ups- Sorry! Sorry.",
+     "chrf": 8.865248226950357
+    },
+    {
+     "cueId": 20,
+     "english": "Go! Move your asses! Go go go!",
+     "ours": "Ruchy! Ruszcie tyłki! Szybko, szybko, szybko!",
+     "reference": "Jedziesz! Ruszajcie swoje dupy! Dawaj, dawaj, dawaj!",
+     "chrf": 13.248220863648793
+    },
+    {
+     "cueId": 25,
+     "english": "There she is.",
+     "ours": "Oto ona.",
+     "reference": "Ona tam jest.",
+     "chrf": 13.82941979332052
+    }
+   ]
+  },
+  {
+   "lang": "pt-PT",
+   "matchedLines": 76,
+   "totalLines": 76,
+   "chrf": 52.4,
+   "worst": [
+    {
+     "cueId": 63,
+     "english": "This time.",
+     "ours": "Desta vez.",
+     "reference": "Chegou a hora.",
+     "chrf": 4.385964912280702
+    },
+    {
+     "cueId": 60,
+     "english": "I'm sorry.",
+     "ours": "Desculpa.",
+     "reference": "Sinto muito.",
+     "chrf": 4.716981132075471
+    },
+    {
+     "cueId": 51,
+     "english": "Whoaaa!",
+     "ours": "Uoooou!",
+     "reference": "Whoaaa!",
+     "chrf": 4.761904761904761
+    },
+    {
+     "cueId": 52,
+     "english": "Whoaaa!",
+     "ours": "Uoooou!",
+     "reference": "Whoaaa!",
+     "chrf": 4.761904761904761
+    },
+    {
+     "cueId": 22,
+     "english": "That's nice.",
+     "ours": "Muito bem.",
+     "reference": "Isso é bom.",
+     "chrf": 11.342592592592592
+    }
+   ]
+  }
+ ]
+}

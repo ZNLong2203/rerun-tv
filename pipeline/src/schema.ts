@@ -62,7 +62,11 @@ export const LANGUAGE_NAMES: Record<string, string> = {
   id: "Indonesian",
   ja: "Japanese",
   "pt-BR": "Brazilian Portuguese",
+  "pt-PT": "European Portuguese",
   de: "German",
   fr: "French",
+  it: "Italian",
+  nl: "Dutch",
+  pl: "Polish",
   zh: "Simplified Chinese",
 };

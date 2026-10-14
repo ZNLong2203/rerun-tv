@@ -1,0 +1,2957 @@
+{
+ "titleId": "tears-of-steel",
+ "sourceLang": "en",
+ "learnerLangs": [
+  "vi",
+  "es",
+  "id",
+  "de",
+  "fr",
+  "it",
+  "nl",
+  "pl",
+  "pt-PT"
+ ],
+ "model": "gemini:gemini-3.8-flash",
+ "generatedAt": "2026-10-14T13:49:15.062Z",
+ "cues": [
+  {
+   "id": 0,
+   "start": 23,
+   "end": 24.5,
+   "text": "You're a jerk, Thom.",
+   "translations": {
+    "vi": "Anh đúng là đồ tồi, Thom.",
+    "es": "Eres un idiota, Thom.",
+    "id": "Kau memang brengsek, Thom.",
+    "de": "Du bist ein Idiot, Thom.",
+    "fr": "T'es un abruti, Thom.",
+    "it": "Sei un cretino, Thom.",
+    "nl": "Je bent een eikel, Thom.",
+    "pl": "Jesteś palantem, Thom.",
+    "pt-PT": "És um idiota, Thom."
+   },
+   "items": [
+    {
+     "id": "c0-jerk",
+     "surface": "jerk",
+     "tokenStart": 2,
+     "tokenEnd": 3,
+     "lemma": "jerk",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "a rude, selfish, or obnoxious person",
+      "vi": "kẻ tồi tệ, đồ đáng ghét",
+      "es": "idiota, patán",
+      "id": "orang brengsek atau menyebalkan",
+      "de": "Idiot / Mistkerl",
+      "fr": "abruti, sale type",
+      "it": "persona sgradevole, insensibile o idiota",
+      "nl": "eikel, klootzak",
+      "pl": "palant, gnojek",
+      "pt-PT": "idiota, parvalhão"
+     },
+     "inContext": {
+      "en": "Celia insults Thom angrily because he is breaking up with her using ridiculous, shallow excuses.",
+      "vi": "Celia tức giận mắng Thom là \"jerk\" vì anh viện những lý do rất ngớ ngẩn và nông cạn để chia tay cô.",
+      "es": "Celia insulta a Thom porque la está dejando con pretextos absurdos y egoístas. \"Jerk\" se usa para referirse a alguien desconsiderado o antipático.",
+      "id": "Celia memaki Thom dengan kata \"jerk\" karena Thom mencampakkannya dengan alasan yang konyol dan egois.",
+      "de": "Celia beschimpft Thom als \"jerk\", weil er mit ihr Schluss macht und dabei lächerliche Ausreden vorschiebt.",
+      "fr": "Celia insulte Thom car il la quitte en sortant des excuses ridicules et égocentriques.",
+      "it": "Celia insulta Thom con rabbia usando \"jerk\" perché lui la sta lasciando adducendo scuse banali e ridicole.",
+      "nl": "Celia noemt Thom boos een 'jerk' omdat hij het op een hele kinderachtige en botte manier met haar uitmaakt.",
+      "pl": "Celia jest wściekła na Thoma, bo ten zrywa z nią, wykręcając się płytkimi i dziecinnymi wymówkami. Używa słowa „jerk”, aby dosadnie nazwać jego egoistyczne zachowanie.",
+      "pt-PT": "A Celia insulta o Thom com \"jerk\" por ele estar a dar desculpas ridículas e egoístas para terminar a relação."
+     },
+     "example": "Don't be such a jerk to your sister."
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "start": 25,
+   "end": 27,
+   "text": "Look Celia, we have to follow our passions;",
+   "translations": {
+    "vi": "Nghe này Celia, chúng ta phải theo đuổi đam mê chứ;",
+    "es": "Mira, Celia, tenemos que seguir nuestras pasiones;",
+    "id": "Dengar Celia, kita harus mengejar impian kita;",
+    "de": "Hör mal, Celia, wir müssen unseren Leidenschaften folgen.",
+    "fr": "Écoute Celia, on doit suivre nos passions ;",
+    "it": "Senti Celia, dobbiamo inseguire le nostre passioni;",
+    "nl": "Kijk Celia, we moeten onze passie volgen;",
+    "pl": "Celia, musimy realizować swoje pasje;",
+    "pt-PT": "Ouve, Celia, temos de seguir as nossas paixões;"
+   },
+   "items": [
+    {
+     "id": "c1-follow-our-passions",
+     "surface": "follow our passions",
+     "tokenStart": 6,
+     "tokenEnd": 9,
+     "lemma": "follow one's passion",
+     "kind": "phrase",
+     "level": "B2",
+     "meaning": {
+      "en": "pursue what you care deeply about",
+      "vi": "theo đuổi đam mê",
+      "es": "seguir lo que nos apasiona",
+      "id": "mengejar impian atau minat terbesar kita",
+      "de": "seinen Träumen / Leidenschaften nachgehen",
+      "fr": "suivre ses passions",
+      "it": "seguire le proprie passioni",
+      "nl": "je passie volgen, doen wat je het allerliefste wilt",
+      "pl": "iść za głosem pasji, realizować pasje",
+      "pt-PT": "seguir as nossas paixões"
+     },
+     "inContext": {
+      "en": "Thom frames his selfish breakup as noble personal fulfillment to justify dumping Celia.",
+      "vi": "Thom dùng cụm từ cao đẹp \"follow our passions\" như một lời ngụy biện nhằm biện minh cho sự ích kỷ khi rũ bỏ mối quan hệ với Celia.",
+      "es": "Thom disfraza su ruptura como una noble búsqueda personal con la frase \"follow our passions\" para justificar terminar con ella.",
+      "id": "Thom memakai dalih mulia \"follow our passions\" untuk membenarkan keputusannya memutuskan hubungan dengan Celia secara egois.",
+      "de": "Thom stellt die Trennung mit \"follow our passions\" so dar, als ginge es um Selbstverwirklichung, um sein egoistisches Verhalten zu rechtfertigen.",
+      "fr": "Thom présente sa rupture égoïste sous un jour noble et philosophique pour se justifier.",
+      "it": "Thom descrive la sua decisione di lasciarla come una nobile ricerca di realizzazione personale (\"follow our passions\") per mascherare il proprio egoismo.",
+      "nl": "Thom verpakt zijn egoïstische relatiebreuk als iets nobels ('follow our passions') om zijn eigen hachje te redden.",
+      "pl": "Thom ubiera swoje samolubne rozstanie w górnolotne słowa o „podążaniu za pasjami”, żeby brzmiało to dojrzale i usprawiedliwiało porzucenie Celii.",
+      "pt-PT": "O Thom usa a expressão \"follow our passions\" para mascarar a sua atitude egoísta com um tom bonito de realização pessoal."
+     },
+     "example": "She left finance to follow her passion for painting."
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "start": 27,
+   "end": 30.5,
+   "text": "...you have your robotics, and I just want to be awesome in space.",
+   "translations": {
+    "vi": "...em có ngành chế tạo robot, còn anh chỉ muốn thật ngầu ngoài không gian.",
+    "es": "...tú tienes tu robótica y yo solo quiero ser genial en el espacio.",
+    "id": "...kau punya robotikamu, dan aku cuma ingin jadi orang keren di luar angkasa.",
+    "de": "... Du hast deine Robotik, und ich will einfach im Weltall abliefern.",
+    "fr": "...toi t'as la robotique, et moi je veux juste être génial dans l'espace.",
+    "it": "...tu hai la robotica, e io voglio solo fare cose grandiose nello spazio.",
+    "nl": "...jij hebt je robotica, en ik wil gewoon geweldig zijn in de ruimte.",
+    "pl": "...ty masz swoją robotykę, a ja chcę po prostu wymiatać w kosmosie.",
+    "pt-PT": "...tu tens a tua robótica, e eu só quero ser o maior no espaço."
+   },
+   "items": [
+    {
+     "id": "c2-robotics",
+     "surface": "robotics",
+     "tokenStart": 4,
+     "tokenEnd": 5,
+     "lemma": "robotics",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "the science of designing and building robots",
+      "vi": "ngành chế tạo robot, ngành người máy",
+      "es": "la robótica",
+      "id": "robotika (ilmu perancangan robot)",
+      "de": "Robotik (Robotertechnik)",
+      "fr": "la robotique",
+      "it": "robotica (la scienza che progetta robot)",
+      "nl": "robotica, robottechnologie",
+      "pl": "robotyka",
+      "pt-PT": "robótica"
+     },
+     "inContext": {
+      "en": "Thom mentions Celia's technical specialty to contrast it with his own ambition of space travel.",
+      "vi": "Thom nhắc đến chuyên môn \"robotics\" của Celia nhằm đối lập với hoài bão có phần mơ mộng viển vông của mình.",
+      "es": "Thom menciona la especialidad de Celia (\"robotics\") para ponerla en contraste con su propia ambición de viajar al espacio.",
+      "id": "Thom menyebut bidang keahlian Celia, \"robotics\", untuk membandingkannya dengan impiannya sendiri pergi ke luar angkasa.",
+      "de": "Thom erwähnt Celias Fachgebiet \"robotics\", um es seinem eher kindlichen Traum von der Raumfahrt gegenüberzustellen.",
+      "fr": "Thom cite la spécialité de Celia pour l'opposer à son propre rêve, très flou, de gloire spatiale.",
+      "it": "Thom cita l'interesse professionale di Celia per metterlo a confronto con la sua ambizione, molto più vaga, di esplorare lo spazio.",
+      "nl": "Thom noemt Celia's serieuze studie ('robotics') om die te vergelijken met zijn eigen, vage droom om astronaut te worden.",
+      "pl": "Thom wspomina kierunek studiów Celii („robotics”), by przeciwstawić jej konkretne, naukowe zajęcie swojemu mglistemu marzeniu o podboju kosmosu.",
+      "pt-PT": "O Thom refere a área técnica da Celia para a contrastar com o seu próprio sonho infantil de ir para o espaço."
+     },
+     "example": "He studied robotics and computer science at university."
+    },
+    {
+     "id": "c2-awesome",
+     "surface": "awesome",
+     "tokenStart": 12,
+     "tokenEnd": 13,
+     "lemma": "awesome",
+     "kind": "slang",
+     "level": "B1",
+     "meaning": {
+      "en": "extremely good, impressive, or cool",
+      "vi": "tuyệt vời, cực ngầu",
+      "es": "genial, increíble",
+      "id": "keren, hebat, mengagumkan",
+      "de": "großartig / spitze / genial",
+      "fr": "génial, super cool",
+      "it": "fantastico, fortissimo, grandioso",
+      "nl": "geweldig, te gek",
+      "pl": "wymiatać, być niesamowitym",
+      "pt-PT": "incrível, brutal, o maior"
+     },
+     "inContext": {
+      "en": "Thom uses childish, casual slang to describe his vague dream of exploring outer space.",
+      "vi": "Thom dùng từ lóng bình dân \"awesome\" như một đứa trẻ để diễn tả giấc mơ bay lượn ngoài không gian vũ trụ.",
+      "es": "Thom usa \"awesome\", una palabra muy informal y casi infantil, para describir su vago sueño de triunfar como astronauta.",
+      "id": "Thom memakai bahasa santai bernada kekanak-kanakan, \"awesome\", untuk menggambarkan angan-angannya menjadi hebat di luar angkasa.",
+      "de": "Thom benutzt umgangssprachlich \"awesome\", um ganz vage und unreif zu beschreiben, wie cool er im All sein möchte.",
+      "fr": "Thom emploie ce mot très familier et enfantin pour décrire son envie de briller dans l'espace.",
+      "it": "Thom usa lo slang \"awesome\" in un modo un po' ingenuo e infantile per dire che vuole fare grandi cose nello spazio.",
+      "nl": "Thom gebruikt het jeugdige woord 'awesome' om stoer te doen over zijn droom om een held in de ruimte te zijn.",
+      "pl": "Thom sięga po młodzieżowe, nieco dziecinne określenie „awesome”, żeby opisać swoje niejasne plany bycia kimś fajnym w kosmosie.",
+      "pt-PT": "O Thom usa a gíria \"awesome\" para resumir de forma vaga e imatura o que quer fazer no espaço."
+     },
+     "example": "The special effects in that movie were awesome."
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "start": 30.8,
+   "end": 34,
+   "text": "Why don't you just admit that you're freaked out by my robot hand?",
+   "translations": {
+    "vi": "Sao anh không thừa nhận luôn là anh chết khiếp vì cánh tay robot của em đi?",
+    "es": "¿Por qué no admites de una vez que te asusta mi mano robótica?",
+    "id": "Kenapa kau tak mengaku saja kalau kau jijik melihat tangan robotku?",
+    "de": "Warum gibst du nicht einfach zu, dass dir meine Roboterhand nicht geheuer ist?",
+    "fr": "Pourquoi t'avoues pas simplement que ma main robot te fait flipper ?",
+    "it": "Perché non ammetti e basta che la mia mano robotica ti fa senso?",
+    "nl": "Geef nou gewoon toe dat je griezelt van mijn robothand.",
+    "pl": "Dlaczego po prostu nie przyznasz, że przeraża cię moja mechaniczna ręka?",
+    "pt-PT": "Porque é que não admites logo que a minha mão robótica te faz impressão?"
+   },
+   "items": [
+    {
+     "id": "c3-freaked-out",
+     "surface": "freaked out",
+     "tokenStart": 7,
+     "tokenEnd": 9,
+     "lemma": "freak out",
+     "kind": "phrasal_verb",
+     "level": "B2",
+     "meaning": {
+      "en": "frightened, repulsed, or deeply unsettled",
+      "vi": "phát khiếp, hoảng sợ, thấy rợn người",
+      "es": "asustado, espantado",
+      "id": "takut, jijik, atau merasa ngeri",
+      "de": "ausflippen / angewidert oder verängstigt sein",
+      "fr": "effrayé, dégoûté, mis mal à l'aise",
+      "it": "spaventato, impressionato o turbato",
+      "nl": "griezelen van, bang zijn voor, de kriebels krijgen van",
+      "pl": "przerażony, spanikowany, zbrzydzony",
+      "pt-PT": "assustado, impressionado, em pânico"
+     },
+     "inContext": {
+      "en": "Celia directly challenges Thom to admit he is disgusted by her mechanical prosthetic hand.",
+      "vi": "Celia nói thẳng mặt ép Thom phải thừa nhận anh thấy ghê sợ (\"freaked out\") trước cánh tay giả bằng máy của cô.",
+      "es": "Celia confronta a Thom para que admita que su prótesis mecánica le da repelús o miedo (\"freaked out\").",
+      "id": "Celia mendesak Thom mengakui bahwa dirinya sebenarnya \"freaked out\" (ngeri dan merasa aneh) melihat tangan prostetik mekanik milik Celia.",
+      "de": "Celia fordert Thom direkt auf zuzugeben, dass er sich vor ihrer bionischen Prothese ekelt (\"freaked out\").",
+      "fr": "Celia met Thom au pied du mur pour qu'il admette enfin que sa prothèse robotique le dégoûte.",
+      "it": "Celia va dritta al punto e sfida Thom a confessare che la sua protesi bionica lo disgusta o gli fa impressione (\"freaked out\").",
+      "nl": "Celia daagt Thom uit om toe te geven dat hij 'freaked out' is door haar mechanische prothesehand en haar stiekem eng vindt.",
+      "pl": "Celia ma dość kręcenia i wprost zarzuca Thomowi, że mechaniczna proteza ręki po prostu go odpycha i przeraża („freaked out”).",
+      "pt-PT": "A Celia confronta o Thom diretamente para ele admitir que fica \"freaked out\" (perturbado ou com nojo) com a prótese mecânica dela."
+     },
+     "example": "Spiders completely freak me out."
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "start": 34.5,
+   "end": 36,
+   "text": "I'm not freaked out by- it's...",
+   "translations": {
+    "vi": "Anh đâu có phát khiếp vì— tại là...",
+    "es": "No me asusta... es que...",
+    "id": "Aku tidak ngeri karena—maksudku...",
+    "de": "Ich flippe doch nicht- es ist...",
+    "fr": "Je flippe pas devant... c'est juste...",
+    "it": "Non mi fa senso... è che...",
+    "nl": "Ik griezel niet van... het is...",
+    "pl": "Wcale mnie nie prze... po prostu...",
+    "pt-PT": "Não me faz impressão... é só..."
+   },
+   "items": []
+  },
+  {
+   "id": 5,
+   "start": 37,
+   "end": 38,
+   "text": "...alright! Fine!",
+   "translations": {
+    "vi": "...được rồi! Được thôi!",
+    "es": "...¡bueno, está bien!",
+    "id": "...baiklah! Iya!",
+    "de": "... Na gut! Schön!",
+    "fr": "...d'accord ! C'est bon !",
+    "it": "...d'accordo! E va bene!",
+    "nl": "...vooruit dan maar! Goed!",
+    "pl": "...dobra! No dobra!",
+    "pt-PT": "...está bem! Pronto!"
+   },
+   "items": []
+  },
+  {
+   "id": 6,
+   "start": 38,
+   "end": 41,
+   "text": "I'm freaked out! I have nightmares that I'm being chased...",
+   "translations": {
+    "vi": "Anh hãi thật đấy! Đêm nào anh cũng gặp ác mộng bị đuổi bắt...",
+    "es": "¡Sí me asusta! Tengo pesadillas donde me persiguen...",
+    "id": "Aku memang ngeri! Aku mimpi buruk dikejar-kejar...",
+    "de": "Ich flippe aus! Ich habe Albträume, dass ich verfolgt werde...",
+    "fr": "Je flippe, oui ! Je fais des cauchemars où je suis poursuivi...",
+    "it": "Mi fa impressione! Faccio gli incubi in cui vengo inseguito...",
+    "nl": "Ik griezel er wel van! Ik heb nachtmerries dat ik achternagezeten word...",
+    "pl": "Przeraża mnie! Mam koszmary, w których gonią mnie...",
+    "pt-PT": "Faz-me impressão! Tenho pesadelos em que sou perseguido..."
+   },
+   "items": [
+    {
+     "id": "c6-nightmares",
+     "surface": "nightmares",
+     "tokenStart": 6,
+     "tokenEnd": 7,
+     "lemma": "nightmare",
+     "kind": "word",
+     "level": "B1",
+     "meaning": {
+      "en": "frightening or unpleasant dreams",
+      "vi": "cơn ác mộng",
+      "es": "pesadillas",
+      "id": "mimpi buruk",
+      "de": "Albträume",
+      "fr": "des cauchemars",
+      "it": "incubi",
+      "nl": "nachtmerries, enge dromen",
+      "pl": "koszmary (senne)",
+      "pt-PT": "pesadelos"
+     },
+     "inContext": {
+      "en": "Thom defensively admits that Celia's cybernetic hand literally haunts his dreams at night.",
+      "vi": "Thom bực tức thừa nhận rằng cánh tay máy của Celia thực sự đã biến thành những cơn ác mộng (\"nightmares\") ám ảnh giấc ngủ của anh.",
+      "es": "Thom admite a la defensiva que la mano cibernética de Celia literalmente no lo deja dormir y le causa pesadillas (\"nightmares\").",
+      "id": "Thom akhirnya mengakui sambil membela diri bahwa tangan sibernetika Celia sampai terbawa ke alam mimpinya (\"nightmares\").",
+      "de": "Thom gibt genervt zu, dass Celias mechanische Hand ihn buchstäblich im Schlaf als \"nightmares\" heimsucht.",
+      "fr": "Thom craque et avoue que la main mécanique de Celia le terrifie au point de hanter ses nuits.",
+      "it": "Thom ammette sulla difensiva che la mano meccanica di lei perseguita letteralmente i suoi sogni notturni (\"nightmares\").",
+      "nl": "Thom geeft uiteindelijk toe dat hij letterlijk enge dromen ('nightmares') heeft over haar robothand.",
+      "pl": "Przyciśnięty do muru Thom przyznaje, że cybernetyczna ręka Celii dosłownie nawiedza go w nocy w złych snach.",
+      "pt-PT": "O Thom confessa que a mão cibernética da Celia o perturba tanto que tem literalmente maus sonhos (\"nightmares\") com isso."
+     },
+     "example": "He had nightmares after watching the horror movie."
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "start": 41,
+   "end": 42,
+   "text": "...by these giant robotic claws of death...",
+   "translations": {
+    "vi": "...bởi những cái vuốt máy khổng lồ chết chóc...",
+    "es": "...unas garras robóticas gigantes de la muerte...",
+    "id": "...oleh cakar robot pembawa maut raksasa ini...",
+    "de": "... von riesigen mechanischen Todeskrallen...",
+    "fr": "...par des pinces robotiques géantes de la mort...",
+    "it": "...da questi giganteschi artigli robotici mortali...",
+    "nl": "...door gigantische dodelijke robotklauwen...",
+    "pl": "...wielkie, mechaniczne szpony śmierci...",
+    "pt-PT": "...por estas garras robóticas gigantescas da morte..."
+   },
+   "items": [
+    {
+     "id": "c7-claws",
+     "surface": "claws",
+     "tokenStart": 5,
+     "tokenEnd": 6,
+     "lemma": "claw",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "sharp, curved mechanical pincers or gripping tools",
+      "vi": "móng vuốt, càng kẹp cơ học",
+      "es": "garras, tenazas",
+      "id": "cakar atau capit mekanik",
+      "de": "Krallen / Greifer",
+      "fr": "des pinces mécaniques, des griffes",
+      "it": "artigli, chele o pinze meccaniche",
+      "nl": "klauwen, grijpers",
+      "pl": "szpony, szczypce",
+      "pt-PT": "garras, pinças mecânicas"
+     },
+     "inContext": {
+      "en": "Thom melodramatically describes the terrifying robotic arms he imagines chasing him in his bad dreams.",
+      "vi": "Thom dùng từ \"claws\" để miêu tả cường điệu những chiếc càng máy sắc nhọn, đáng sợ mà anh tưởng tượng ra trong cơn mơ.",
+      "es": "Thom exagera describiendo \"claws\" mecánicas gigantes que lo atrapan en sus malos sueños.",
+      "id": "Thom secara berlebihan menggambarkan tangan robot Celia sebagai \"claws\" (capit tajam mengerikan) yang mengejarnya di mimpi buruk.",
+      "de": "Thom übertreibt maßlos und beschreibt Celias Hand wie grausige Greifer (\"claws\") aus einem Horrorfilm.",
+      "fr": "Thom dramatise de façon puérile en décrivant les monstres mécaniques qui le pourchassent en rêve.",
+      "it": "Thom descrive in modo melodrammatico le spaventose chele cibernetiche (\"claws\") che immagina dargli la caccia negli incubi.",
+      "nl": "Thom beschrijft theatraal hoe hij in zijn dromen wordt opgejaagd door enge mechanische grijparmen ('claws').",
+      "pl": "Thom w mocno przesadzony sposób opisuje groźne, metalowe chwytaki („claws”), które widzi w swoich koszmarach sennych.",
+      "pt-PT": "O Thom descreve de forma dramática as pinças afiadas (\"claws\") que imagina a persegui-lo enquanto dorme."
+     },
+     "example": "The arcade machine had metal claws to grab prizes."
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "start": 42.2,
+   "end": 45,
+   "text": "\"Fourty years later\" Whatever, Thom. We're done.",
+   "translations": {
+    "vi": "\"Bốn mươi năm sau\" Sao cũng được, Thom. Chúng ta chấm dứt.",
+    "es": "\"Cuarenta años después\". Como sea, Thom. Terminamos.",
+    "id": "\"Empat puluh tahun kemudian\" Terserah, Thom. Hubungan kita berakhir.",
+    "de": "„Vierzig Jahre später“ Wie auch immer, Thom. Wir sind fertig.",
+    "fr": "« Quarante ans plus tard » Cause toujours, Thom. C'est fini.",
+    "it": "\"Quarant'anni dopo\". Come ti pare, Thom. Tra noi è finita.",
+    "nl": "\"Veertig jaar later\" Laat maar zitten, Thom. Het is voorbij.",
+    "pl": "„Czterdzieści lat później”. Nieważne, Thom. To koniec.",
+    "pt-PT": "\"Quarenta anos depois\" Seja como for, Thom. Acabou."
+   },
+   "items": [
+    {
+     "id": "c8-whatever",
+     "surface": "Whatever",
+     "tokenStart": 5,
+     "tokenEnd": 6,
+     "lemma": "whatever",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "used to dismiss something as unimportant",
+      "vi": "sao cũng được, mặc kệ",
+      "es": "como sea, da igual",
+      "id": "terserah (ungkapan masa bodoh)",
+      "de": "Wie auch immer / Egal",
+      "fr": "cause toujours, peu importe",
+      "it": "come ti pare, vabbè, non importa",
+      "nl": "laat maar zitten, wat dan ook",
+      "pl": "nieważne, mniejsza z tym",
+      "pt-PT": "seja como for, tanto faz"
+     },
+     "inContext": {
+      "en": "Celia cuts Thom off, showing she has run out of patience for his excuses.",
+      "vi": "Celia gạt phắt đi bằng từ \"Whatever\", thể hiện cô đã hết kiên nhẫn và không thèm nghe thêm lời ngụy biện nào nữa.",
+      "es": "Celia lo corta en seco con \"Whatever\" para dejar claro que ya no tiene paciencia para oír sus excusas.",
+      "id": "Celia memotong pembicaraan dengan kata \"Whatever\" untuk menunjukkan bahwa ia sudah muak mendengarkan alasan-alasan konyol Thom.",
+      "de": "Mit \"Whatever\" wiegelt Celia ab; sie hat genug von seinen albernen Ausreden gehört.",
+      "fr": "Celia lui coupe la parole d'un ton blasé, exaspérée par ses explications ridicules.",
+      "it": "Celia lo liquida con un secco \"Whatever\" per fargli capire che ha finito la pazienza e non vuole più sentire le sue giustificazioni.",
+      "nl": "Celia snoert Thom de mond met 'Whatever': ze heeft geen enkel geduld meer voor zijn flauwe excuses.",
+      "pl": "Celia ucina dalsze żałosne tłumaczenia Thoma jednym machnięciem ręki, pokazując, że kompletnie straciła cierpliwość.",
+      "pt-PT": "A Celia diz \"Whatever\" com desprezo para cortar a conversa e mostrar que se fartou das justificações dele."
+     },
+     "example": "If you don't care, then whatever, let's leave."
+    },
+    {
+     "id": "c8-we-re-done",
+     "surface": "We're done",
+     "tokenStart": 9,
+     "tokenEnd": 11,
+     "lemma": "be done",
+     "kind": "phrase",
+     "level": "B1",
+     "meaning": {
+      "en": "our romantic relationship is over",
+      "vi": "chúng ta chấm dứt rồi, chia tay rồi",
+      "es": "terminamos, se acabó",
+      "id": "kita putus / hubungan kita selesai",
+      "de": "Es ist aus zwischen uns / Wir sind fertig",
+      "fr": "c'est fini entre nous",
+      "it": "tra noi è finita",
+      "nl": "het is uit tussen ons, het is voorbij",
+      "pl": "to koniec (między nami)",
+      "pt-PT": "está tudo acabado entre nós"
+     },
+     "inContext": {
+      "en": "Celia decisively breaks up with Thom on the spot after hearing his childish confession.",
+      "vi": "Celia tuyên bố \"We're done\" để dứt khoát chấm dứt chuyện tình cảm với Thom ngay tại chỗ sau lời thú nhận ngớ ngẩn của anh.",
+      "es": "Expresión directa y tajante para romper una relación amorosa: \"ya no somos pareja\".",
+      "id": "Celia menegaskan keputusan bulatnya untuk mengakhiri hubungan (\"We're done\") saat itu juga.",
+      "de": "Celia macht mit \"We're done\" unmissverständlich klar, dass ihre Beziehung damit beendet ist.",
+      "fr": "Celia rompt sur-le-champ de manière nette et définitive après la confession ridicule de Thom.",
+      "it": "È la tipica espressione usata per rompere una relazione: dopo quella confessione imbarazzante, Celia tronca tutto all'istante.",
+      "nl": "Met 'We're done' maakt Celia het na Thoms bizarre bekentenis resoluut en definitief uit.",
+      "pl": "Krótkie i ostateczne zdanie, którym Celia natychmiast kończy ich związek po wysłuchaniu absurdalnego wyznania Thoma.",
+      "pt-PT": "Expressão muito usada em inglês para terminar um namoro na hora: \"we're done\" significa que a relação acabou ali."
+     },
+     "example": "You lied to me again, so we're done."
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "start": 50,
+   "end": 53.5,
+   "text": "Robot's memory synced and locked!",
+   "translations": {
+    "vi": "Bộ nhớ robot đã đồng bộ và khóa thành công!",
+    "es": "¡Memoria del robot sincronizada y bloqueada!",
+    "id": "Memori robot sudah tersinkron dan terkunci!",
+    "de": "Roboter-Speicher synchronisiert und gesperrt!",
+    "fr": "Mémoire du robot synchronisée et verrouillée !",
+    "it": "Memoria del robot sincronizzata e agganciata!",
+    "nl": "Robotgeheugen gesynchroniseerd en vergrendeld!",
+    "pl": "Pamięć robota zsynchronizowana i zablokowana!",
+    "pt-PT": "Memória do robô sincronizada e bloqueada!"
+   },
+   "items": [
+    {
+     "id": "c9-synced",
+     "surface": "synced",
+     "tokenStart": 2,
+     "tokenEnd": 3,
+     "lemma": "sync",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "synchronized; matched to operate together",
+      "vi": "đã đồng bộ hóa",
+      "es": "sincronizada",
+      "id": "tersinkronisasi atau terhubung pas",
+      "de": "synchronisiert / abgeglichen",
+      "fr": "synchronisé",
+      "it": "sincronizzato",
+      "nl": "gesynchroniseerd, gekoppeld",
+      "pl": "zsynchronizowany",
+      "pt-PT": "sincronizado, emparelhado"
+     },
+     "inContext": {
+      "en": "The technician reports that the captured machine's memory stream has connected properly to their system.",
+      "vi": "Người kỹ thuật viên báo cáo rằng dữ liệu ký ức của robot đã được đồng bộ (\"synced\") hoàn toàn vào hệ thống máy móc của đội.",
+      "es": "Término técnico abreviado de \"synchronized\". Indica que conectaron con éxito el flujo de recuerdos del robot a su equipo.",
+      "id": "Teknisi melaporkan bahwa aliran data memori robot musuh telah terhubung (\"synced\") secara sempurna dengan sistem mereka.",
+      "de": "Der Techniker meldet, dass die Erinnerungsdaten des Roboters (\"synced\") erfolgreich mit der Simulation verbunden sind.",
+      "fr": "La technicienne confirme que la mémoire du robot capturé est bien connectée à leur équipement.",
+      "it": "Il tecnico usa l'abbreviazione \"synced\" per indicare che la traccia mnemonica del robot è allineata e connessa al sistema.",
+      "nl": "De technicus meldt dat de geheugenstroom van de gevangen robot nu goed aansluit en gekoppeld ('synced') is aan hun apparatuur.",
+      "pl": "Technik melduje, że strumień wspomnień z głowy robota został prawidłowo połączony i zgrany z ich sprzętem symulacyjnym.",
+      "pt-PT": "O técnico confirma que o fluxo de memória da máquina foi conectado com sucesso (\"synced\") ao sistema deles."
+     },
+     "example": "Make sure your phone is synced with your laptop."
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "start": 61,
+   "end": 63,
+   "text": "This is pretty freaky.",
+   "translations": {
+    "vi": "Cảnh này rợn người thật đấy.",
+    "es": "Esto da bastante miedo.",
+    "id": "Ini agak mengerikan.",
+    "de": "Das ist schon ziemlich unheimlich.",
+    "fr": "C'est plutôt flippant.",
+    "it": "È una cosa parecchio inquietante.",
+    "nl": "Dit is best bizar.",
+    "pl": "To jest naprawdę upiorne.",
+    "pt-PT": "Isto é bastante bizarro."
+   },
+   "items": [
+    {
+     "id": "c10-freaky",
+     "surface": "freaky",
+     "tokenStart": 3,
+     "tokenEnd": 4,
+     "lemma": "freaky",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "strange, weird, or frightening",
+      "vi": "kỳ quái, đáng sợ, ghê rợn",
+      "es": "raro, espeluznante",
+      "id": "aneh, ganjil, bikin merinding",
+      "de": "unheimlich / gruselig / abgefahren",
+      "fr": "bizarre, angoissant, flippant",
+      "it": "strano, inquietante, che fa paura",
+      "nl": "bizar, eng, griezelig",
+      "pl": "dziwaczny, upiorny, przerażający",
+      "pt-PT": "bizarro, estranho, assustador"
+     },
+     "inContext": {
+      "en": "The speaker is unsettled by the eerie, menacing atmosphere of the robot and memory equipment.",
+      "vi": "Nhân vật cảm thấy bầu không khí u ám quanh cỗ máy robot và thiết bị tái hiện ký ức trông rất quái đản và rợn gáy (\"freaky\").",
+      "es": "Describe una sensación incómoda o inquietante; al personaje le perturba el aspecto tétrico del robot conectado.",
+      "id": "Pembicara merasa suasana di sekitar robot dan alat perekam memori itu terasa seram dan ganjil (\"freaky\").",
+      "de": "Die Situation mit der Maschine und der Gedächtnissimulation wirkt auf die Person düster und seltsam (\"freaky\").",
+      "fr": "La personne exprime son malaise devant l'atmosphère inquiétante de la machine et des appareils de simulation.",
+      "it": "Il personaggio trova la situazione, con il robot e i macchinari di memoria, parecchio bizzarra e disturbante.",
+      "nl": "Ze vindt de duistere sfeer rondom de robot en de geheugensimulatie nogal griezelig en ongemakkelijk ('freaky').",
+      "pl": "Bohater komentuje mroczną i niepokojącą atmosferę związaną z podłączaniem się do umysłu potężnej, obcej maszyny.",
+      "pt-PT": "Usa-se \"freaky\" para descrever o ambiente perturbador e inquietante criado pelo robô e pelo equipamento."
+     },
+     "example": "Hearing strange noises in an empty house was freaky."
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "start": 117,
+   "end": 119,
+   "text": "Shouldn't you be down there?",
+   "translations": {
+    "vi": "Không phải cậu nên ở dưới đó sao?",
+    "es": "¿No deberías estar allá abajo?",
+    "id": "Bukankah kau seharusnya ada di bawah?",
+    "de": "Solltest du nicht da unten sein?",
+    "fr": "Tu devrais pas être en bas ?",
+    "it": "Non dovresti essere laggiù?",
+    "nl": "Moet jij niet beneden zijn?",
+    "pl": "Nie powinieneś być na dole?",
+    "pt-PT": "Não devias estar lá em baixo?"
+   },
+   "items": []
+  },
+  {
+   "id": 12,
+   "start": 131,
+   "end": 133,
+   "text": "I heard you guys talking last night.",
+   "translations": {
+    "vi": "Tối qua tôi nghe thấy mấy người nói chuyện rồi.",
+    "es": "Los escuché hablar anoche.",
+    "id": "Semalam aku mendengar kalian mengobrol.",
+    "de": "Ich habe euch gestern Nacht reden hören.",
+    "fr": "Je vous ai entendus parler hier soir.",
+    "it": "Vi ho sentiti parlare ieri sera.",
+    "nl": "Ik hoorde jullie gisteravond praten.",
+    "pl": "Słyszałam, jak wczoraj rozmawialiście.",
+    "pt-PT": "Ouvi-vos a falar ontem à noite."
+   },
+   "items": []
+  },
+  {
+   "id": 13,
+   "start": 136,
+   "end": 138,
+   "text": "It's not my fault, you know.",
+   "translations": {
+    "vi": "Đâu phải lỗi của tôi, cậu biết mà.",
+    "es": "No es mi culpa, ¿sabes?",
+    "id": "Bukan salahku, tahu sendiri.",
+    "de": "Es ist nicht meine Schuld, weißt du.",
+    "fr": "C'est pas ma faute, tu sais.",
+    "it": "Non è colpa mia, sai.",
+    "nl": "Het is niet mijn schuld, weet je.",
+    "pl": "Wiesz, że to nie moja wina.",
+    "pt-PT": "A culpa não é minha, sabes."
+   },
+   "items": []
+  },
+  {
+   "id": 14,
+   "start": 191,
+   "end": 192,
+   "text": "Are you ready?",
+   "translations": {
+    "vi": "Cậu sẵn sàng chưa?",
+    "es": "¿Estás listo?",
+    "id": "Kau siap?",
+    "de": "Bist du bereit?",
+    "fr": "T'es prêt ?",
+    "it": "Sei pronto?",
+    "nl": "Ben je er klaar voor?",
+    "pl": "Gotowy?",
+    "pt-PT": "Estás pronto?"
+   },
+   "items": []
+  },
+  {
+   "id": 15,
+   "start": 193,
+   "end": 195,
+   "text": "Of course you're ready, you're a rockstar.",
+   "translations": {
+    "vi": "Đương nhiên là sẵn sàng rồi, cậu là siêu sao mà.",
+    "es": "Claro que estás listo, eres un fuera de serie.",
+    "id": "Tentu saja kau siap, kau kan jagoan.",
+    "de": "Natürlich bist du bereit, du bist ein Rockstar.",
+    "fr": "Bien sûr que t'es prêt, t'es un champion.",
+    "it": "Certo che sei pronto, sei un fuoriclasse.",
+    "nl": "Natuurlijk ben je er klaar voor, je bent een topper.",
+    "pl": "Jasne, że jesteś gotowy, wymiataj.",
+    "pt-PT": "Claro que estás pronto, és o maior."
+   },
+   "items": [
+    {
+     "id": "c15-rockstar",
+     "surface": "rockstar",
+     "tokenStart": 7,
+     "tokenEnd": 8,
+     "lemma": "rock star",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "someone highly skilled, confident, or impressive",
+      "vi": "người tài giỏi, nhân tố xuất chúng",
+      "es": "un fuera de serie, una estrella",
+      "id": "orang hebat atau jagoan",
+      "de": "Spitzenkraft / Überflieger (wörtl. Rockstar)",
+      "fr": "un champion, un as",
+      "it": "un fenomeno, un fuoriclasse, un mito",
+      "nl": "topper, kanjer, kei",
+      "pl": "wymiatacz, mistrz, gwiazda",
+      "pt-PT": "um craque, o maior, uma estrela"
+     },
+     "inContext": {
+      "en": "She boosts Thom's confidence with playful praise before sending him into the high-stakes simulation.",
+      "vi": "Cô gọi Thom là \"rockstar\" như một lời khen vui vẻ nhằm lên dây cót tinh thần, giúp anh tự tin bước vào mô phỏng.",
+      "es": "Se usa metafóricamente para animar a alguien destacando que es brillante y capaz de lograr lo que se proponga.",
+      "id": "Ia memuji Thom secara santai dengan sebutan \"rockstar\" untuk memompa rasa percaya diri Thom sebelum masuk ke simulasi berbahaya.",
+      "de": "Sie muntert Thom humorvoll auf und nennt ihn \"rockstar\", um ihm vor dem heiklen Einsatz Selbstvertrauen zu geben.",
+      "fr": "Elle flatte Thom avec enthousiasme pour lui donner confiance juste avant le lancement de la mission.",
+      "it": "Usa la parola \"rockstar\" in senso figurato per dare la carica a Thom e fargli coraggio prima dell'inizio della simulazione.",
+      "nl": "Ze geeft Thom wat extra zelfvertrouwen door hem een 'rockstar' te noemen: iemand die geweldig is en deze zware taak aankan.",
+      "pl": "Kobieta dodaje Thomowi otuchy żartobliwym komplementem tuż przed wejściem w ryzykowną i decydującą o losach świata symulację.",
+      "pt-PT": "Chamar alguém de \"rockstar\" é um elogio bem-humorado para dar força e dizer que a pessoa vai ter um desempenho incrível."
+     },
+     "example": "Our lead programmer is an absolute rockstar."
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "start": 197,
+   "end": 198,
+   "text": "How's it looking, Barley?",
+   "translations": {
+    "vi": "Tình hình sao rồi, Barley?",
+    "es": "¿Cómo pinta la cosa, Barley?",
+    "id": "Bagaimana situasinya, Barley?",
+    "de": "Wie sieht's aus, Barley?",
+    "fr": "Ça donne quoi, Barley ?",
+    "it": "Come siamo messi, Barley?",
+    "nl": "Hoe staat het ervoor, Barley?",
+    "pl": "Jak to wygląda, Barley?",
+    "pt-PT": "Como estamos, Barley?"
+   },
+   "items": [
+    {
+     "id": "c16-how-s-it-looking",
+     "surface": "How's it looking",
+     "tokenStart": 0,
+     "tokenEnd": 3,
+     "lemma": "how is it looking",
+     "kind": "phrase",
+     "level": "B1",
+     "meaning": {
+      "en": "what is the current situation",
+      "vi": "tình hình thế nào rồi",
+      "es": "¿cómo va la cosa?, ¿cómo pinta el asunto?",
+      "id": "bagaimana situasinya / perkembangannya",
+      "de": "Wie sieht es aus?",
+      "fr": "ça se présente comment ? quelle est la situation ?",
+      "it": "come si prospetta la situazione? come va?",
+      "nl": "hoe staat het ervoor?, hoe ziet het eruit?",
+      "pl": "jak to wygląda? jaka jest sytuacja?",
+      "pt-PT": "como vão as coisas, qual é o ponto de situação"
+     },
+     "inContext": {
+      "en": "The commander asks Barley for an update on their operational timing and countdown.",
+      "vi": "Chỉ huy hỏi \"How's it looking\" để nắm bắt tình hình tiến độ và thời gian đếm ngược của chiến dịch.",
+      "es": "Pregunta común y coloquial para pedirle a alguien una actualización sobre el estado o los tiempos de una operación.",
+      "id": "Komandan menanyakan kabar terbaru mengenai waktu dan kesiapan operasi dengan bertanya \"How's it looking\".",
+      "de": "Eine lockere Frage nach dem aktuellen Lagebericht oder dem zeitlichen Stand der Vorbereitung.",
+      "fr": "La commandante demande un point rapide sur le compte à rebours et l'état des préparatifs.",
+      "it": "È una domanda informale con cui il comandante chiede a Barley una stima rapida sui tempi e sullo stato della missione.",
+      "nl": "De bevelhebber vraagt aan Barley een snelle update over de planning en de tijd die ze nog over hebben.",
+      "pl": "Dowódca pyta o stan przygotowań i o to, ile czasu pozostało do rozpoczęcia kluczowego etapu operacji.",
+      "pt-PT": "Uma forma comum e coloquial de perguntar qual é o estado atual da contagem decrescente."
+     },
+     "example": "How's it looking with the dinner preparations?"
+    },
+    {
+     "id": "c16-barley",
+     "surface": "Barley",
+     "tokenStart": 4,
+     "tokenEnd": 5,
+     "lemma": "barley",
+     "kind": "name",
+     "level": "B1",
+     "meaning": {
+      "en": "a person's name here, not the grain",
+      "vi": "Barley (tên người)",
+      "es": "Barley (nombre propio)",
+      "id": "Barley (nama orang)",
+      "de": "Barley (Eigenname)",
+      "fr": "Barley (nom propre)",
+      "it": "Barley (nome proprio)",
+      "nl": "Barley (persoonsnaam)",
+      "pl": "Barley (imię)",
+      "pt-PT": "Barley (nome próprio)"
+     },
+     "inContext": {
+      "en": "Used here as a crew member's name; learners might mistake it for the grain.",
+      "vi": "\"Barley\" ở đây là tên riêng của một thành viên kỹ thuật trong đội, chứ không phải mang nghĩa ngũ cốc (lúa mạch).",
+      "es": "Aquí funciona como el nombre de pila de un integrante del equipo, no como el cereal (cebada).",
+      "id": "\"Barley\" di sini adalah nama panggilan salah satu anggota kru, bukan berarti jelai atau tanaman biji-bijian.",
+      "de": "Hier der Name des Teammitglieds; nicht mit dem englischen Wort für Gerste (\"barley\") zu verwechseln.",
+      "fr": "C'est le nom du coéquipier interpellé ici, à ne pas confondre avec le mot anglais pour l'orge.",
+      "it": "In questo caso \"Barley\" è il nome di un membro della squadra, da non confondere con la parola inglese comune che indica l'orzo.",
+      "nl": "Het klinkt als het Engelse woord voor gerst, maar hier is 'Barley' simpelweg de voornaam van het bemanningslid.",
+      "pl": "To imię członka załogi, a nie pospolite słowo oznaczające „jęczmień”, co mogłoby zmylić uczącego się.",
+      "pt-PT": "Embora a palavra \"barley\" signifique cevada em inglês, aqui é simplesmente o nome de um membro da equipa."
+     },
+     "example": "Barley reported that the countdown had begun."
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "start": 199,
+   "end": 201,
+   "text": "We should have about ten minutes...",
+   "translations": {
+    "vi": "Chúng ta có khoảng mười phút...",
+    "es": "Deberíamos tener unos diez minutos...",
+    "id": "Kita punya waktu sekitar sepuluh menit...",
+    "de": "Wir dürften etwa zehn Minuten haben...",
+    "fr": "On devrait avoir une dizaine de minutes...",
+    "it": "Dovremmo avere circa dieci minuti...",
+    "nl": "We zouden zo'n tien minuten moeten hebben...",
+    "pl": "Powinniśmy mieć jakieś dziesięć minut...",
+    "pt-PT": "Devemos ter cerca de dez minutos..."
+   },
+   "items": []
+  },
+  {
+   "id": 18,
+   "start": 201.5,
+   "end": 203,
+   "text": "Well that's perfect.",
+   "translations": {
+    "vi": "Vậy thì hoàn hảo rồi.",
+    "es": "Bueno, eso es perfecto.",
+    "id": "Bagus kalau begitu.",
+    "de": "Na, das ist doch perfekt.",
+    "fr": "Eh bien, c'est parfait.",
+    "it": "Beh, è perfetto.",
+    "nl": "Nou, dat is perfect.",
+    "pl": "No i idealnie.",
+    "pt-PT": "Bem, isso é perfeito."
+   },
+   "items": []
+  },
+  {
+   "id": 19,
+   "start": 203.5,
+   "end": 206.5,
+   "text": "We're on in one! All systems go! Yeah you, go!",
+   "translations": {
+    "vi": "Một phút nữa lên sóng! Mọi hệ thống sẵn sàng! Cậu kia, đi mau!",
+    "es": "¡Empezamos en uno! ¡Todo listo! ¡Sí, tú, muévete!",
+    "id": "Kita mulai satu menit lagi! Semua sistem siap! Ya kau, cepat!",
+    "de": "In einer Minute geht's los! Alle Systeme startklar! Ja, du, los jetzt!",
+    "fr": "On commence dans une minute ! Tous les systèmes sont parés ! Oui toi, file !",
+    "it": "Si comincia tra un minuto! Tutto pronto! Sì, tu, vai!",
+    "nl": "We beginnen over één minuut! Alle systemen gereed! Ja jij, gaan!",
+    "pl": "Wchodzimy za minutę! Wszystkie systemy gotowe! Ty też, ruszaj!",
+    "pt-PT": "Começamos num minuto! Tudo a postos! Sim, tu, mexe-te!"
+   },
+   "items": [
+    {
+     "id": "c19-we-re-on",
+     "surface": "We're on",
+     "tokenStart": 0,
+     "tokenEnd": 2,
+     "lemma": "be on",
+     "kind": "phrasal_verb",
+     "level": "B2",
+     "meaning": {
+      "en": "about to start performing or operating",
+      "vi": "sắp bắt đầu hoạt động, sắp lên sóng",
+      "es": "vamos al aire, empezamos",
+      "id": "kita mulai tampil / beraksi",
+      "de": "wir sind dran / es geht los",
+      "fr": "on commence, on passe à l'action",
+      "it": "iniziamo, tocca a noi, siamo in scena",
+      "nl": "we beginnen, we gaan van start",
+      "pl": "zaczynamy, wchodzimy na wizję",
+      "pt-PT": "vamos começar, entramos em ação"
+     },
+     "inContext": {
+      "en": "The crew treats the simulation like a film take, announcing that it begins shortly.",
+      "vi": "Nhóm chuẩn bị vận hành cỗ máy như một buổi ghi hình, và \"We're on\" báo hiệu thời điểm bấm máy bắt đầu chỉ còn tính bằng phút.",
+      "es": "Proviene de los sets de filmación o televisión; avisa que están a punto de rodar o dar inicio a la escena.",
+      "id": "Kru memperlakukan simulasi seperti syuting adegan film, memperingatkan bahwa prosesnya sebentar lagi dimulai (\"We're on\").",
+      "de": "Ausdruck aus Film und Fernsehen: \"We're on in one\" bedeutet, dass die Simulation in einer Minute startet.",
+      "fr": "L'équipe dirige la simulation comme un tournage ou une émission en direct et annonce le départ imminent.",
+      "it": "Viene dal linguaggio dello spettacolo e della TV: indica che manca un minuto all'avvio della simulazione, trattata come una vera ripresa.",
+      "nl": "De simulatie wordt aangekondigd alsof het een tv-opname is; 'We're on in one' betekent dat ze over één minuut 'live' gaan.",
+      "pl": "Załoga traktuje tę symulację niczym ujęcie na planie filmowym – hasło „we're on in one” oznacza, że akcja rusza dokładnie za minutę.",
+      "pt-PT": "A equipa fala como se estivesse numa rodagem de cinema; \"we're on\" avisa que a operação arranca dentro de momentos."
+     },
+     "example": "The show starts soon—we're on in five minutes."
+    },
+    {
+     "id": "c19-all-systems-go",
+     "surface": "All systems go",
+     "tokenStart": 5,
+     "tokenEnd": 8,
+     "lemma": "all systems go",
+     "kind": "idiom",
+     "level": "B2",
+     "meaning": {
+      "en": "everything is ready and functioning properly",
+      "vi": "mọi hệ thống đều sẵn sàng hoạt động",
+      "es": "todos los sistemas listos, todo preparado",
+      "id": "semua sistem siap jalan / tidak ada kendala",
+      "de": "alles startklar / alle Systeme betriebsbereit",
+      "fr": "tous les voyants sont au vert, tout est prêt",
+      "it": "tutti i sistemi sono pronti, via libera",
+      "nl": "alle systemen gereed, alles staat op groen",
+      "pl": "wszystkie systemy sprawne, pełna gotowość",
+      "pt-PT": "tudo a postos, sistemas operacionais"
+     },
+     "inContext": {
+      "en": "The crew confirms that all technical preparation is complete and the operation can proceed.",
+      "vi": "Thành viên hô to \"All systems go\" để xác nhận toàn bộ thiết bị kỹ thuật đã sẵn sàng, chiến dịch có thể bắt đầu.",
+      "es": "Frase típica de lanzamientos aeroespaciales para confirmar que cada mecanismo funciona bien y pueden avanzar.",
+      "id": "Ungkapan teknis untuk menyatakan seluruh peralatan dan persiapan sudah beres sehingga operasi bisa segera dijalankan.",
+      "de": "Klassischer Ausruf aus der Raumfahrt: Signalisiert, dass alle technischen Voraussetzungen für den Start erfüllt sind.",
+      "fr": "Expression empruntée aux lancements spatiaux indiquant que tous les préparatifs techniques sont terminés.",
+      "it": "Formula tipica dei lanci aerospaziali per confermare che ogni parametro è a posto e l'operazione può partire.",
+      "nl": "Een bekende uitdrukking uit de ruimtevaart: alle technische controles zijn gelukt en de operatie kan beginnen.",
+      "pl": "Zwrot zapożyczony z procedur startów kosmicznych potwierdza, że cała technologia działa bez zarzutu i można zaczynać misję.",
+      "pt-PT": "Expressão típica de lançamentos espaciais para indicar que a parte técnica está toda operacional e pronta a arrancar."
+     },
+     "example": "The rocket launch has all systems go."
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "start": 208,
+   "end": 212,
+   "text": "Go! Move your asses! Go go go!",
+   "translations": {
+    "vi": "Đi mau! Nhấc mông lên! Đi, đi, đi!",
+    "es": "¡Vamos! ¡Muevan el trasero! ¡Vamos, vamos, vamos!",
+    "id": "Cepat! Gerak, cepat! Ayo jalan, jalan!",
+    "de": "Los! Bewegt eure Ärsche! Los, los, los!",
+    "fr": "Allez ! Bougez-vous le cul ! Allez, allez, allez !",
+    "it": "Via! Muovete il culo! Muovetevi!",
+    "nl": "Gaan! Beweeg je reet! Hup, hup, hup!",
+    "pl": "Ruchy! Ruszcie tyłki! Szybko, szybko, szybko!",
+    "pt-PT": "Vão! Mexam o rabo! Vão, vão, vão!"
+   },
+   "items": [
+    {
+     "id": "c20-move-your-asses",
+     "surface": "Move your asses",
+     "tokenStart": 2,
+     "tokenEnd": 5,
+     "lemma": "move one's ass",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "hurry up; get moving quickly",
+      "vi": "nhanh chân lên, nhấc mông lên",
+      "es": "muevan el trasero / apúrense",
+      "id": "cepat bergerak; buruan",
+      "de": "bewegt eure Ärsche / beeilt euch",
+      "fr": "bougez-vous les fesses / magnez-vous",
+      "it": "muovetevi, datevi una mossa",
+      "nl": "opschieten, in beweging komen",
+      "pl": "ruszcie tyłki / pospieszcie się",
+      "pt-PT": "mexer o rabo; despachar-se"
+     },
+     "inContext": {
+      "en": "Barley barks an urgent command at the crew to clear the set fast before the memory simulation begins.",
+      "vi": "Barley quát giục cả đội rời khỏi trường quay thật nhanh trước khi bắt đầu mô phỏng ký ức. \"Move your asses\" là cách nói suồng sã, hơi thô để hối người khác hành động khẩn trương.",
+      "es": "Barley les grita con urgencia que se apuren a despejar el set. \"Move your asses\" es una forma coloquial y bastante directa de decir «muévanse» o «despejen ya».",
+      "id": "Ungkapan kasar nan santai \"Move your asses\" dipakai Barley untuk membentak dan mendesak kru agar segera mengosongkan area sebelum simulasi dimulai.",
+      "de": "Barley treibt die Crew lautstark und derb an, schleunigst das Set zu verlassen, bevor die Simulation startet.",
+      "fr": "Barley crie un ordre très familier et pressant à toute l'équipe pour dégager le plateau au plus vite.",
+      "it": "\"Move your asses\" è un'espressione molto colorita e diretta per ordinare a tutti di sbrigarsi e liberare il set all'istante.",
+      "nl": "Barley schreeuwt 'Move your asses' op een grove, directe manier naar de crew om te zorgen dat iedereen vliegensvlug de set verlaat voordat de simulatie start.",
+      "pl": "Barley pogania ekipę dosadnym „move your asses”, żeby wszyscy natychmiast zeszli z planu przed startem symulacji.",
+      "pt-PT": "É uma forma brusca e coloquial de mandar alguém despachar-se. Barley grita \"move your asses\" para fazer com que a equipa saia depressa do cenário antes de a simulação começar."
+     },
+     "example": "Move your asses or we're going to miss our flight!"
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "start": 213,
+   "end": 217,
+   "text": "I love it! Come on, go!",
+   "translations": {
+    "vi": "Tuyệt lắm! Nhanh nào, đi đi!",
+    "es": "¡Me encanta! ¡Vamos, fuera!",
+    "id": "Mantap! Ayo, jalan!",
+    "de": "Ich liebe es! Kommt schon, los!",
+    "fr": "J'adore ça ! Allez, ouste !",
+    "it": "Ottimo! Dai, andate!",
+    "nl": "Geweldig! Kom op, wegwezen!",
+    "pl": "Uwielbiam to! No dalej, jazda!",
+    "pt-PT": "Adoro! Vamos, despachem-se!"
+   },
+   "items": []
+  },
+  {
+   "id": 22,
+   "start": 223,
+   "end": 224,
+   "text": "That's nice.",
+   "translations": {
+    "vi": "Tốt rồi.",
+    "es": "Qué bien.",
+    "id": "Baguslah.",
+    "de": "Das ist schön.",
+    "fr": "C'est bien.",
+    "it": "Bene così.",
+    "nl": "Mooi zo.",
+    "pl": "Pięknie.",
+    "pt-PT": "Muito bem."
+   },
+   "items": []
+  },
+  {
+   "id": 23,
+   "start": 224.5,
+   "end": 225.7,
+   "text": "Nothing to worry about.",
+   "translations": {
+    "vi": "Không có gì phải lo cả.",
+    "es": "Nada de qué preocuparse.",
+    "id": "Tak ada yang perlu dicemaskan.",
+    "de": "Kein Grund zur Sorge.",
+    "fr": "Rien d'inquiétant.",
+    "it": "Niente di cui preoccuparsi.",
+    "nl": "Niets om je zorgen over te maken.",
+    "pl": "Nie ma się czym martwić.",
+    "pt-PT": "Não há com que nos preocuparmos."
+   },
+   "items": []
+  },
+  {
+   "id": 24,
+   "start": 226,
+   "end": 227,
+   "text": "Thom.",
+   "translations": {
+    "vi": "Thom.",
+    "es": "Thom.",
+    "id": "Thom.",
+    "de": "Thom.",
+    "fr": "Thom.",
+    "it": "Thom.",
+    "nl": "Thom.",
+    "pl": "Thom.",
+    "pt-PT": "Thom."
+   },
+   "items": []
+  },
+  {
+   "id": 25,
+   "start": 231,
+   "end": 233,
+   "text": "There she is.",
+   "translations": {
+    "vi": "Cô ấy kia rồi.",
+    "es": "Ahí está.",
+    "id": "Itu dia.",
+    "de": "Da ist sie.",
+    "fr": "Elle est là.",
+    "it": "Eccola.",
+    "nl": "Daar is ze.",
+    "pl": "Oto ona.",
+    "pt-PT": "Lá está ela."
+   },
+   "items": []
+  },
+  {
+   "id": 26,
+   "start": 233.5,
+   "end": 234.5,
+   "text": "Now.",
+   "translations": {
+    "vi": "Bây giờ nhé.",
+    "es": "Ahora.",
+    "id": "Sekarang.",
+    "de": "Jetzt.",
+    "fr": "C'est le moment.",
+    "it": "Adesso.",
+    "nl": "Nu.",
+    "pl": "Teraz.",
+    "pt-PT": "Agora."
+   },
+   "items": []
+  },
+  {
+   "id": 27,
+   "start": 235,
+   "end": 236,
+   "text": "You love her.",
+   "translations": {
+    "vi": "Cậu yêu cô ấy.",
+    "es": "La amas.",
+    "id": "Kau mencintainya.",
+    "de": "Du liebst sie.",
+    "fr": "Tu l'aimes.",
+    "it": "Tu la ami.",
+    "nl": "Je houdt van haar.",
+    "pl": "Kochasz ją.",
+    "pt-PT": "Tu amas-a."
+   },
+   "items": []
+  },
+  {
+   "id": 28,
+   "start": 237,
+   "end": 238.5,
+   "text": "She is your passion!",
+   "translations": {
+    "vi": "Cô ấy chính là đam mê của cậu!",
+    "es": "¡Ella es tu pasión!",
+    "id": "Dialah gairah hidupmu!",
+    "de": "Sie ist deine Leidenschaft!",
+    "fr": "Elle est ta passion !",
+    "it": "Lei è la tua passione!",
+    "nl": "Zij is je passie!",
+    "pl": "Ona jest twoją pasją!",
+    "pt-PT": "Ela é a tua paixão!"
+   },
+   "items": [
+    {
+     "id": "c28-passion",
+     "surface": "passion",
+     "tokenStart": 3,
+     "tokenEnd": 4,
+     "lemma": "passion",
+     "kind": "word",
+     "level": "B1",
+     "meaning": {
+      "en": "an object of intense love or enthusiasm",
+      "vi": "đam mê, lẽ sống",
+      "es": "pasión",
+      "id": "hal atau sosok yang sangat dicintai/diminati",
+      "de": "Leidenschaft / große Liebe",
+      "fr": "passion / grand amour",
+      "it": "passione, grande amore",
+      "nl": "grote passie, hartstocht",
+      "pl": "pasja, miłość życia",
+      "pt-PT": "paixão; grande amor"
+     },
+     "inContext": {
+      "en": "The director urges Thom to focus his emotional energy completely on Celia to make the simulation convincing.",
+      "vi": "Vị đạo diễn lên dây cót tinh thần cho Thom, bảo cô ấy chính là \"passion\" của anh để diễn thật thuyết phục trong ký ức mô phỏng.",
+      "es": "La directora le recalca a Thom que Celia debe ser su \"passion\" (su mayor interés y afecto) para que la simulación funcione y logren convencerla.",
+      "id": "Sutradara memakai kata \"passion\" untuk menyemangati Thom agar mencurahkan seluruh cintanya pada Celia supaya aktingnya meyakinkan.",
+      "de": "Der Regisseur feuert Thom emotional an und erinnert ihn daran, dass Celia seine ganze Leidenschaft („passion“) sein muss, damit die Szene echt wirkt.",
+      "fr": "Le chef coache Thom comme un acteur en lui répétant que Celia doit être sa « passion », l'unique objet de son dévouement.",
+      "it": "La regista dice \"passion\" per spronare Thom a rimettere tutto il suo trasporto emotivo nel rapporto con Celia.",
+      "nl": "De regisseur pept Thom op en noemt Celia zijn 'passion' om hem te dwingen al zijn emotionele aandacht en liefde op haar te richten.",
+      "pl": "Kobieta przygotowująca Thoma próbuje wzbudzić w nim silne emocje, by przekonująco odegrał przed Celią swoje dawne uczucie.",
+      "pt-PT": "Aqui, \"passion\" refere-se à pessoa que desperta um amor profundo e intenso. O realizador quer que Thom concentre toda a sua energia emocional na Celia para tornar a reconstituição convincente."
+     },
+     "example": "Music has always been her greatest passion in life."
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "start": 240,
+   "end": 241,
+   "text": "Be tender to her.",
+   "translations": {
+    "vi": "Hãy dịu dàng với cô ấy.",
+    "es": "Sé tierno con ella.",
+    "id": "Bersikaplah lembut padanya.",
+    "de": "Sei zärtlich zu ihr.",
+    "fr": "Sois doux avec elle.",
+    "it": "Sii dolce con lei.",
+    "nl": "Wees teder voor haar.",
+    "pl": "Bądź dla niej czuły.",
+    "pt-PT": "Sê carinhoso com ela."
+   },
+   "items": [
+    {
+     "id": "c29-tender",
+     "surface": "tender",
+     "tokenStart": 1,
+     "tokenEnd": 2,
+     "lemma": "tender",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "showing gentle care, affection, and warmth",
+      "vi": "dịu dàng, ân cần",
+      "es": "tierno / afectuoso",
+      "id": "lembut; penuh kasih sayang",
+      "de": "zärtlich / einfühlsam",
+      "fr": "tendre, doux",
+      "it": "tenero, dolce, affettuoso",
+      "nl": "teder, zacht en liefdevol",
+      "pl": "czuły, delikatny",
+      "pt-PT": "carinhoso; terno; meigo"
+     },
+     "inContext": {
+      "en": "The director coaches Thom to soften his manner so he can successfully appeal to Celia's emotions.",
+      "vi": "Đạo diễn dặn Thom cần phải \"tender\" – mềm mỏng, tình cảm hơn để đánh thức cảm xúc trong Celia.",
+      "es": "La directora le pide que sea \"tender\" con Celia, es decir, suave y cariñoso, buscando apelar al lado sensible de la robot.",
+      "id": "Kata \"tender\" di sini berarti meminta Thom agar bersikap lemah lembut dan penuh kasih demi meluluhkan hati Celia.",
+      "de": "Thom wird angewiesen, sanft und gefühlvoll („tender“) aufzutreten, um Celias verletzte Gefühle zu erreichen.",
+      "fr": "Il demande à Thom d'être « tender », c'est-à-dire doux et bienveillant, pour désamorcer la colère de Celia.",
+      "it": "Thom riceve il consiglio di essere \"tender\", cioè delicato e affettuoso nei modi, per riuscire a toccare il cuore di Celia.",
+      "nl": "Thom krijgt de instructie om 'tender' te zijn: zacht en empathisch in plaats van lomp, zodat Celia weer voor hem valt.",
+      "pl": "Thom dostaje instrukcję, by porzucić szorstkość i okazać łagodność, bo tylko tak może dotrzeć do zranionej Celii.",
+      "pt-PT": "\"Tender\" descreve uma atitude afetuosa e suave. O realizador está a dar indicações a Thom para ele suavizar o tom e conseguir chegar ao coração de Celia."
+     },
+     "example": "He gave his daughter a tender kiss on the forehead."
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "start": 241.5,
+   "end": 244.5,
+   "text": "Be honest! Eh- be tender.",
+   "translations": {
+    "vi": "Thành thật vào! À... dịu dàng thôi.",
+    "es": "¡Sé honesto! Eh... sé tierno.",
+    "id": "Jujurlah! Eh, lembutlah.",
+    "de": "Sei ehrlich! Äh – sei zärtlich.",
+    "fr": "Sois sincère ! Enfin... sois doux.",
+    "it": "Sii sincero! Anzi... sii dolce.",
+    "nl": "Wees eerlijk! Eh, wees teder.",
+    "pl": "Bądź szczery! To znaczy... bądź czuły.",
+    "pt-PT": "Sê sincero! Bem... sê carinhoso."
+   },
+   "items": []
+  },
+  {
+   "id": 31,
+   "start": 245,
+   "end": 248,
+   "text": "Remind her what love is.",
+   "translations": {
+    "vi": "Hãy nhắc cho cô ấy nhớ tình yêu là gì.",
+    "es": "Recuérdale lo que es el amor.",
+    "id": "Ingatkan dia apa itu cinta.",
+    "de": "Erinnere sie daran, was Liebe ist.",
+    "fr": "Rappelle-lui ce qu'est l'amour.",
+    "it": "Ricordale cos'è l'amore.",
+    "nl": "Herinner haar eraan wat liefde is.",
+    "pl": "Przypomnij jej, czym jest miłość.",
+    "pt-PT": "Lembra-lhe o que é o amor."
+   },
+   "items": [
+    {
+     "id": "c31-remind",
+     "surface": "Remind",
+     "tokenStart": 0,
+     "tokenEnd": 1,
+     "lemma": "remind",
+     "kind": "word",
+     "level": "B1",
+     "meaning": {
+      "en": "make someone remember something",
+      "vi": "gợi nhớ, nhắc nhở",
+      "es": "recordar (hacer que alguien recuerde)",
+      "id": "mengingatkan",
+      "de": "erinnern / ins Gedächtnis rufen",
+      "fr": "rappeler (quelque chose à quelqu'un)",
+      "it": "ricordare a qualcuno, far tornare in mente",
+      "nl": "herinneren aan",
+      "pl": "przypomnieć (komuś coś)",
+      "pt-PT": "fazer lembrar; avivar a memória"
+     },
+     "inContext": {
+      "en": "The director tells Thom his mission is to awaken Celia's long-lost feelings of love.",
+      "vi": "Đạo diễn giao nhiệm vụ cho Thom là phải \"remind\" Celia, khơi lại những cảm xúc yêu thương đã bị chôn vùi bấy lâu.",
+      "es": "Thom debe hacer que Celia vuelva a sentir afecto humano. En inglés se usa \"remind\" cuando alguien le hace recordar algo a otra persona.",
+      "id": "Kata \"Remind\" digunakan untuk mengarahkan Thom agar membangkitkan kembali memori rasa cinta Celia yang sudah lama hilang.",
+      "de": "Thom soll Celia ins Gedächtnis rufen („remind“), wie sich Liebe anfühlt, um den Roboter in ihr emotional umzustimmen.",
+      "fr": "Thom doit lui remémorer les sentiments qu'ils partageaient pour réveiller son humanité.",
+      "it": "\"Remind\" significa far riaffiorare un ricordo o un sentimento: Thom deve risvegliare l'amore che Celia provava per lui.",
+      "nl": "Thom moet Celia laten herbeleven wat liefde inhoudt ('Remind her what love is') om haar robotbrein te bereiken.",
+      "pl": "Zadaniem Thoma jest obudzić w robocie wspomnienie ludzkich uczuć – ma sprawić, by Celia znów przypomniała sobie, czym jest miłość.",
+      "pt-PT": "\"Remind\" significa fazer alguém recordar-se de algo. O realizador instrui Thom a despertar em Celia as emoções e o amor que ela sentia antes da separação."
+     },
+     "example": "Please remind me to call the doctor tomorrow morning."
+    }
+   ]
+  },
+  {
+   "id": 32,
+   "start": 292,
+   "end": 295,
+   "text": "...and, action!",
+   "translations": {
+    "vi": "...và, diễn!",
+    "es": "...y, ¡acción!",
+    "id": "...dan, aksi!",
+    "de": "… und Bitte!",
+    "fr": "...et action !",
+    "it": "...e... azione!",
+    "nl": "...en, actie!",
+    "pl": "...i akcja!",
+    "pt-PT": "...e, ação!"
+   },
+   "items": [
+    {
+     "id": "c32-action",
+     "surface": "action",
+     "tokenStart": 3,
+     "tokenEnd": 4,
+     "lemma": "action",
+     "kind": "phrase",
+     "level": "B1",
+     "meaning": {
+      "en": "a command shouted to begin performing",
+      "vi": "diễn (khẩu lệnh khi quay phim)",
+      "es": "¡acción!",
+      "id": "mulai beraksi; 'action!' (aba-aba syuting)",
+      "de": "Bitte! / Und Action! (Startkommando beim Film)",
+      "fr": "action ! (sur un tournage)",
+      "it": "azione! (comando sul set)",
+      "nl": "actie (startsein)",
+      "pl": "akcja! (komenda na planie filmowym)",
+      "pt-PT": "ação (comando de realização)"
+     },
+     "inContext": {
+      "en": "The director shouts this traditional filmmaking command to cue the start of the re-enactment.",
+      "vi": "Khẩu lệnh quen thuộc của đạo diễn khi bắt đầu cảnh quay; ở đây dùng để ra hiệu cho Thom bắt đầu màn tái hiện ký ức.",
+      "es": "La directora da la orden clásica de rodaje, \"action!\", para dar inicio formal a la recreación del recuerdo.",
+      "id": "Aba-aba khas sutradara \"action!\" diteriakkan untuk menandai dimulainya reka ulang adegan masa lalu tersebut.",
+      "de": "Das klassische Regie-Kommando am Filmset, mit dem der Regisseur die nachgestellte Erinnerungsszene offiziell anlaufen lässt.",
+      "fr": "Le signal de cinéma classique crié pour lancer la reconstitution de la scène.",
+      "it": "È il classico comando da set cinematografico con cui la regista dà il via alla recita della scena.",
+      "nl": "Het klassieke filmcommando 'action' dat de regisseur roept om het naspelen van de herinnering te laten beginnen.",
+      "pl": "Tradycyjne zawołanie reżyserskie dające sygnał aktorom, że ujęcie wystartowało i mają zacząć grać.",
+      "pt-PT": "\"Action\" é o comando tradicional no cinema para dar início à filmagem. Aqui, o realizador dá a deixa para arrancar a reconstituição da memória."
+     },
+     "example": "The studio fell silent until the director shouted 'Action!'"
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "start": 296.5,
+   "end": 298,
+   "text": "Memory overwrite in progress!",
+   "translations": {
+    "vi": "Đang tiến hành ghi đè ký ức!",
+    "es": "¡Sobrescritura de memoria en progreso!",
+    "id": "Penimpaan memori sedang berlangsung!",
+    "de": "Speicherüberschreibung läuft!",
+    "fr": "Écrasement de la mémoire en cours !",
+    "it": "Sovrascrittura della memoria in corso!",
+    "nl": "Geheugen wordt overschreven!",
+    "pl": "Nadpisywanie pamięci w toku!",
+    "pt-PT": "Sobrescrita de memória em curso!"
+   },
+   "items": [
+    {
+     "id": "c33-overwrite",
+     "surface": "overwrite",
+     "tokenStart": 1,
+     "tokenEnd": 2,
+     "lemma": "overwrite",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "replace existing digital data with new data",
+      "vi": "ghi đè (dữ liệu)",
+      "es": "sobrescritura / sobrescribir",
+      "id": "menimpa data lama dengan data baru",
+      "de": "überschreiben",
+      "fr": "écrasement (de données) / réécriture",
+      "it": "sovrascrittura",
+      "nl": "overschrijven van data",
+      "pl": "nadpisać (dane cyfrowe)",
+      "pt-PT": "sobrescrever; substituir dados gravados"
+     },
+     "inContext": {
+      "en": "The technician reports that the system is actively modifying the robot Celia's stored memories.",
+      "vi": "Kỹ thuật viên báo hệ thống đang \"overwrite\" – thay thế dữ liệu ký ức cũ của Celia bằng ký ức mới được dàn dựng.",
+      "es": "En informática y ciencia ficción, \"overwrite\" se refiere a reemplazar datos existentes con nueva información; aquí están reescribiendo los recuerdos de Celia.",
+      "id": "Istilah teknis \"overwrite\" mengacu pada proses penggantian ingatan lama robot Celia dengan ingatan baru.",
+      "de": "Hier geht es darum, die bestehende digitale Erinnerung von Roboter-Celia mit einer neuen Szene zu ersetzen.",
+      "fr": "En informatique, « overwrite » signifie remplacer d'anciennes données par de nouvelles ; ici, ils reprogramment les souvenirs du robot.",
+      "it": "In informatica, \"overwrite\" indica l'azione di sostituire vecchi dati con nuovi: qui stanno riscrivendo i ricordi del robot.",
+      "nl": "Een technische term: de oude herinneringen in Celia's robotgeheugen worden letterlijk vervangen door nieuwe gegevens.",
+      "pl": "Informatyczny termin oznaczający zastępowanie starych danych nowymi – w tym przypadku wspomnień w sztucznym mózgu Celii.",
+      "pt-PT": "Na informática, \"overwrite\" é gravar dados novos por cima dos existentes. Aqui, o sistema está a alterar e a substituir diretamente as memórias da robô Celia."
+     },
+     "example": "Be careful not to overwrite the original file with your draft."
+    },
+    {
+     "id": "c33-in-progress",
+     "surface": "in progress",
+     "tokenStart": 2,
+     "tokenEnd": 4,
+     "lemma": "in progress",
+     "kind": "phrase",
+     "level": "B1",
+     "meaning": {
+      "en": "currently happening and not yet finished",
+      "vi": "đang diễn ra, đang tiến hành",
+      "es": "en progreso / en curso",
+      "id": "sedang berlangsung; sedang berjalan",
+      "de": "im Gange / läuft gerade",
+      "fr": "en cours",
+      "it": "in corso, in svolgimento",
+      "nl": "bezig, gaande",
+      "pl": "w toku, trwa",
+      "pt-PT": "em curso; a decorrer"
+     },
+     "inContext": {
+      "en": "The tech confirms that the memory transfer operation has successfully started running.",
+      "vi": "Cụm từ quen thuộc trong kỹ thuật để báo rằng một quá trình đang chạy và chưa hoàn tất.",
+      "es": "Frase técnica para avisar que una operación ya comenzó y se está ejecutando en ese mismo instante.",
+      "id": "Frasa \"in progress\" menunjukkan bahwa proses transfer atau manipulasi ingatan tersebut sedang aktif berjalan.",
+      "de": "Die Technikerin meldet, dass der Überschreibungsprozess gestartet ist und im Moment aktiv ausgeführt wird.",
+      "fr": "L'expression confirme que le processus informatique a bien démarré et n'est pas encore terminé.",
+      "it": "\"In progress\" segnala che il processo tecnico è attivo e sta procedendo in quel preciso istante.",
+      "nl": "Geeft aan dat het computerproces momenteel loopt en nog niet klaar is.",
+      "pl": "Zwrot używany w komunikatach systemowych informujący, że dana operacja została rozpoczęta i właśnie się wykonuje.",
+      "pt-PT": "A expressão \"in progress\" indica que um processo já começou e continua a decorrer. O técnico confirma assim que a substituição de dados está ativa."
+     },
+     "example": "Please keep the noise down; an examination is in progress."
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "start": 299,
+   "end": 301,
+   "text": "You're a jerk, Thom!",
+   "translations": {
+    "vi": "Anh là đồ tồi, Thom!",
+    "es": "¡Eres un idiota, Thom!",
+    "id": "Kau brengsek, Thom!",
+    "de": "Du bist ein Mistkerl, Thom!",
+    "fr": "T'es un connard, Thom !",
+    "it": "Sei un idiota, Thom!",
+    "nl": "Je bent een eikel, Thom!",
+    "pl": "Jesteś palantem, Thom!",
+    "pt-PT": "És um idiota, Thom!"
+   },
+   "items": [
+    {
+     "id": "c34-jerk",
+     "surface": "jerk",
+     "tokenStart": 2,
+     "tokenEnd": 3,
+     "lemma": "jerk",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "an annoying, rude, or obnoxious person",
+      "vi": "kẻ tồi tệ, đồ đểu",
+      "es": "idiota / patán",
+      "id": "orang brengsek atau menyebalkan",
+      "de": "Mistkerl / Idiot",
+      "fr": "crétin, connard, idiot",
+      "it": "idiota, stronzo, cretino",
+      "nl": "eikel, klootzak",
+      "pl": "palant, dupek",
+      "pt-PT": "idiota; parvalhão; estúpido"
+     },
+     "inContext": {
+      "en": "Celia repeats the exact insult she threw at Thom during their original breakup forty years earlier.",
+      "vi": "Celia nhắc lại đúng câu mắng \"jerk\" mà cô từng ném vào mặt Thom vào ngày chia tay 40 năm trước.",
+      "es": "Celia revive el rompimiento de hace cuarenta años usando el insulto coloquial \"jerk\", muy común para alguien desconsiderado o desagradable.",
+      "id": "Kata makian \"jerk\" dipakai Celia persis seperti saat mereka putus empat puluh tahun yang lalu untuk menunjukkan kekecewaannya pada Thom.",
+      "de": "Celia wiederholt exakt dieselbe Beschimpfung wie bei ihrer Trennung vor vierzig Jahren, weil die Simulation dort ansetzt.",
+      "fr": "Une insulte familière très courante en anglais pour qualifier un comportement insensible ou égoïste.",
+      "it": "\"Jerk\" è un insulto comune per definire una persona sgradevole o insensibile, ed è la stessa offesa detta da Celia quarant'anni prima.",
+      "nl": "Celia herhaalt exact hetzelfde scheldwoord ('jerk') als veertig jaar geleden, toen Thom haar kwetste tijdens de relatiebreuk.",
+      "pl": "Celia odtwarza dokładne słowa z przeszłości – wyzywa Thoma od „palantów”, tak samo jak w dniu ich rozstania.",
+      "pt-PT": "\"Jerk\" é um insulto informal comum em inglês para alguém desagradável, insensível ou rude. Celia repete a frase cheia de mágoa, tal como dissera quarenta anos antes."
+     },
+     "example": "Ignore him; he is being an obnoxious jerk."
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "start": 302.5,
+   "end": 305,
+   "text": "Ohp- Sorry! Sorry.",
+   "translations": {
+    "vi": "Ô... Xin lỗi! Xin lỗi.",
+    "es": "Ay... ¡Perdón! Perdón.",
+    "id": "Ups, maaf! Maaf.",
+    "de": "Hoppla – Entschuldigung! Tut mir leid.",
+    "fr": "Oups... Pardon ! Désolé.",
+    "it": "Ops! Scusa! Scusa.",
+    "nl": "Ho, sorry! Sorry.",
+    "pl": "Och... Przepraszam! Przepraszam.",
+    "pt-PT": "Op- Desculpa! Desculpa."
+   },
+   "items": []
+  },
+  {
+   "id": 36,
+   "start": 316,
+   "end": 317,
+   "text": "Look Celia.",
+   "translations": {
+    "vi": "Nghe này Celia.",
+    "es": "Mira, Celia.",
+    "id": "Dengar, Celia.",
+    "de": "Schau mal, Celia.",
+    "fr": "Écoute, Celia.",
+    "it": "Ascolta, Celia.",
+    "nl": "Luister Celia.",
+    "pl": "Posłuchaj, Celio.",
+    "pt-PT": "Olha, Celia."
+   },
+   "items": [
+    {
+     "id": "c36-look",
+     "surface": "Look",
+     "tokenStart": 0,
+     "tokenEnd": 1,
+     "lemma": "look",
+     "kind": "phrase",
+     "level": "B1",
+     "meaning": {
+      "en": "used to draw attention before speaking",
+      "vi": "nghe này, nhìn này",
+      "es": "mira",
+      "id": "dengar; coba perhatikan (kata seru pembuka bicara)",
+      "de": "schau mal / hör mal",
+      "fr": "écoute / regarde",
+      "it": "ascolta, guarda (per attirare l'attenzione)",
+      "nl": "luister, kijk eens",
+      "pl": "posłuchaj, spójrz",
+      "pt-PT": "olha; escuta; repara"
+     },
+     "inContext": {
+      "en": "Thom starts his rehearsed dialogue by trying to capture Celia's attention gently.",
+      "vi": "Thom dùng \"Look\" ở đầu câu để thu hút sự chú ý của Celia trước khi bắt đầu lời giải thích theo kịch bản cũ.",
+      "es": "Thom dice \"Look\" para llamar su atención suavemente antes de empezar su diálogo ensayado.",
+      "id": "Kata \"Look\" digunakan Thom di awal kalimat untuk menarik perhatian Celia dengan nada yang tenang.",
+      "de": "Thom nutzt „Look“, um Celias Aufmerksamkeit vorsichtig auf sich zu ziehen, bevor er seinen alten Text aufsagt.",
+      "fr": "« Look » sert souvent à capter l'attention de son interlocuteur au début d'une explication ou d'une justification.",
+      "it": "Thom usa \"look\" a inizio frase non per chiedere di guardare fisicamente, ma per richiamare l'attenzione di Celia con calma.",
+      "nl": "'Look' wordt hier gebruikt om iemands aandacht te vragen aan het begin van een serieuze of bezwerende zin.",
+      "pl": "Thom używa słowa „Look” na początku zdania, by przykuć uwagę rozmówczyni i nadać wypowiedzi osobisty ton.",
+      "pt-PT": "Usa-se \"Look\" no início de uma frase para captar a atenção do interlocutor antes de apresentar uma justificação. Thom tenta com isto fazer com que Celia pare para o escutar."
+     },
+     "example": "Look, I know you're upset, but let me explain what happened."
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "start": 318,
+   "end": 320,
+   "text": "We have to follow our passions.",
+   "translations": {
+    "vi": "Chúng ta phải theo đuổi đam mê của mình chứ.",
+    "es": "Tenemos que seguir nuestras pasiones.",
+    "id": "Kita harus mengejar impian kita masing-masing.",
+    "de": "Wir müssen unseren Leidenschaften folgen.",
+    "fr": "On doit suivre nos passions.",
+    "it": "Dobbiamo seguire le nostre passioni.",
+    "nl": "We moeten onze passie volgen.",
+    "pl": "Musimy podążać za swoimi pasjami.",
+    "pt-PT": "Temos de seguir as nossas paixões."
+   },
+   "items": [
+    {
+     "id": "c37-follow-our-passions",
+     "surface": "follow our passions",
+     "tokenStart": 3,
+     "tokenEnd": 6,
+     "lemma": "follow one's passion",
+     "kind": "phrase",
+     "level": "B2",
+     "meaning": {
+      "en": "pursue the things one loves doing",
+      "vi": "theo đuổi đam mê",
+      "es": "seguir nuestras pasiones",
+      "id": "mengejar impian atau minat terbesar",
+      "de": "seinen Leidenschaften / Träumen folgen",
+      "fr": "suivre ses passions / faire ce qu'on aime",
+      "it": "seguire le nostre passioni",
+      "nl": "doen waar je hart ligt, je passie najagen",
+      "pl": "iść za głosem pasji, robić to, co się kocha",
+      "pt-PT": "seguir as nossas paixões; ir atrás do que gostamos"
+     },
+     "inContext": {
+      "en": "Thom repeats the cliché excuse he once gave Celia to justify choosing space exploration over their relationship.",
+      "vi": "Thom lặp lại cái cớ sáo rỗng ngày xưa rằng ai cũng phải \"follow our passions\" để biện minh cho việc chọn bay vào vũ trụ thay vì ở bên cô.",
+      "es": "Thom repite la frase hecha que usó en su momento como justificación superficial para terminar su relación con ella.",
+      "id": "Thom mengulang klise \"follow our passions\" yang dulu ia jadikan dalih untuk meninggalkan Celia demi pergi ke luar angkasa.",
+      "de": "Thom zitiert die abgedroschene Phrase von damals, mit der er rechtfertigen wollte, sie für seine Astronautenkarriere zu verlassen.",
+      "fr": "Thom ressort la phrase toute faite qu'il avait servie à Celia pour justifier leur rupture et son départ.",
+      "it": "\"Follow our passions\" è la frase fatta usata da Thom per giustificare la decisione di partire per lo spazio e lasciarla.",
+      "nl": "Thom herhaalt zijn oude, clichématige excuus om te verantwoorden waarom hij destijds voor zichzelf en de ruimte koos.",
+      "pl": "Thom powtarza banał, którym czterdzieści lat wcześniej tłumaczył swoją decyzję o porzuceniu dziewczyny.",
+      "pt-PT": "A expressão \"follow our passions\" significa dedicarmo-nos àquilo que mais nos apaixona. Thom repete a desculpa cliché que deu no passado para justificar terminar o namoro."
+     },
+     "example": "He quit his banking job to follow his passion for landscape photography."
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "start": 321,
+   "end": 323,
+   "text": "You have your robotics...",
+   "translations": {
+    "vi": "Em có ngành chế tạo robot...",
+    "es": "Tú tienes tu robótica...",
+    "id": "Kau punya dunia robotikamu...",
+    "de": "Du hast deine Robotik …",
+    "fr": "Toi, tu as la robotique...",
+    "it": "Tu hai la robotica...",
+    "nl": "Jij hebt je robotica...",
+    "pl": "Ty masz swoją robotykę...",
+    "pt-PT": "Tu tens a tua robótica..."
+   },
+   "items": [
+    {
+     "id": "c38-robotics",
+     "surface": "robotics",
+     "tokenStart": 3,
+     "tokenEnd": 4,
+     "lemma": "robotics",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "the branch of technology designing robots",
+      "vi": "ngành robot, robot học",
+      "es": "robótica",
+      "id": "bidang robotika",
+      "de": "Robotik / Robotertechnik",
+      "fr": "la robotique",
+      "it": "robotica",
+      "nl": "robotica",
+      "pl": "robotyka",
+      "pt-PT": "robótica (área de estudo e tecnologia)"
+     },
+     "inContext": {
+      "en": "Thom refers to Celia's field of study, the very discipline that later led to world destruction.",
+      "vi": "Thom nhắc tới lĩnh vực nghiên cứu của Celia (\"robotics\"), ngành học mà sau này cô dùng để tạo ra lũ máy móc hủy diệt thế giới.",
+      "es": "Thom menciona la especialidad de Celia, la carrera que terminaría llevándola a construir los robots destructores.",
+      "id": "\"robotics\" merujuk pada bidang studi Celia—hal yang kelak membuatnya menciptakan robot-robot penghancur bumi.",
+      "de": "Thom spricht über Celias Fachgebiet, aus dem später genau jene Maschinen hervorgingen, die die Welt verwüsten.",
+      "fr": "Thom évoque les études de Celia, la science exacte qui mènera plus tard à la création des machines tueuses.",
+      "it": "\"Robotics\" fa riferimento agli studi di Celia, la tecnologia che anni dopo porterà alla rivolta delle macchine.",
+      "nl": "Thom verwijst naar Celia's vakgebied. Ironisch genoeg leidde die passie uiteindelijk tot de vernietiging van de aarde.",
+      "pl": "Thom nawiązuje do dziedziny nauki, którą studiowała Celia – tej samej, która doprowadziła później do powstania niszczycielskich maszyn.",
+      "pt-PT": "\"Robotics\" refere-se ao campo de estudo de Celia na universidade, a mesma área que anos mais tarde a levou a criar os robôs que destruíram o mundo."
+     },
+     "example": "Advances in robotics have completely changed modern manufacturing."
+    }
+   ]
+  },
+  {
+   "id": 39,
+   "start": 325,
+   "end": 328,
+   "text": "...and I just want to be awesome in space.",
+   "translations": {
+    "vi": "...còn anh thì chỉ muốn thật ngầu ngoài không gian thôi.",
+    "es": "...y yo solo quiero ser genial en el espacio.",
+    "id": "...dan aku cuma ingin jadi orang hebat di luar angkasa.",
+    "de": "… und ich will einfach nur cool im All sein.",
+    "fr": "...et moi, je veux juste être trop classe dans l'espace.",
+    "it": "...e io voglio solo essere un figo nello spazio.",
+    "nl": "...en ik wil gewoon te gek zijn in de ruimte.",
+    "pl": "...a ja po prostu chcę wymiatać w kosmosie.",
+    "pt-PT": "...e eu só quero ser o maior no espaço."
+   },
+   "items": [
+    {
+     "id": "c39-awesome",
+     "surface": "awesome",
+     "tokenStart": 7,
+     "tokenEnd": 8,
+     "lemma": "awesome",
+     "kind": "word",
+     "level": "B1",
+     "meaning": {
+      "en": "extremely impressive, cool, or enjoyable",
+      "vi": "tuyệt vời, cực ngầu",
+      "es": "genial / asombroso",
+      "id": "keren; hebat",
+      "de": "großartig / umwerfend / cool",
+      "fr": "génial, stylé, trop classe",
+      "it": "un figo, fantastico, grandioso",
+      "nl": "geweldig, te gek",
+      "pl": "niesamowity, wymiatający",
+      "pt-PT": "espetacular; fantástico; o maior"
+     },
+     "inContext": {
+      "en": "Thom repeats his immature original motivation for abandoning Celia to become an astronaut.",
+      "vi": "Thom lặp lại lý do rất trẻ con và nông nổi của mình khi xưa: muốn bay vào vũ trụ chỉ để tỏ ra thật \"awesome\" (ngầu, đỉnh).",
+      "es": "Thom usó \"awesome\" de forma muy inmadura en el pasado para decir que quería irse al espacio a ser el tipo más increíble.",
+      "id": "Thom mengulangi kata \"awesome\" untuk menirukan alasannya dulu yang kekanak-kanakan saat memilih jadi astronaut ketimbang bertahan bersama Celia.",
+      "de": "Thom zitiert seine unreife Begründung aus Jugendtagen, als er einfach nur als cooler Astronaut glänzen („awesome“) wollte.",
+      "fr": "Un mot très familier qui montre à quel point Thom était superficiel et immature à l'époque de leur dispute.",
+      "it": "Nel gergo giovanile americano \"awesome\" indica qualcosa di eccezionale; qui sottolinea la motivazione superficiale e infantile di Thom.",
+      "nl": "Thom gebruikt een kinderlijke en oppervlakkige term ('awesome') om uit te leggen waarom hij liever astronaut wilde worden dan bij haar te blijven.",
+      "pl": "Thom cytuje swoje dziecinne wytłumaczenie sprzed lat, kiedy marzył po prostu o byciu „fajnym i niezwykłym” astronautą.",
+      "pt-PT": "Em tom informal, \"awesome\" quer dizer ser incrível ou impressionante. Thom repete a justificação infantil e imatura que dera na altura para deixar Celia e partir para o espaço."
+     },
+     "example": "The concert last night was totally awesome."
+    }
+   ]
+  },
+  {
+   "id": 40,
+   "start": 339,
+   "end": 341,
+   "text": "Okay, they're coming. Two minutes left!",
+   "translations": {
+    "vi": "Được rồi, chúng đang tới. Còn lại hai phút!",
+    "es": "Bien, ya vienen. ¡Quedan dos minutos!",
+    "id": "Oke, mereka datang. Sisa dua menit lagi!",
+    "de": "Okay, sie kommen. Noch zwei Minuten!",
+    "fr": "Ok, ils arrivent. Plus que deux minutes !",
+    "it": "Ok, stanno arrivando. Restano due minuti!",
+    "nl": "Oké, ze komen eraan. Nog twee minuten!",
+    "pl": "Dobra, nadchodzą. Zostały dwie minuty!",
+    "pt-PT": "Ok, eles vêm aí. Faltam dois minutos!"
+   },
+   "items": [
+    {
+     "id": "c40-left",
+     "surface": "left",
+     "tokenStart": 7,
+     "tokenEnd": 8,
+     "lemma": "left",
+     "kind": "word",
+     "level": "B1",
+     "meaning": {
+      "en": "remaining or still available.",
+      "vi": "còn lại",
+      "es": "que quedan / restantes",
+      "id": "tersisa",
+      "de": "übrig / verbleibend",
+      "fr": "qui reste, restant",
+      "it": "rimasti, che restano",
+      "nl": "over, resterend",
+      "pl": "zostało, pozostało",
+      "pt-PT": "que restam ou que faltam"
+     },
+     "inContext": {
+      "en": "The crew warns that enemy robots are closing in and only two minutes remain to finish the simulation.",
+      "vi": "Được đặt sau khoảng thời gian hoặc số lượng (như \"two minutes left\") để báo rằng thời gian còn lại rất ít trước khi nguy hiểm ập tới.",
+      "es": "Se usa después de una cantidad de tiempo para decir cuánto falta o sobra antes de que se acabe el plazo; aquí avisan que solo quedan dos minutos.",
+      "id": "Kata 'left' di sini berarti sisa waktu yang mereka miliki. Kru memperingatkan bahwa musuh makin dekat dan waktu mereka tinggal dua menit lagi.",
+      "de": "Nach einer Zeitangabe bedeutet \"left\", wie viel Zeit noch verbleibt. Das Team warnt davor, dass die feindlichen Roboter anrücken und nur noch zwei Minuten Zeit sind.",
+      "fr": "L'équipe prévient qu'il ne reste que deux minutes avant l'arrivée des robots ennemis. Placé après une durée ou une quantité, \"left\" signifie qu'il ne reste plus que cela.",
+      "it": "Usato dopo una quantità di tempo o di cose per indicare quanto ne rimane prima che scada o finisca tutto: qui \"two minutes left\" significa che mancano appena due minuti.",
+      "nl": "Het team waarschuwt dat de vijandige robots naderen en dat er nog maar twee minuten ('two minutes left') zijn om de simulatie af te ronden.",
+      "pl": "Słowo \"left\" oznacza tutaj czas, jaki pozostał. Załoga ostrzega, że zbliżają się roboty i mają zaledwie dwie minuty na dokończenie symulacji.",
+      "pt-PT": "A equipa avisa que os robôs inimigos estão a aproximar-se e que restam apenas dois minutos (\"two minutes left\") para concluir a simulação."
+     },
+     "example": "Hurry up, there are only five minutes left before the doors close."
+    }
+   ]
+  },
+  {
+   "id": 41,
+   "start": 343,
+   "end": 344,
+   "text": "Speed it up, Thom!",
+   "translations": {
+    "vi": "Nhanh lên nào, Thom!",
+    "es": "¡Apresúrate, Thom!",
+    "id": "Percepat, Thom!",
+    "de": "Mach schneller, Thom!",
+    "fr": "Accélère, Thom !",
+    "it": "Sbrigati, Thom!",
+    "nl": "Opschieten, Thom!",
+    "pl": "Pospiesz się, Thom!",
+    "pt-PT": "Acelera, Thom!"
+   },
+   "items": [
+    {
+     "id": "c41-speed-it-up",
+     "surface": "Speed it up",
+     "tokenStart": 0,
+     "tokenEnd": 3,
+     "lemma": "speed up",
+     "kind": "phrasal_verb",
+     "level": "B1",
+     "meaning": {
+      "en": "go or do something more quickly.",
+      "vi": "làm nhanh lên, tăng tốc",
+      "es": "apresúrate / dale más rápido",
+      "id": "percepat",
+      "de": "einen Zahn zulegen / schneller machen",
+      "fr": "accélérer, se dépêcher",
+      "it": "accelerare, darsi una mossa",
+      "nl": "opschieten, een tandje bijsteken",
+      "pl": "pospiesz się, przyspiesz",
+      "pt-PT": "andar mais depressa ou acelerar o ritmo"
+     },
+     "inContext": {
+      "en": "The crew member urges Thom to get through the dialogue faster because time is running out.",
+      "vi": "Lời giục giã Thom phải nói nhanh hơn và đẩy nhanh tiến độ diễn xuất vì kẻ địch đang áp sát.",
+      "es": "Es una orden informal para pedirle a alguien que aumente la velocidad de lo que está haciendo; le piden a Thom que avance más rápido con la escena.",
+      "id": "Frasa 'speed it up' digunakan untuk menyuruh seseorang bertindak atau berbicara lebih cepat karena waktu yang sangat mendesak.",
+      "de": "\"Speed it up\" ist eine direkte Aufforderung, ein Tempo zu erhöhen. Thom soll seine Sätze schneller aufsagen, da ihnen die Zeit davonläuft.",
+      "fr": "On presse Thom d'enchaîner son dialogue beaucoup plus vite (« Speed it up ») car le temps presse et le danger approche.",
+      "it": "Un invito esplicito a fare più in fretta: gli chiedono di recitare le battute a ritmo serrato perché il tempo stringe.",
+      "nl": "Het teamlid maant Thom aan om sneller door zijn tekst heen te gaan omdat de tijd bijna om is.",
+      "pl": "Zwrot \"speed it up\" to potoczne wezwanie do robienia czegoś szybciej. Thom musi przyspieszyć odgrywanie sceny, bo czas ucieka.",
+      "pt-PT": "O colega de equipa pede a Thom que despache a conversa (\"speed it up\") porque o tempo está a esgotar-se rapidamente."
+     },
+     "example": "We need to speed it up if we want to catch the train."
+    }
+   ]
+  },
+  {
+   "id": 42,
+   "start": 345,
+   "end": 346,
+   "text": "Vivacissimo!",
+   "translations": {
+    "vi": "Nhanh thật nhanh lên!",
+    "es": "¡Vivacissimo!",
+    "id": "Vivacissimo!",
+    "de": "Vivacissimo!",
+    "fr": "Vivacissimo !",
+    "it": "Vivacissimo!",
+    "nl": "Vivacissimo!",
+    "pl": "Vivacissimo!",
+    "pt-PT": "Vivacissimo!"
+   },
+   "items": [
+    {
+     "id": "c42-vivacissimo",
+     "surface": "Vivacissimo",
+     "tokenStart": 0,
+     "tokenEnd": 1,
+     "lemma": "vivacissimo",
+     "kind": "word",
+     "level": "C2",
+     "meaning": {
+      "en": "performed very fast and lively.",
+      "vi": "cực kỳ nhanh và sôi nổi (thuật ngữ âm nhạc)",
+      "es": "vivacísimo / a paso muy rápido",
+      "id": "sangat cepat dan bersemangat",
+      "de": "sehr lebhaft und schnell (musikalische Vortragsbezeichnung)",
+      "fr": "très vif, très rapide (terme musical)",
+      "it": "a tempo rapidissimo (termine musicale)",
+      "nl": "zeer levendig en snel (muziekterm)",
+      "pl": "jak najszybciej, żywo",
+      "pt-PT": "vivacíssimo, muito rápido e com energia"
+     },
+     "inContext": {
+      "en": "The director shouts this musical direction dramatically to demand immediate, rapid pacing from Thom.",
+      "vi": "Vị đạo diễn thích kịch tính dùng thuật ngữ âm nhạc tiếng Ý \"Vivacissimo\" để hối thúc Thom diễn nhanh hết mức có thể.",
+      "es": "Es un término musical italiano que se usa en dirección escénica para exigir que la acción o el ritmo se vuelva sumamente rápido y enérgico.",
+      "id": "Istilah musik 'vivacissimo' diteriakkan oleh sutradara dengan dramatis untuk menuntut Thom mempercepat tempo bicaranya secara ekstrem.",
+      "de": "Der Anführer ruft theatralisch diese italienische Musikanweisung hinein, um von Thom noch mehr Tempo und Dramatik einzufordern.",
+      "fr": "Le chef d'équipe se prend pour un metteur en scène et crie ce terme musical italien (« Vivacissimo ») pour exiger un rythme ultra-rapide et dynamique.",
+      "it": "Viene usata l'indicazione musicale italiana per gridare a Thom di dare un ritmo ancora più incalzante e rapido alla scena.",
+      "nl": "De regisseur roept deze dramatische muzikale term om aan te geven dat Thom er écht flink de vaart in moet zetten.",
+      "pl": "Włoski termin muzyczny \"vivacissimo\" oznacza wykonanie utworu niezwykle szybko i z werwą. Reżyser używa go teatralnie, żądając od Thoma natychmiastowego podkręcenia tempa.",
+      "pt-PT": "O realizador grita este termo musical italiano para exigir que Thom atue com muito mais rapidez e dinamismo."
+     },
+     "example": "The conductor asked the strings to play the final movement vivacissimo."
+    }
+   ]
+  },
+  {
+   "id": 43,
+   "start": 347,
+   "end": 350,
+   "text": "Why don't you just admit that you're freaked out by my robot hand?",
+   "translations": {
+    "vi": "Sao anh không thừa nhận là anh thấy ghê tởm bàn tay robot của em đi?",
+    "es": "¿Por qué no admites que te asusta mi mano robótica?",
+    "id": "Kenapa kamu tidak mengaku saja kalau kamu ngeri melihat tangan robotku?",
+    "de": "Gib doch einfach zu, dass dir meine Roboterhand nicht geheuer ist!",
+    "fr": "Pourquoi tu n'avoues pas simplement que ma main robotique te fait flipper ?",
+    "it": "Perché non ammetti semplicemente che la mia mano robotica ti fa schifo?",
+    "nl": "Waarom geef je niet gewoon toe dat je griezelt van mijn robothand?",
+    "pl": "Dlaczego po prostu nie przyznasz, że brzydzisz się mojej mechanicznej ręki?",
+    "pt-PT": "Porque é que não admites simplesmente que a minha mão robótica te faz confusão?"
+   },
+   "items": [
+    {
+     "id": "c43-freaked-out",
+     "surface": "freaked out",
+     "tokenStart": 7,
+     "tokenEnd": 9,
+     "lemma": "freak out",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "deeply unnerved, disgusted, or scared.",
+      "vi": "hoảng sợ, thấy rợn người, ghê tởm",
+      "es": "asustado / horrorizado",
+      "id": "ngeri atau takut sekali",
+      "de": "abgestoßen / verstört / verängstigt",
+      "fr": "flippé, angoissé, dégoûté",
+      "it": "turbato, sconvolto o disgustato",
+      "nl": "er kriebels van krijgen, griezelen van",
+      "pl": "przerażony, zniesmaczony",
+      "pt-PT": "assustado, chocado ou a fazer muita confusão"
+     },
+     "inContext": {
+      "en": "Celia repeats the line from their past breakup, accusing Thom of being disgusted by her robotic hand.",
+      "vi": "Celia lặp lại lời chia tay trong quá khứ, trách Thom rằng anh thấy sợ hãi và rợn người trước cánh tay máy của cô.",
+      "es": "Estar 'freaked out' significa sentir desconcierto, miedo o rechazo intenso; Celia lo acusa de sentir repugnancia por su prótesis.",
+      "id": "Celia mengulang percakapan masa lalu, menuduh Thom merasa jijik dan takut ('freaked out') melihat tangan sibernetiknya.",
+      "de": "\"To be freaked out by something\" bedeutet umgangssprachlich, dass einem etwas unheimlich ist oder man davor Angst hat. Celia wirft Thom vor, dass er ihre künstliche Hand eklig fand.",
+      "fr": "Celia répète sa réplique d'origine en accusant Thom d'être mal à l'aise ou effrayé (« freaked out ») par sa prothèse mécanique.",
+      "it": "Celia ripete la battuta del loro vecchio litigio, rimproverandogli che la protesi robotica lo spaventava o gli faceva ribrezzo.",
+      "nl": "Celia herhaalt de zin van hun vroegere relatiebreuk en verwijt Thom dat hij bang of vies is van haar robothand ('freaked out by').",
+      "pl": "Wyrażenie \"freaked out\" oznacza silny szok, obrzydzenie lub lęk. Celia powtarza kwestię z ich dawnego rozstania, zarzucając Thomowi, że odrzuca go jej robotyczna ręka.",
+      "pt-PT": "A Celia repete a frase da discussão de há quarenta anos, acusando Thom de ter ficado chocado e desconfortável (\"freaked out\") com a prótese dela."
+     },
+     "example": "He freaked out when he spotted a huge spider in his shoe."
+    }
+   ]
+  },
+  {
+   "id": 44,
+   "start": 356,
+   "end": 359,
+   "text": "Listen Celia, I was young...",
+   "translations": {
+    "vi": "Nghe này Celia, hồi đó anh còn trẻ con...",
+    "es": "Escucha, Celia, era joven...",
+    "id": "Dengar Celia, waktu itu aku masih muda...",
+    "de": "Hör zu, Celia, ich war jung...",
+    "fr": "Écoute Celia, j'étais jeune...",
+    "it": "Senti Celia, ero giovane...",
+    "nl": "Luister Celia, ik was jong...",
+    "pl": "Posłuchaj Celia, byłem młody...",
+    "pt-PT": "Ouve, Celia, eu era novo..."
+   },
+   "items": []
+  },
+  {
+   "id": 45,
+   "start": 359.5,
+   "end": 361,
+   "text": "...and a dick.",
+   "translations": {
+    "vi": "...và khốn nạn nữa.",
+    "es": "...y un idiota.",
+    "id": "...dan berengsek.",
+    "de": "...und ein Arschloch.",
+    "fr": "...et un connard.",
+    "it": "...e un vero stronzo.",
+    "nl": "...en een klootzak.",
+    "pl": "...i byłem dupkiem.",
+    "pt-PT": "...e um perfeito idiota."
+   },
+   "items": [
+    {
+     "id": "c45-dick",
+     "surface": "dick",
+     "tokenStart": 3,
+     "tokenEnd": 4,
+     "lemma": "dick",
+     "kind": "slang",
+     "level": "B2",
+     "meaning": {
+      "en": "an obnoxious, rude, or selfish person.",
+      "vi": "kẻ tồi tệ, khốn nạn",
+      "es": "un imbécil / un idiota",
+      "id": "orang berengsek / menyebalkan",
+      "de": "Arschloch / Mistkerl",
+      "fr": "connard, abruti",
+      "it": "stronzo, testa di cazzo",
+      "nl": "klootzak, eikel",
+      "pl": "dupek, wredna osoba",
+      "pt-PT": "idiota, estúpido ou pessoa desagradável"
+     },
+     "inContext": {
+      "en": "Thom bluntly admits his past behavior was selfish and cruel instead of following the rehearsed script.",
+      "vi": "Từ lóng thô lỗ dùng để tự nhận mình là kẻ ích kỷ, tệ bạc; Thom không theo kịch bản chuẩn bị sẵn mà buột miệng nhận lỗi một cách quá trần trụi.",
+      "es": "Es un insulto informal muy común en inglés para referirse a una persona desagradable, egoísta o desconsiderada; Thom reconoce que actuó muy mal.",
+      "id": "Thom menyebut dirinya 'a dick' secara blak-blakan untuk mengakui bahwa perilakunya dulu sangat egois dan jahat kepada Celia.",
+      "de": "Thom weicht vom einstudierten Text ab und gibt unverblümt zu, dass er sich damals wie ein herzloses \"dick\" (Arschloch) verhalten hat.",
+      "fr": "Thom dévie du texte répété pour reconnaître crûment qu'il s'est comporté comme un vrai « dick » (un idiot égoïste et odieux) à l'époque.",
+      "it": "Un insulto molto comune in inglese che Thom usa contro se stesso, ammettendo senza filtri di essersi comportato in modo egoista e orribile.",
+      "nl": "Thom wijkt af van het ingestudeerde script en geeft ruiterlijk toe dat hij zich destijds bot en egoïstisch ('a dick') heeft gedragen.",
+      "pl": "Wulgarne, potoczne określenie kogoś złośliwego i samolubnego. Thom porzuca wyuczone kwestie i bez owijania w bawełnę przyznaje, jak podle zachował się w przeszłości.",
+      "pt-PT": "Thom afasta-se do guião previsto e admite abertamente que se portou como um egoísta e um cabrão (\"a dick\") no passado."
+     },
+     "example": "Don't be such a dick and help carry these boxes."
+    }
+   ]
+  },
+  {
+   "id": 46,
+   "start": 361,
+   "end": 363,
+   "text": "But that's no reason to destroy the world.",
+   "translations": {
+    "vi": "Nhưng đâu thể vì thế mà hủy diệt cả thế giới chứ.",
+    "es": "Pero esa no es razón para destruir el mundo.",
+    "id": "Tapi itu bukan alasan untuk menghancurkan dunia.",
+    "de": "Aber das ist kein Grund, die Welt zu zerstören.",
+    "fr": "Mais ce n'est pas une raison pour détruire le monde.",
+    "it": "Ma non è un buon motivo per distruggere il mondo.",
+    "nl": "Maar dat is geen reden om de wereld te vernietigen.",
+    "pl": "Ale to żaden powód, by niszczyć świat.",
+    "pt-PT": "Mas isso não é razão para destruíres o mundo."
+   },
+   "items": [
+    {
+     "id": "c46-destroy",
+     "surface": "destroy",
+     "tokenStart": 5,
+     "tokenEnd": 6,
+     "lemma": "destroy",
+     "kind": "word",
+     "level": "B1",
+     "meaning": {
+      "en": "ruin completely so that it ceases to exist.",
+      "vi": "phá hủy, hủy diệt",
+      "es": "destruir",
+      "id": "menghancurkan",
+      "de": "zerstören / vernichten",
+      "fr": "détruire, anéantir",
+      "it": "distruggere, radere al suolo",
+      "nl": "vernietigen, kapotmaken",
+      "pl": "zniszczyć",
+      "pt-PT": "destruir completamente ou aniquilar"
+     },
+     "inContext": {
+      "en": "Thom argues that being hurt by a boyfriend does not justify unleashing killer robots across the planet.",
+      "vi": "Thom cho rằng chuyện tình cảm tan vỡ trong quá khứ không đáng để Celia chế tạo robot hủy diệt toàn bộ nhân loại.",
+      "es": "Thom argumenta que una ruptura amorosa no justifica arruinar ni aniquilar por completo a todo el planeta.",
+      "id": "Thom menggunakan kata 'destroy' untuk mengingatkan bahwa sakit hati diputuskan pacar bukanlah alasan wajar untuk memusnahkan seisi dunia.",
+      "de": "Thom argumentiert, dass eine Trennung keine Rechtfertigung dafür ist, die ganze Welt (\"destroy the world\") in Schutt und Asche zu legen.",
+      "fr": "Thom lui fait remarquer avec pragmatisme qu'une peine de cœur ne justifie pas de raser la planète entière (« destroy the world »).",
+      "it": "Thom fa notare quanto sia sproporzionato annientare la Terra solo per una delusione d'amore giovanile.",
+      "nl": "Thom stelt dat een verbroken relatie geen reden is om de hele aarde met moordende robots te verwoesten ('destroy the world').",
+      "pl": "\"Destroy\" to całkowite zrujnowanie lub unicestwienie czegoś. Thom zauważa, że złamane serce nie usprawiedliwia zrównania całej planety z ziemią.",
+      "pt-PT": "Thom tenta argumentar que a dor do desgosto amoroso não justifica aniquilar (\"destroy\") o planeta inteiro com máquinas."
+     },
+     "example": "The fire threatened to destroy the historical library."
+    }
+   ]
+  },
+  {
+   "id": 47,
+   "start": 365,
+   "end": 366,
+   "text": "Why does he do this?",
+   "translations": {
+    "vi": "Sao anh ta lại làm thế hả trời?",
+    "es": "¿Por qué hace esto?",
+    "id": "Kenapa dia malah bilang begitu?",
+    "de": "Warum macht er das?",
+    "fr": "Pourquoi il fait ça ?",
+    "it": "Perché fa così?",
+    "nl": "Waarom doet hij dit?",
+    "pl": "Dlaczego on to robi?",
+    "pt-PT": "Porque é que ele está a fazer isto?"
+   },
+   "items": []
+  },
+  {
+   "id": 48,
+   "start": 366.5,
+   "end": 368.5,
+   "text": "We already tried that one!",
+   "translations": {
+    "vi": "Cách đó thử rồi mà!",
+    "es": "¡Ya intentamos eso!",
+    "id": "Kita sudah coba cara itu!",
+    "de": "Das hatten wir doch schon probiert!",
+    "fr": "On a déjà essayé cette réplique !",
+    "it": "Quella l'abbiamo già provata!",
+    "nl": "Die hebben we al geprobeerd!",
+    "pl": "Tego już przecież próbowaliśmy!",
+    "pt-PT": "Já tentámos essa!"
+   },
+   "items": []
+  },
+  {
+   "id": 49,
+   "start": 371.5,
+   "end": 372.5,
+   "text": "Abort!",
+   "translations": {
+    "vi": "Hủy nhiệm vụ!",
+    "es": "¡Abortar!",
+    "id": "Batalkan!",
+    "de": "Abbruch!",
+    "fr": "Annulez !",
+    "it": "Annullare!",
+    "nl": "Afbreken!",
+    "pl": "Przerwać!",
+    "pt-PT": "Abortar!"
+   },
+   "items": [
+    {
+     "id": "c49-abort",
+     "surface": "Abort",
+     "tokenStart": 0,
+     "tokenEnd": 1,
+     "lemma": "abort",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "stop a mission or process before completion.",
+      "vi": "hủy bỏ (nhiệm vụ, tiến trình)",
+      "es": "abortar / cancelar",
+      "id": "batalkan misi",
+      "de": "abbrechen",
+      "fr": "interrompre, abandonner une mission",
+      "it": "interrompere, annullare (una missione)",
+      "nl": "afbreken, stopzetten",
+      "pl": "przerwać (misję, procedurę)",
+      "pt-PT": "abortar ou interromper uma operação de imediato"
+     },
+     "inContext": {
+      "en": "The team orders an immediate halt to the memory simulation because Thom went off script.",
+      "vi": "Lệnh khẩn cấp yêu cầu dừng ngay tiến trình can thiệp ký ức khi thấy tình hình diễn biến xấu và Thom nói chệch hướng.",
+      "es": "Es la orden militar o técnica clásica para detener de inmediato una operación antes de que termine, al ver que Thom se salió del guion.",
+      "id": "Kru berteriak 'abort' untuk segera menghentikan simulasi karena Thom melenceng dari naskah dan situasinya menjadi berbahaya.",
+      "de": "Ein militärischer oder technischer Befehl: Als Thom improvisiert und die Lage eskaliert, befiehlt das Team den sofortigen Abbruch der Simulation.",
+      "fr": "Voyant que Thom improvise et que la situation dégénère, l'équipe crie « Abort! » pour couper court à l'expérience immédiatement.",
+      "it": "Il comando d'emergenza tipico per fermare subito un'operazione militare o tecnologica prima che sia completata.",
+      "nl": "Het team eist dat het herbeleven van de herinnering onmiddellijk wordt gestaakt omdat Thom niet het juiste script volgt.",
+      "pl": "Wojskowy lub techniczny rozkaz \"abort\" nakazuje natychmiastowe zatrzymanie operacji. Zespół widzi, że Thom zszedł ze scenariusza i sytuacja wymyka się spod kontroli.",
+      "pt-PT": "A equipa dá a ordem de cancelar (\"abort\") a experiência de imediato, já que Thom começou a improvisar de forma arriscada."
+     },
+     "example": "The pilot decided to abort the takeoff due to engine failure."
+    }
+   ]
+  },
+  {
+   "id": 50,
+   "start": 373,
+   "end": 374,
+   "text": "Cut!",
+   "translations": {
+    "vi": "Cắt!",
+    "es": "¡Corten!",
+    "id": "Cut!",
+    "de": "Schnitt!",
+    "fr": "Coupez !",
+    "it": "Stop!",
+    "nl": "Cut!",
+    "pl": "Cięcie!",
+    "pt-PT": "Corta!"
+   },
+   "items": [
+    {
+     "id": "c50-cut",
+     "surface": "Cut",
+     "tokenStart": 0,
+     "tokenEnd": 1,
+     "lemma": "cut",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "call to stop filming or performing.",
+      "vi": "cắt, ngừng diễn (thuật ngữ làm phim)",
+      "es": "¡corte! / ¡corten!",
+      "id": "berhenti / stop",
+      "de": "Schnitt! / Stopp!",
+      "fr": "coupez (au cinéma/théâtre)",
+      "it": "taglia, stop (sul set)",
+      "nl": "stop (filmterm)",
+      "pl": "cięcie (koniec ujęcia)",
+      "pt-PT": "corta (ordem para interromper a cena)"
+     },
+     "inContext": {
+      "en": "The director screams to end the reenactment scene immediately as the robot reacts violently.",
+      "vi": "Đạo diễn hô to \"Cut!\" như trên phim trường để bắt dừng ngay cảnh diễn khi robot bắt đầu nổi giận.",
+      "es": "Es el grito tradicional del director de cine para detener la filmación o la actuación en el set cuando algo sale mal.",
+      "id": "Sutradara meneriakkan 'cut' layaknya dalam syuting film untuk menyuruh adegan dihentikan seketika karena robot mulai mengamuk.",
+      "de": "Der typische Regieruf am Filmset, um eine Aufnahme anzuhalten. Die Simulation gerät außer Kontrolle, deshalb will man die Szene beenden.",
+      "fr": "Dans la panique, le responsable crie « Cut! », le mot traditionnel sur un plateau de tournage pour ordonner l'arrêt immédiat du jeu.",
+      "it": "Il classico ordine del regista (\"Cut!\") urlato per interrompere all'istante le riprese o la simulazione.",
+      "nl": "De regisseur roept 'cut!' zoals op een filmset om de scène abrupt te stoppen zodra de robot gewelddadig reageert.",
+      "pl": "Tradycyjna filmowa komenda reżyserska oznaczająca przerwanie kręcenia sceny. Reżyser krzyczy to w panice, gdy robot staje się agresywny.",
+      "pt-PT": "O realizador grita \"Cut!\", o termo clássico de cinema para mandar parar a representação, vendo que as coisas descambaram."
+     },
+     "example": "The director shouted 'Cut!' after the actor forgot his lines."
+    }
+   ]
+  },
+  {
+   "id": 51,
+   "start": 374,
+   "end": 375,
+   "text": "Whoaaa!",
+   "translations": {
+    "vi": "Úi chà!",
+    "es": "¡Uoooh!",
+    "id": "Waaah!",
+    "de": "Wooooah!",
+    "fr": "Wouaaah !",
+    "it": "Uoooa!",
+    "nl": "Woooow!",
+    "pl": "Uooo!",
+    "pt-PT": "Uoooou!"
+   },
+   "items": []
+  },
+  {
+   "id": 52,
+   "start": 379,
+   "end": 380,
+   "text": "Whoaaa!",
+   "translations": {
+    "vi": "Úi chà!",
+    "es": "¡Uoooh!",
+    "id": "Waaah!",
+    "de": "Wooooah!",
+    "fr": "Wouaaah !",
+    "it": "Uoooa!",
+    "nl": "Woooow!",
+    "pl": "Uooo!",
+    "pt-PT": "Uoooou!"
+   },
+   "items": []
+  },
+  {
+   "id": 53,
+   "start": 381,
+   "end": 383,
+   "text": "Nooooo!",
+   "translations": {
+    "vi": "Khôngggg!",
+    "es": "¡Noooo!",
+    "id": "Tidaaak!",
+    "de": "Neeeein!",
+    "fr": "Noooon !",
+    "it": "Noooo!",
+    "nl": "Neeeeee!",
+    "pl": "Nieeee!",
+    "pt-PT": "Nãããão!"
+   },
+   "items": []
+  },
+  {
+   "id": 54,
+   "start": 383,
+   "end": 385,
+   "text": "You broke my heart.",
+   "translations": {
+    "vi": "Anh đã làm tan nát trái tim em.",
+    "es": "Me rompiste el corazón.",
+    "id": "Kamu menghancurkan hatiku.",
+    "de": "Du hast mir das Herz gebrochen.",
+    "fr": "Tu m'as brisé le cœur.",
+    "it": "Mi hai spezzato il cuore.",
+    "nl": "Je hebt mijn hart gebroken.",
+    "pl": "Złamałeś mi serce.",
+    "pt-PT": "Partiste-me o coração."
+   },
+   "items": [
+    {
+     "id": "c54-broke-my-heart",
+     "surface": "broke my heart",
+     "tokenStart": 1,
+     "tokenEnd": 4,
+     "lemma": "break someone's heart",
+     "kind": "idiom",
+     "level": "B1",
+     "meaning": {
+      "en": "caused intense grief or emotional pain.",
+      "vi": "làm tan nát trái tim, gây tổn thương sâu sắc",
+      "es": "me rompiste el corazón",
+      "id": "membuat patah hati",
+      "de": "das Herz gebrochen",
+      "fr": "m'as brisé le cœur",
+      "it": "ha spezzato il cuore",
+      "nl": "mijn hart gebroken",
+      "pl": "złamałeś mi serce",
+      "pt-PT": "partiste-me o coração ou causaste-me um desgosto enorme"
+     },
+     "inContext": {
+      "en": "Celia expresses the deep personal pain she felt when Thom abandoned her decades ago.",
+      "vi": "Celia nhắc lại nỗi đau đớn cùng cực mà Thom gây ra khi ruồng bỏ cô năm xưa.",
+      "es": "Expresión clásica para describir el dolor profundo y la tristeza causada por una decepción o abandono amoroso.",
+      "id": "Ungkapan 'broke my heart' dipakai Celia untuk meluapkan rasa sakit emosional yang mendalam akibat ditinggalkan Thom bertahun-tahun silam.",
+      "de": "Celia drückt genau wie im Deutschen (\"broke my heart\") den tiefen seelischen Schmerz aus, den Thom ihr damals mit dem Verlassen zugefügt hat.",
+      "fr": "Celia exprime la douleur intime de leur rupture passée en disant mot à mot que Thom a « brisé son cœur » (« broke my heart »).",
+      "it": "Un'espressione universale per indicare il dolore straziante provocato da un abbandono o da un tradimento amoroso.",
+      "nl": "Celia verwoordt het immense verdriet dat Thom haar decennia geleden heeft aangedaan door haar in de steek te laten.",
+      "pl": "Klasyczny idiom oznaczający zadanie komuś ogromnego bólu emocjonalnego przez odrzucenie lub zdradę. Celia wyrzuca Thomowi dawne zranienie.",
+      "pt-PT": "Celia expressa a dor imensa que sentiu quando Thom a abandonou, dizendo literalmente que ele lhe despedaçou o coração (\"broke my heart\")."
+     },
+     "example": "It completely broke my heart to see the children crying."
+    }
+   ]
+  },
+  {
+   "id": 55,
+   "start": 386,
+   "end": 387,
+   "text": "I know.",
+   "translations": {
+    "vi": "Anh biết.",
+    "es": "Lo sé.",
+    "id": "Aku tahu.",
+    "de": "Ich weiß.",
+    "fr": "Je sais.",
+    "it": "Lo so.",
+    "nl": "Ik weet het.",
+    "pl": "Wiem.",
+    "pt-PT": "Eu sei."
+   },
+   "items": []
+  },
+  {
+   "id": 56,
+   "start": 387,
+   "end": 389,
+   "text": "You forgot me on earth.",
+   "translations": {
+    "vi": "Anh đã bỏ mặc em dưới Trái Đất.",
+    "es": "Me olvidaste en la Tierra.",
+    "id": "Kamu melupakanku di bumi.",
+    "de": "Du hast mich auf der Erde vergessen.",
+    "fr": "Tu m'as oubliée sur Terre.",
+    "it": "Mi hai dimenticata sulla Terra.",
+    "nl": "Je bent me vergeten op aarde.",
+    "pl": "Zostawiłeś mnie na Ziemi.",
+    "pt-PT": "Esqueceste-te de mim na Terra."
+   },
+   "items": []
+  },
+  {
+   "id": 57,
+   "start": 389,
+   "end": 390,
+   "text": "I know.",
+   "translations": {
+    "vi": "Anh biết.",
+    "es": "Lo sé.",
+    "id": "Aku tahu.",
+    "de": "Ich weiß.",
+    "fr": "Je sais.",
+    "it": "Lo so.",
+    "nl": "Ik weet het.",
+    "pl": "Wiem.",
+    "pt-PT": "Eu sei."
+   },
+   "items": []
+  },
+  {
+   "id": 58,
+   "start": 390.5,
+   "end": 393,
+   "text": "I should just crush you.",
+   "translations": {
+    "vi": "Đáng lẽ em nên bóp chết anh luôn.",
+    "es": "Debería aplastarte.",
+    "id": "Harusnya kuremukkan saja kamu.",
+    "de": "Ich sollte dich einfach zerquetschen.",
+    "fr": "Je devrais juste t'écraser.",
+    "it": "Dovrei semplicemente schiacciarti.",
+    "nl": "Ik zou je eigenlijk gewoon moeten vermorzelen.",
+    "pl": "Powinnam cię po prostu zmiażdżyć.",
+    "pt-PT": "Devia simplesmente esmagar-te."
+   },
+   "items": [
+    {
+     "id": "c58-crush",
+     "surface": "crush",
+     "tokenStart": 3,
+     "tokenEnd": 4,
+     "lemma": "crush",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "squeeze with overwhelming force to break or kill.",
+      "vi": "nghiền nát, bóp nát",
+      "es": "aplastar / triturar",
+      "id": "meremukkan",
+      "de": "zerquetschen / zermalmen",
+      "fr": "écraser, broyer",
+      "it": "schiacciare, stritolare",
+      "nl": "verpletteren, vermorzelen",
+      "pl": "zmiażdżyć",
+      "pt-PT": "esmagar ou triturar com muita força"
+     },
+     "inContext": {
+      "en": "Celia threatens to kill Thom physically with her robotic power in retaliation for her heartbreak.",
+      "vi": "Celia đe dọa dùng sức mạnh cơ học khủng khiếp của robot để bóp nát Thom nhằm trả thù nỗi đau bị bỏ rơi.",
+      "es": "Aquí se refiere literalmente a usar su fuerza mecánica para estrujar a Thom hasta matarlo por el resentimiento acumulado.",
+      "id": "Celia mengancam hendak 'crush' (meremukkan sampai hancur) tubuh Thom dengan kekuatan tangan robotnya sebagai pembalasan dendam.",
+      "de": "\"Crush\" meint hier das buchstäbliche Zerdrücken mit roher Gewalt. Celia droht ihm, ihn mit ihren riesigen Robotergreifern zu vernichten.",
+      "fr": "Celia menace d'utiliser sa force surhumaine pour broyer physiquement Thom (« crush you »), en écho à toute sa rancœur accumulée.",
+      "it": "Celia minaccia letteralmente di stritolarlo con la forza sovrumana della sua mano metallica.",
+      "nl": "Celia dreigt Thom met haar robotkracht fysiek fijn te knijpen uit wraak voor wat hij haar heeft aangedaan.",
+      "pl": "Czasownik \"crush\" oznacza zgniecenie lub sprasowanie czegoś z olbrzymią siłą. Celia grozi, że użyje swojej mechanicznej siły, by zabić Thoma na miejscu.",
+      "pt-PT": "Celia ameaça matá-lo fisicamente usando a força implacável das suas garras robóticas para o esmagar (\"crush\")."
+     },
+     "example": "The falling beam was heavy enough to crush the car roof."
+    }
+   ]
+  },
+  {
+   "id": 59,
+   "start": 396,
+   "end": 397,
+   "text": "I'm-",
+   "translations": {
+    "vi": "Anh...",
+    "es": "Lo...",
+    "id": "A-",
+    "de": "Es tut-",
+    "fr": "Je...",
+    "it": "Mi...",
+    "nl": "Het-",
+    "pl": "Ja...",
+    "pt-PT": "Eu..."
+   },
+   "items": []
+  },
+  {
+   "id": 60,
+   "start": 407,
+   "end": 408,
+   "text": "I'm sorry.",
+   "translations": {
+    "vi": "Anh xin lỗi.",
+    "es": "Lo siento.",
+    "id": "Aku minta maaf.",
+    "de": "Es tut mir leid.",
+    "fr": "Je suis désolé.",
+    "it": "Mi dispiace.",
+    "nl": "Het spijt me.",
+    "pl": "Przepraszam.",
+    "pt-PT": "Desculpa."
+   },
+   "items": []
+  },
+  {
+   "id": 61,
+   "start": 410,
+   "end": 411,
+   "text": "Good ad-lib.",
+   "translations": {
+    "vi": "Ứng biến tốt đấy.",
+    "es": "Buena improvisación.",
+    "id": "Improvisasi yang bagus.",
+    "de": "Gut improvisiert.",
+    "fr": "Bonne impro.",
+    "it": "Bella improvvisazione.",
+    "nl": "Goede improvisatie.",
+    "pl": "Dobra improwizacja.",
+    "pt-PT": "Bom improviso."
+   },
+   "items": [
+    {
+     "id": "c61-ad-lib",
+     "surface": "ad-lib",
+     "tokenStart": 1,
+     "tokenEnd": 2,
+     "lemma": "ad-lib",
+     "kind": "word",
+     "level": "C1",
+     "meaning": {
+      "en": "an improvised line or spoken remark without preparation",
+      "vi": "lời thoại ứng biến, ứng khẩu",
+      "es": "improvisación",
+      "id": "improvisasi / ucapan spontan tanpa naskah",
+      "de": "Improvisation / spontan eingefügter Satz",
+      "fr": "improvisation (d'une réplique)",
+      "it": "improvvisazione (battuta non da copione)",
+      "nl": "improvisatie",
+      "pl": "improwizacja, kwestia spoza scenariusza",
+      "pt-PT": "improviso, fala improvisada"
+     },
+     "inContext": {
+      "en": "The director praises Thom for improvising an apology on the spot instead of sticking to the planned script.",
+      "vi": "Trong ngành phim ảnh, \"ad-lib\" là lời thoại diễn viên tự nghĩ ra tại chỗ mà không có trong kịch bản. Đạo diễn khen Thom vì anh đã nhanh trí buột miệng nói lời xin lỗi thay vì đọc theo kịch bản dàn dựng.",
+      "es": "La directora elogia a Thom por inventar esa disculpa en el momento en vez de seguir el guion planeado. \"Ad-lib\" se usa en actuación para cualquier diálogo improvisado.",
+      "id": "Sutradara memuji Thom karena berinisiatif melakukan 'ad-lib' (improvisasi dialog) meminta maaf secara tulus di luar naskah demi meluluhkan hati Celia.",
+      "de": "Kommt vom Lateinischen 'ad libitum' (nach Belieben). Der Regisseur lobt Thom dafür, dass er spontan vom Drehbuch abgewichen ist und sich aus dem Stegreif entschuldigt hat.",
+      "fr": "Le réalisateur félicite Thom pour avoir improvisé (« ad-lib ») des excuses sincères au lieu de réciter machinalement le texte prévu.",
+      "it": "Il regista si complimenta con Thom per aver fatto un'improvvisazione (\"ad-lib\"), scusandosi sul momento invece di recitare il testo previsto.",
+      "nl": "Een 'ad-lib' is een tekst die niet in het script staat, maar ter plekke verzonnen wordt. De regisseur prijst Thom omdat hij spontaan zijn excuses aanbiedt in plaats van de tekst letterlijk te volgen.",
+      "pl": "Reżyser chwali Thoma za to, że spontanicznie dorzucił słowa przeprosin, zamiast trzymać się sztywno ustalonego planu.",
+      "pt-PT": "O realizador elogia Thom por ter inventado uma fala no momento (\"ad-lib\"), em vez de se limitar a seguir o guião à risca."
+     },
+     "example": "The comedian forgot his script, but his ad-lib had everyone laughing."
+    }
+   ]
+  },
+  {
+   "id": 62,
+   "start": 419,
+   "end": 420.5,
+   "text": "Not my fault!",
+   "translations": {
+    "vi": "Đâu phải lỗi của tôi!",
+    "es": "¡No es mi culpa!",
+    "id": "Bukan salahku!",
+    "de": "Nicht meine Schuld!",
+    "fr": "C'est pas ma faute !",
+    "it": "Non è colpa mia!",
+    "nl": "Niet mijn schuld!",
+    "pl": "To nie moja wina!",
+    "pt-PT": "Não foi culpa minha!"
+   },
+   "items": []
+  },
+  {
+   "id": 63,
+   "start": 422,
+   "end": 423,
+   "text": "This time.",
+   "translations": {
+    "vi": "Lần này thôi.",
+    "es": "Esta vez.",
+    "id": "Untuk kali ini.",
+    "de": "Diesmal.",
+    "fr": "Pas cette fois.",
+    "it": "Questa volta.",
+    "nl": "Dit keer.",
+    "pl": "Tym razem.",
+    "pt-PT": "Desta vez."
+   },
+   "items": []
+  },
+  {
+   "id": 64,
+   "start": 428,
+   "end": 429.5,
+   "text": "Quiet on set!",
+   "translations": {
+    "vi": "Trật tự trường quay!",
+    "es": "¡Silencio en el set!",
+    "id": "Harap tenang di lokasi syuting!",
+    "de": "Ruhe am Set!",
+    "fr": "Silence sur le plateau !",
+    "it": "Silenzio sul set!",
+    "nl": "Stilte op de set!",
+    "pl": "Cisza na planie!",
+    "pt-PT": "Silêncio no estúdio!"
+   },
+   "items": [
+    {
+     "id": "c64-quiet-on-set",
+     "surface": "Quiet on set!",
+     "tokenStart": 0,
+     "tokenEnd": 3,
+     "lemma": "quiet on set",
+     "kind": "phrase",
+     "level": "B2",
+     "meaning": {
+      "en": "order calling for complete silence during a film or rehearsal",
+      "vi": "yêu cầu giữ im lặng trên trường quay",
+      "es": "¡silencio en el set!",
+      "id": "harap tenang di lokasi syuting",
+      "de": "Ruhe am Set! (Aufforderung zur Stille bei Dreharbeiten)",
+      "fr": "Silence sur le plateau !",
+      "it": "silenzio sul set!",
+      "nl": "stilte op de set!",
+      "pl": "cisza na planie",
+      "pt-PT": "ordem de silêncio absoluto durante a rodagem"
+     },
+     "inContext": {
+      "en": "The director barks this order to stop the background bickering while Thom and Celia perform the scene.",
+      "vi": "\"Quiet on set!\" là khẩu lệnh quen thuộc của đạo diễn yêu cầu mọi người giữ im lặng tuyệt đối khi đang ghi hình. Ở đây, vị đạo diễn quát lên để mọi người ngừng cãi cọ cho Thom và Celia diễn tiếp.",
+      "es": "Es la frase típica que se grita en un rodaje para exigir silencio total mientras se filma. Aquí la directora la usa para callar a los que están discutiendo de fondo.",
+      "id": "Sutradara membentakkan seruan khas perfilman 'Quiet on set!' untuk menghentikan perdebatan kru di latar belakang agar adegan penting Thom dan Celia tidak terganggu.",
+      "de": "Ein typischer Ausruf beim Film. Der Regisseur verlangt absolute Stille von der Crew, damit sich Thom und Celia auf die Szene konzentrieren können.",
+      "fr": "C'est l'ordre rituel au cinéma pour exiger le silence complet. Le réalisateur le crie pour faire taire les disputes en arrière-plan pendant que la scène se joue.",
+      "it": "È il classico ordine gridato dal regista (\"Quiet on set!\") per far smettere i battibecchi della troupe mentre Thom e Celia recitano la scena.",
+      "nl": "Dit is de klassieke kreet bij filmopnames om iedereen direct stil te krijgen. De regisseur roept 'Quiet on set!' om het gekibbel op de achtergrond de kop in te drukken zodat Thom en Celia zich kunnen concentreren.",
+      "pl": "Klasyczna filmowa komenda, którą reżyser ucisza przekomarzającą się ekipę, by skupić uwagę na scenie między Thomem a Celią.",
+      "pt-PT": "O realizador grita esta ordem típica de cinema para calar as discussões ao fundo enquanto Thom e Celia contracenam."
+     },
+     "example": "Someone shouted 'Quiet on set!' as the cameras began rolling."
+    }
+   ]
+  },
+  {
+   "id": 65,
+   "start": 430,
+   "end": 431,
+   "text": "We're out of time!",
+   "translations": {
+    "vi": "Chúng ta hết thời gian rồi!",
+    "es": "¡Se nos acabó el tiempo!",
+    "id": "Kita kehabisan waktu!",
+    "de": "Wir haben keine Zeit mehr!",
+    "fr": "On n'a plus de temps !",
+    "it": "Non c'è più tempo!",
+    "nl": "We hebben geen tijd meer!",
+    "pl": "Nie mamy już czasu!",
+    "pt-PT": "Já não temos tempo!"
+   },
+   "items": [
+    {
+     "id": "c65-out-of-time",
+     "surface": "out of time",
+     "tokenStart": 1,
+     "tokenEnd": 4,
+     "lemma": "out of time",
+     "kind": "phrase",
+     "level": "B1",
+     "meaning": {
+      "en": "having no time left to do something",
+      "vi": "hết thời gian",
+      "es": "quedarse sin tiempo",
+      "id": "kehabisan waktu",
+      "de": "keine Zeit mehr haben",
+      "fr": "à court de temps, manquer de temps",
+      "it": "a corto di tempo, con il tempo scaduto",
+      "nl": "door de tijd heen / geen tijd meer hebben",
+      "pl": "brak czasu, wyczerpany limit czasu",
+      "pt-PT": "sem tempo disponível, com o tempo esgotado"
+     },
+     "inContext": {
+      "en": "The crew member yells in panic because enemy robots are attacking before the memory transfer finishes.",
+      "vi": "Cụm từ \"out of time\" có nghĩa là không còn chút thời gian nào nữa. Nhân viên hét lên trong hoảng loạn vì bầy robot ngoài kia đang ập tới trước khi quá trình truyền ký ức hoàn tất.",
+      "es": "\"Out of time\" significa que ya no queda ni un segundo disponible. Lo grita con desesperación porque los robots enemigos los están atacando.",
+      "id": "Kru berteriak panik karena mereka 'out of time' saat robot musuh mulai menyerang sebelum transfer memori selesai.",
+      "de": "'To be out of time' heißt, dass die verfügbare Frist abgelaufen ist. Die Roboter greifen an, bevor das Überschreiben der Erinnerung fertig ist.",
+      "fr": "Être « out of time » signifie qu'il ne reste plus une seule seconde. Le technicien panique car les robots ennemis attaquent avant la fin du processus.",
+      "it": "Viene gridato in preda al panico: essere \"out of time\" significa che i secondi a disposizione sono finiti prima che la simulazione sia completata.",
+      "nl": "'Out of time' betekent dat de beschikbare tijd helemaal op is. Het bemanningslid raakt in paniek omdat de vijandelijke robots al binnenvallen voordat de herinneringsoverdracht klaar is.",
+      "pl": "Zwrot oznaczający, że minęły ostatnie bezpieczne minuty – roboty już nacierają, a operacja wciąż trwa.",
+      "pt-PT": "A personagem avisa em pânico que os robôs estão a chegar e já não há tempo suficiente para concluir o processo com calma."
+     },
+     "example": "Please put your pens down, you are out of time."
+    }
+   ]
+  },
+  {
+   "id": 66,
+   "start": 493,
+   "end": 494,
+   "text": "Come on!",
+   "translations": {
+    "vi": "Nhanh lên nào!",
+    "es": "¡Vamos!",
+    "id": "Ayo!",
+    "de": "Mach schon!",
+    "fr": "Allez !",
+    "it": "Forza!",
+    "nl": "Kom op!",
+    "pl": "Dalej!",
+    "pt-PT": "Vamos!"
+   },
+   "items": []
+  },
+  {
+   "id": 67,
+   "start": 502,
+   "end": 504,
+   "text": "RAAAAAAAAH!",
+   "translations": {
+    "vi": "Áaaaaaa!",
+    "es": "¡RAAAAAAAAH!",
+    "id": "RAAAAAAAAH!",
+    "de": "RAAAAAAAAH!",
+    "fr": "RAAAAAAAAH !",
+    "it": "RAAAAAAAAH!",
+    "nl": "RAAAAAAAAH!",
+    "pl": "RAAAAAAAAH!",
+    "pt-PT": "RAAAAAAAAH!"
+   },
+   "items": []
+  },
+  {
+   "id": 68,
+   "start": 504,
+   "end": 505,
+   "text": "Memory overwrite, 90%.",
+   "translations": {
+    "vi": "Ghi đè ký ức, 90%.",
+    "es": "Sobrescritura de memoria al 90 %.",
+    "id": "Penimpaan memori, 90%.",
+    "de": "Speicherüberschreibung bei 90 %.",
+    "fr": "Écrasement de la mémoire, 90 %.",
+    "it": "Sovrascrittura memoria, 90%.",
+    "nl": "Geheugenoverdracht op 90%.",
+    "pl": "Nadpisywanie pamięci, 90%.",
+    "pt-PT": "Sobrescrita de memória, 90%."
+   },
+   "items": [
+    {
+     "id": "c68-overwrite",
+     "surface": "overwrite",
+     "tokenStart": 1,
+     "tokenEnd": 2,
+     "lemma": "overwrite",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "replace existing digital data with new data",
+      "vi": "ghi đè (dữ liệu)",
+      "es": "sobrescritura / reemplazar datos",
+      "id": "menimpa data lama dengan data baru",
+      "de": "überschreiben (von Daten)",
+      "fr": "écraser, remplacer des données informatiques",
+      "it": "sovrascrivere (sostituire dati con nuovi)",
+      "nl": "overschrijven",
+      "pl": "nadpisywać (dane cyfrowe)",
+      "pt-PT": "sobrescrever, substituir dados existentes por outros"
+     },
+     "inContext": {
+      "en": "The automated computer reports that Celia's original traumatic memory is being replaced by the newly simulated memory.",
+      "vi": "Trong công nghệ máy tính, \"overwrite\" là thao tác ghi đè dữ liệu mới thay thế hoàn toàn dữ liệu cũ. Giọng máy móc thông báo ký ức cay đắng năm xưa của Celia đang được thay thế bằng ký ức mô phỏng mới này.",
+      "es": "En informática, \"overwrite\" es grabar información nueva encima de la vieja, borrándola. La máquina avisa que el recuerdo traumático de Celia está siendo reemplazado casi por completo.",
+      "id": "Komputer otomatis melaporkan bahwa memori traumatis Celia sedang digantikan atau ditimpa ('overwrite') dengan memori rekonsiliasi yang baru.",
+      "de": "Aus der Informatik: Bestehende Daten werden durch neue ersetzt. Hier vermeldet der Computer, dass Celias alte traumatische Erinnerung durch die neue Simulation ausgetauscht wird.",
+      "fr": "En informatique, « overwrite » désigne l'action d'écrire par-dessus des fichiers existants. Ici, l'ordinateur remplace le souvenir traumatique de Celia par la scène réécrite.",
+      "it": "La voce automatica del computer avvisa che il vecchio ricordo traumatico viene cancellato e rimpiazzato (\"overwrite\") da quello nuovo.",
+      "nl": "In de computerwereld betekent 'overwrite' dat bestaande gegevens vervangen worden door nieuwe. De computer meldt hier dat Celia's traumatische herinnering bijna helemaal is overschreven met de nieuwe scène.",
+      "pl": "Komputer melduje, że dawne wspomnienie Celii zostaje zastąpione nowym zapisem z symulacji.",
+      "pt-PT": "O sistema informa que as memórias originais e traumáticas de Celia estão a ser apagadas e substituídas (\"overwrite\") pelas novas memórias criadas na simulação."
+     },
+     "example": "Saving the file now will overwrite the previous version."
+    }
+   ]
+  },
+  {
+   "id": 69,
+   "start": 506,
+   "end": 508,
+   "text": "Captain! We have to abort!",
+   "translations": {
+    "vi": "Đội trưởng! Chúng ta phải hủy nhiệm vụ thôi!",
+    "es": "¡Capitán! ¡Tenemos que abortar!",
+    "id": "Kapten! Kita harus batalkan!",
+    "de": "Captain! Wir müssen abbrechen!",
+    "fr": "Capitaine ! Il faut annuler !",
+    "it": "Capitano! Dobbiamo annullare!",
+    "nl": "Kapitein! We moeten afbreken!",
+    "pl": "Kapitanie! Musimy to przerwać!",
+    "pt-PT": "Capitão! Temos de abortar!"
+   },
+   "items": [
+    {
+     "id": "c69-abort",
+     "surface": "abort",
+     "tokenStart": 5,
+     "tokenEnd": 6,
+     "lemma": "abort",
+     "kind": "word",
+     "level": "B2",
+     "meaning": {
+      "en": "terminate or stop an operation before completion",
+      "vi": "hủy bỏ (nhiệm vụ, tiến trình)",
+      "es": "cancelar / suspender una misión",
+      "id": "membatalkan misi atau proses sebelum selesai",
+      "de": "abbrechen (eine Mission oder einen Vorgang)",
+      "fr": "abandonner, interrompre une opération d'urgence",
+      "it": "interrompere o annullare un'operazione",
+      "nl": "voortijdig afbreken",
+      "pl": "przerwać, anulować operację",
+      "pt-PT": "abortar, cancelar uma operação antes da conclusão"
+     },
+     "inContext": {
+      "en": "Under heavy robotic fire, the panicked soldier urges the captain to cancel the simulation.",
+      "vi": "Từ \"abort\" thường dùng trong kỹ thuật hoặc quân sự để chỉ việc dừng khẩn cấp một chiến dịch trước khi nó hoàn tất. Người lính hoảng loạn thúc giục đội trưởng hủy buổi mô phỏng trước hỏa lực dữ dội của robot.",
+      "es": "En el ámbito militar o técnico, \"abort\" se usa como orden de detener una operación de inmediato antes de que sea demasiado tarde.",
+      "id": "Di bawah hujan serangan robot yang dahsyat, prajurit mendesak kapten untuk segera melakukan 'abort' (menghentikan simulasi demi menyelamatkan nyawa).",
+      "de": "Ein militärischer Begriff für das vorzeitige Stoppen einer gefährlichen Aktion. Wegen des schweren Angriffs fleht die Kämpferin darum, die Mission abzubrechen.",
+      "fr": "Face au danger mortel et sous le feu des robots, le soldat supplie son capitaine d'interrompre (« abort ») la simulation sans attendre.",
+      "it": "Sotto l'attacco dei robot, il soldato spaventato chiede al capitano di fermare subito la procedura (\"abort\").",
+      "nl": "'To abort' betekent een missie of computerproces direct stopzetten voordat het voltooid is. De soldaat roept dit in paniek uit wanneer de vijand te dichtbij komt.",
+      "pl": "Żołnierz pod ostrzałem wzywa dowódcę do natychmiastowego przerwania niebezpiecznej procedury, nim zginą.",
+      "pt-PT": "Sob fogo inimigo cerrado, o soldado pede em desespero para cancelarem (\"abort\") imediatamente a missão."
+     },
+     "example": "The pilot had to abort the landing due to engine trouble."
+    }
+   ]
+  },
+  {
+   "id": 70,
+   "start": 518,
+   "end": 520,
+   "text": "The world's changed, Celia...",
+   "translations": {
+    "vi": "Thế giới đã đổi thay rồi, Celia...",
+    "es": "El mundo cambió, Celia...",
+    "id": "Dunia sudah berubah, Celia...",
+    "de": "Die Welt hat sich verändert, Celia...",
+    "fr": "Le monde a changé, Celia...",
+    "it": "Il mondo è cambiato, Celia...",
+    "nl": "De wereld is veranderd, Celia...",
+    "pl": "Świat się zmienił, Celio...",
+    "pt-PT": "O mundo mudou, Celia..."
+   },
+   "items": []
+  },
+  {
+   "id": 71,
+   "start": 534,
+   "end": 536,
+   "text": "...maybe we can too.",
+   "translations": {
+    "vi": "...có lẽ chúng ta cũng vậy.",
+    "es": "...quizá nosotros también podamos.",
+    "id": "...mungkin kita juga bisa.",
+    "de": "...vielleicht können wir das auch.",
+    "fr": "...on peut peut-être changer aussi.",
+    "it": "...forse possiamo farlo anche noi.",
+    "nl": "...misschien kunnen wij dat ook.",
+    "pl": "...może my też możemy.",
+    "pt-PT": "...talvez nós também possamos mudar."
+   },
+   "items": []
+  },
+  {
+   "id": 72,
+   "start": 538,
+   "end": 539,
+   "text": "Memory overwrite complete!",
+   "translations": {
+    "vi": "Ghi đè ký ức hoàn tất!",
+    "es": "¡Sobrescritura de memoria completa!",
+    "id": "Penimpaan memori selesai!",
+    "de": "Speicherüberschreibung abgeschlossen!",
+    "fr": "Écrasement de la mémoire terminé !",
+    "it": "Sovrascrittura memoria completata!",
+    "nl": "Geheugenoverdracht voltooid!",
+    "pl": "Nadpisywanie pamięci zakończone!",
+    "pt-PT": "Sobrescrita de memória concluída!"
+   },
+   "items": []
+  },
+  {
+   "id": 73,
+   "start": 559,
+   "end": 560,
+   "text": "You know.",
+   "translations": {
+    "vi": "Biết sao không.",
+    "es": "¿Saben?",
+    "id": "Kalian tahu...",
+    "de": "Wisst ihr...",
+    "fr": "Vous savez...",
+    "it": "Sapete...",
+    "nl": "Weet je.",
+    "pl": "Wiecie co...",
+    "pt-PT": "Sabem que mais..."
+   },
+   "items": []
+  },
+  {
+   "id": 74,
+   "start": 562,
+   "end": 564,
+   "text": "There's a lesson to be learned from this.",
+   "translations": {
+    "vi": "Chuyện này cho ta một bài học đấy.",
+    "es": "Hay una lección que aprender de esto.",
+    "id": "Ada pelajaran yang bisa dipetik dari semua ini.",
+    "de": "Daraus können wir eine Lehre ziehen.",
+    "fr": "Il y a une leçon à tirer de tout ça.",
+    "it": "C'è una lezione da imparare da tutto questo.",
+    "nl": "Hier valt een les uit te trekken.",
+    "pl": "Płynie z tego pewna nauczka.",
+    "pt-PT": "Há uma lição a tirar disto."
+   },
+   "items": [
+    {
+     "id": "c74-lesson-to-be-learned",
+     "surface": "lesson to be learned",
+     "tokenStart": 2,
+     "tokenEnd": 6,
+     "lemma": "lesson to be learned",
+     "kind": "phrase",
+     "level": "B2",
+     "meaning": {
+      "en": "useful knowledge or wisdom gained from an experience",
+      "vi": "bài học rút ra được",
+      "es": "una lección que aprender",
+      "id": "pelajaran yang bisa dipetik",
+      "de": "eine Lehre, die man daraus ziehen kann",
+      "fr": "une leçon à en tirer",
+      "it": "un insegnamento da trarre",
+      "nl": "een les die eruit geleerd kan worden",
+      "pl": "nauczka, lekcja do wyciągnięcia",
+      "pt-PT": "uma lição a aprender ou a retirar"
+     },
+     "inContext": {
+      "en": "Thom pompously tries to summarize the chaotic and destructive simulation as a philosophical educational experience.",
+      "vi": "Cụm từ này chỉ bài học kinh nghiệm bổ ích sau một trải nghiệm. Sau trận chiến hỗn loạn đến mức phá tan tành mọi thứ, Thom làm bộ nghiêm túc triết lý như thể vừa rút ra được một bài học sâu sắc.",
+      "es": "Thom intenta hacerse el sabio y reflexivo diciendo \"lesson to be learned\" para encontrarle un lado positivo o educativo al desastre total que acaban de vivir.",
+      "id": "Dengan nada sok bijak, Thom menyebut kekacauan dan kehancuran simulasi itu sebagai 'lesson to be learned' (pelajaran hidup berharga) untuk menutupi rasa canggungnya.",
+      "de": "Thom versucht nach dem ganzen Chaos wichtigtuerisch eine Moral aus der Geschichte zu ziehen ('lesson to be learned').",
+      "fr": "Thom essaie pompeusement de donner un sens philosophique au chaos ambiant en affirmant qu'il y a un enseignement utile (« a lesson to be learned ») dans cette épreuve.",
+      "it": "Thom assume un'aria filosofica e fuori luogo per dire che dal caos appena vissuto c'è un insegnamento prezioso (\"a lesson to be learned\").",
+      "nl": "Als er een 'lesson to be learned' is, kun je lering trekken uit wat er misging. Thom probeert op een wat gewichtigdoenerige manier wijsheid te halen uit de complete chaos om hen heen.",
+      "pl": "Thom z komiczną powagą próbuje podsumować cały chaos jako wartościowe życiowe doświadczenie.",
+      "pt-PT": "Thom tenta, com ar pomposo, apresentar a destruição e o caos que causou como se fossem uma experiência educativa e construtiva."
+     },
+     "example": "After the project failed, there was an important lesson to be learned."
+    }
+   ]
+  },
+  {
+   "id": 75,
+   "start": 566,
+   "end": 567,
+   "text": "Could'a gone worse.",
+   "translations": {
+    "vi": "Lẽ ra đã có thể tệ hơn thế này.",
+    "es": "Pudo haber sido peor.",
+    "id": "Bisa saja lebih parah.",
+    "de": "Hätte schlimmer kommen können.",
+    "fr": "Ça aurait pu être pire.",
+    "it": "Poteva andare peggio.",
+    "nl": "Het had slechter gekund.",
+    "pl": "Mogło pójść gorzej.",
+    "pt-PT": "Podia ter corrido pior."
+   },
+   "items": [
+    {
+     "id": "c75-could-a-gone-worse",
+     "surface": "Could'a gone worse",
+     "tokenStart": 0,
+     "tokenEnd": 3,
+     "lemma": "could have gone worse",
+     "kind": "phrase",
+     "level": "B2",
+     "meaning": {
+      "en": "the situation was bad, but not as catastrophic as possible",
+      "vi": "lẽ ra đã có thể tồi tệ hơn",
+      "es": "pudo haber salido peor",
+      "id": "bisa saja keadaannya lebih buruk",
+      "de": "hätte schlimmer ausgehen können",
+      "fr": "ça aurait pu être pire",
+      "it": "poteva andare peggio",
+      "nl": "het had erger gekund",
+      "pl": "mogło być gorzej",
+      "pt-PT": "podia ter sido pior"
+     },
+     "inContext": {
+      "en": "Thom uses the informal contraction 'could'a' to casually downplay the total disaster and destruction around them.",
+      "vi": "\"Could'a\" là cách nói tắt trong văn nói thân mật của \"could have\". Thom dùng câu này để hạ bớt tính nghiêm trọng của thảm họa đổ nát vừa xảy ra, ngụ ý là ít nhất họ vẫn chưa chết sạch.",
+      "es": "\"Could'a\" es la forma informal y hablada de \"could have\" (podría haber). Thom le resta importancia al desastre diciendo con tranquilidad que las cosas pudieron salir todavía peor.",
+      "id": "Thom menggunakan ragam lisan santai 'Could'a' (singkatan dari *could have*) untuk meremehkan kehancuran total di sekitar mereka, menganggap situasinya masih lumayan karena mereka selamat.",
+      "de": "'Could'a' ist umgangssprachlich für 'could have'. Thom redet die fast vollständige Verwüstung um sie herum lässig schön.",
+      "fr": "Thom emploie la contraction très familière et orale « could'a » (pour *could have*) pour dédramatiser avec désinvolture le désastre complet qui vient d'avoir lieu.",
+      "it": "Thom usa la forma parlata e colloquiale \"could'a\" (invece di *could have*) per sdrammatizzare cinicamente la distruzione che li circonda.",
+      "nl": "'Could'a' is spreektaal voor 'could have'. Thom gebruikt deze nonchalante uitdrukking om de enorme puinhoop en verwoesting om hen heen laconiek te bagatelliseren.",
+      "pl": "„Could'a” to potoczna wymowa „could have”. Thom nonszalancko bagatelizuje niemal katastrofalny finał akcji.",
+      "pt-PT": "Thom utiliza a contração oral \"could'a\" (de *could have*) para desvalorizar com leviandade o desastre total em redor."
+     },
+     "example": "We lost the game, but it could'a gone worse."
+    }
+   ]
+  }
+ ]
+}

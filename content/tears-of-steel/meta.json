@@ -9,7 +9,13 @@
   },
   "references": {
     "es": "reference.es.srt",
-    "id": "reference.id.srt"
+    "id": "reference.id.srt",
+    "de": "reference.de.srt",
+    "fr": "reference.fr.srt",
+    "it": "reference.it.srt",
+    "nl": "reference.nl.srt",
+    "pl": "reference.pl.srt",
+    "pt-PT": "reference.pt-PT.srt"
   },
   "video": {
     "file": "tears_of_steel_720p.mp4",
