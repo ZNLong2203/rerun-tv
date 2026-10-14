@@ -18,6 +18,12 @@ import { seedDemo } from "./seed.js";
 import { Store } from "./store.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
+try {
+  process.loadEnvFile(join(ROOT, ".env.local"));
+} catch {
+  // No .env.local: use the environment as it is.
+}
+
 const port = Number(process.env.PORT ?? 8787);
 const dataDir = process.env.DATA_DIR ?? join(ROOT, ".data");
 mkdirSync(dataDir, { recursive: true });

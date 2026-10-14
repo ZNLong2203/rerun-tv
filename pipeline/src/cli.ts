@@ -20,6 +20,12 @@ import { AnalysisChunk, LANGUAGE_NAMES, TranslationChunk } from "./schema.js";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const CHUNK = 20;
 
+try {
+  process.loadEnvFile(join(ROOT, ".env.local"));
+} catch {
+  // No .env.local: rely on the environment or an `ant auth login` profile.
+}
+
 interface TitleMeta {
   id: string;
   title: string;
