@@ -9,7 +9,16 @@ flashcards where every card is the moment in the film where you met the word.
 
 > Track: **Fire TV** · Mini challenge: **Open Source** · Runs on the Vega Virtual Device (Vega SDK 0.24)
 
-<!-- Screenshots and the demo video link go here once recorded. -->
+<!-- Demo video link goes here once recorded. -->
+
+| | |
+|---|---|
+| ![Learner subtitles on Fire TV: the line, its Vietnamese translation, and "freaked out" underlined as new for this viewer](docs/images/03-learner-subtitles.jpg) | ![The word card: what "freaked out" means in this scene, in Vietnamese, with an everyday example](docs/images/05-word-card.jpg) |
+| **Learner subtitles.** New-for-you words are underlined in your colour. | **Word card.** ▲ then OK: the meaning *in this scene*, in your language. |
+| ![Who's learning tonight? One profile per person in the household](docs/images/01-who-is-learning.jpg) | ![Daily Rerun: the flashcard replays the moment in the film where you met the word](docs/images/09-daily-rerun-answer.jpg) |
+| **Who's learning tonight?** Each person has a language and a level. | **Daily Rerun.** Flashcards are film moments, graded with the D-pad. |
+
+<sub>Screenshots from the Vega Virtual Device (Vega SDK 0.24), captured by `scripts/gallery.mjs`.</sub>
 
 ---
 
