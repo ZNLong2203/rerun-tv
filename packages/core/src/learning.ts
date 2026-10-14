@@ -4,6 +4,7 @@
  */
 
 import type { Cue } from "./subtitles";
+import { tokenize, type Token } from "./tokenize";
 
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export type CefrLevel = (typeof CEFR_LEVELS)[number];
@@ -119,4 +120,35 @@ export function trackDifficulty(
 /** Pick the learner-language string, falling back to English, then anything. */
 export function pickLang(values: Record<Lang, string>, lang: Lang): string {
   return values[lang] ?? values["en"] ?? Object.values(values)[0] ?? "";
+}
+
+/** A run of plain tokens, or the tokens of one learnable item. */
+export type LineSegment =
+  | { kind: "text"; tokens: Token[] }
+  | { kind: "item"; tokens: Token[]; item: LearningItem };
+
+/**
+ * Split a line into plain runs and learnable items, in reading order, so a
+ * renderer can underline or focus the items. Items must not overlap (the
+ * pipeline guarantees it); an item that does is rendered as plain text.
+ */
+export function segmentLine(cue: Pick<EnrichedCue, "text" | "items">): LineSegment[] {
+  const tokens = tokenize(cue.text);
+  const byStart = new Map(cue.items.map((it) => [it.tokenStart, it]));
+  const out: LineSegment[] = [];
+  let run: Token[] = [];
+  for (let i = 0; i < tokens.length; ) {
+    const item = byStart.get(i);
+    if (item && item.tokenEnd > i && item.tokenEnd <= tokens.length) {
+      if (run.length) out.push({ kind: "text", tokens: run });
+      run = [];
+      out.push({ kind: "item", item, tokens: tokens.slice(item.tokenStart, item.tokenEnd) });
+      i = item.tokenEnd;
+    } else {
+      run.push(tokens[i]!);
+      i++;
+    }
+  }
+  if (run.length) out.push({ kind: "text", tokens: run });
+  return out;
 }
