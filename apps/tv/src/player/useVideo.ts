@@ -15,6 +15,9 @@ import { VideoPlayer } from "@amazon-devices/react-native-w3cmedia";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PLAYHEAD_POLL_MS } from "../config";
 
+/** HTMLMediaElement.HAVE_METADATA: the duration is known, so seeks take effect. */
+const HAVE_METADATA = 1;
+
 export interface VideoControls {
   ready: boolean;
   playing: boolean;
@@ -42,6 +45,8 @@ export function useVideo(
   const time = useRef(0);
   const wantPlay = useRef(false);
   const hasSurface = useRef(false);
+  /** A seek asked for before the film's metadata arrived, which the platform would drop. */
+  const pendingSeek = useRef<number | undefined>(undefined);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState<string>();
@@ -59,6 +64,11 @@ export function useVideo(
     let alive = true;
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
+    const onMetadata = () => {
+      if (pendingSeek.current === undefined) return;
+      video.currentTime = pendingSeek.current;
+      pendingSeek.current = undefined;
+    };
     const onError = () => {
       const e = video.error as { code?: number; message?: string } | null;
       // MediaError codes: 1 aborted, 2 network, 3 decode, 4 source not supported.
@@ -75,6 +85,8 @@ export function useVideo(
         video.addEventListener("pause", onPause);
         video.addEventListener("ended", onPause);
         video.addEventListener("error", onError);
+        video.addEventListener("loadedmetadata", onMetadata);
+        video.addEventListener("canplay", onMetadata);
         video.src = src;
         video.load();
         setReady(true);
@@ -87,6 +99,8 @@ export function useVideo(
       video.removeEventListener("pause", onPause);
       video.removeEventListener("ended", onPause);
       video.removeEventListener("error", onError);
+      video.removeEventListener("loadedmetadata", onMetadata);
+      video.removeEventListener("canplay", onMetadata);
       try {
         video.pause();
         video.deinitializeSync(1500);
@@ -147,7 +161,11 @@ export function useVideo(
         return;
       }
       const video = player.current;
-      if (!video) return;
+      if (!video || video.readyState < HAVE_METADATA) {
+        pendingSeek.current = target;
+        time.current = target;
+        return;
+      }
       video.currentTime = target;
       time.current = video.currentTime;
     },
