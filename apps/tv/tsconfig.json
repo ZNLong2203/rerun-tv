@@ -1,0 +1,12 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "types": ["@amazon-devices/react-native-kepler"],
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rerun/core": ["../../packages/core/src"]
+    }
+  },
+  "include": ["src", "index.js"]
+}

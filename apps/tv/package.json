@@ -1,0 +1,46 @@
+{
+  "name": "@rerun/tv",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "Rerun for Fire TV (Vega OS): learner subtitles, word cards and the Daily Rerun, driven by the remote.",
+  "scripts": {
+    "clean": "rm -rf node_modules buildinfo.json dist build",
+    "start": "react-native start",
+    "typecheck": "tsc --noEmit -p .",
+    "lint": "eslint src --ext .ts,.tsx",
+    "build:debug": "react-native build-vega --build-type Debug",
+    "build:release": "react-native build-vega --build-type Release",
+    "build": "npm run build:release"
+  },
+  "dependencies": {
+    "@amazon-devices/react-native-kepler": "~4.0.0",
+    "qrcode-generator": "^2.0.4",
+    "react": "19.2.0",
+    "react-native": "0.83.0",
+    "@amazon-devices/react-native-w3cmedia": "~2.3.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@amazon-devices/eslint-plugin-kepler": "^0.1.4",
+    "@amazon-devices/kepler-cli-platform": "^0",
+    "@react-native-community/cli": "20.0.0",
+    "@react-native/babel-preset": "0.83.0",
+    "@react-native/eslint-config": "0.83.0",
+    "@react-native/metro-config": "0.83.0",
+    "@react-native/typescript-config": "0.83.0",
+    "@types/react": "^19.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "eslint": "^8.57.1",
+    "typescript": "5.8.3"
+  },
+  "kepler": {
+    "projectType": "application",
+    "appName": "rerun",
+    "targets": [
+      "tv"
+    ]
+  }
+}
