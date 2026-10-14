@@ -52,7 +52,7 @@ pause button. Watching *with* the remote is the gap.
 Lingopie has a Fire TV app with dual subtitles and tap-a-word on its own catalog, and Language Reactor brings
 interactive subtitles to Netflix in a desktop browser. Rerun's take:
 
-1. **In-context explanations, not dictionary entries.** Claude reads the whole script first, so "freaked out" is
+1. **In-context explanations, not dictionary entries.** Gemini reads the whole script first, so "freaked out" is
    explained as *Thom admitting he is scared of Celia's robot hand, half-joking* — in Vietnamese, Spanish or Indonesian.
 2. **Per-person, per-household.** Fire TV is a shared device; Rerun highlights what is new *for whoever is watching*.
 3. **Flashcards that are film moments**, reviewed on the TV with the D-pad.
@@ -65,9 +65,9 @@ interactive subtitles to Netflix in a desktop browser. Rerun's take:
 ```mermaid
 flowchart LR
   subgraph Prepare["Prepare a title (once, offline)"]
-    SRT[English subtitles] --> P1[Claude pass 1:<br/>what is worth learning<br/>in each line]
+    SRT[English subtitles] --> P1[Gemini pass 1:<br/>what is worth learning<br/>in each line]
     P1 --> A[Code anchors each<br/>expression to its tokens]
-    A --> P2[Claude pass 2:<br/>translations + notes<br/>per learner language]
+    A --> P2[Gemini pass 2:<br/>translations + notes<br/>per learner language]
     P2 --> T[(track.json)]
   end
   subgraph Run
@@ -79,7 +79,7 @@ flowchart LR
   end
 ```
 
-- **AI runs before you watch.** The pipeline (`pipeline/`) sends the full script to Claude in two structured passes.
+- **AI runs before you watch.** The pipeline (`pipeline/`) sends the full script to Gemini (`gemini-3.8-flash`; Claude works too) in two structured passes.
   The model *names* each expression; deterministic code finds it in the line's tokens and drops anything that is not
   there, so the TV never highlights a word that does not exist. Outputs are validated with zod and cached, and the
   prepared tracks are committed — playback never waits on a model, and the app runs without an API key.
@@ -108,7 +108,7 @@ The TV app and the Vega Virtual Device: see [docs/run-on-vega.md](docs/run-on-ve
 Phones need HTTPS for the microphone. Put the server behind any HTTPS tunnel and set `PUBLIC_URL` in `.env.local` so
 the QR code points there.
 
-Preparing a new title (needs Claude credentials in `.env.local`, see `.env.example`):
+Preparing a new title (needs `GEMINI_API_KEY` in `.env.local`, see `.env.example`):
 
 ```bash
 npm run enrich -- tears-of-steel --langs vi,es,id
@@ -125,7 +125,7 @@ Tests: `npm test` (core, pipeline, server).
 | `apps/phone` | Phone companion (Vite + React), served at `/m` |
 | `apps/server` | API, decks, pairing rooms, byte-range video (Hono, `node:sqlite`, `ws`) |
 | `packages/core` | Remote-first learning logic shared by all three, with tests |
-| `pipeline` | Claude enrichment and translation evaluation |
+| `pipeline` | Gemini enrichment (Claude optional) and translation evaluation |
 | `content` | Titles: metadata, subtitles, prepared tracks |
 | `docs` | Friction log, product feedback, Vega notes |
 

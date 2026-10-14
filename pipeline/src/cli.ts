@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { parseSubtitles, type Cue } from "@rerun/core";
 import { anchorAnalysis, assembleTrack, chunked, newReport, type AnchoredItem } from "./assemble.js";
-import { ClaudeClient, DEFAULT_MODEL } from "./claude.js";
+import { DEFAULT_MODELS, pickProvider, StructuredLLM } from "./llm.js";
 import { ANALYSIS_SYSTEM, analysisRequest, scriptBlock, translationRequest, translationSystem } from "./prompts.js";
 import { AnalysisChunk, LANGUAGE_NAMES, TranslationChunk } from "./schema.js";
 
@@ -52,7 +52,7 @@ async function main() {
     allowPositionals: true,
     options: {
       langs: { type: "string", default: "vi,es" },
-      model: { type: "string", default: process.env.RERUN_MODEL ?? DEFAULT_MODEL },
+      model: { type: "string" },
     },
   });
   const titleId = positionals[0];
@@ -63,14 +63,16 @@ async function main() {
   const dir = join(ROOT, "content", titleId);
   const meta = JSON.parse(await readFile(join(dir, "meta.json"), "utf8")) as TitleMeta;
   const cues = parseSubtitles(await readFile(join(dir, meta.subtitles.en), "utf8"));
-  const claude = new ClaudeClient(values.model!, join(ROOT, ".cache", "llm", titleId));
+  const provider = pickProvider();
+  const model = values.model ?? process.env.RERUN_MODEL ?? DEFAULT_MODELS[provider];
+  const llm = new StructuredLLM(provider, model, join(ROOT, ".cache", "llm", titleId));
   const script = scriptBlock(meta.title, meta.synopsis, cues);
-  console.log(`${meta.title}: ${cues.length} lines, model ${claude.model}, learner languages ${langs.join(", ")}`);
+  console.log(`${meta.title}: ${cues.length} lines, ${provider} ${llm.model}, learner languages ${langs.join(", ")}`);
 
   // Pass 1: what is worth learning in each line.
   const chunks = chunked(cues, CHUNK);
   const analysis = await pool(chunks, 4, (chunk) =>
-    claude.parse({
+    llm.parse({
       label: `analysis-${chunk[0]!.id}`,
       system: [ANALYSIS_SYSTEM, script],
       user: analysisRequest(chunk),
@@ -89,7 +91,7 @@ async function main() {
   const translations: Record<string, TranslationChunk[]> = {};
   for (const lang of langs) {
     translations[lang] = await pool(chunks, 4, (chunk: Cue[]) =>
-      claude.parse({
+      llm.parse({
         label: `translate-${lang}-${chunk[0]!.id}`,
         system: [translationSystem(LANGUAGE_NAMES[lang]!), script],
         user: translationRequest(
@@ -111,7 +113,7 @@ async function main() {
 
   const { track, gaps } = assembleTrack({
     titleId,
-    model: claude.model,
+    model: `${provider}:${llm.model}`,
     generatedAt: new Date().toISOString(),
     cues,
     anchored,
@@ -122,7 +124,7 @@ async function main() {
   }
 
   await writeFile(join(dir, "track.json"), JSON.stringify(track, null, 1) + "\n");
-  const u = claude.usage;
+  const u = llm.usage;
   console.log(
     `wrote content/${titleId}/track.json — ${u.calls} calls (${u.cached} from cache), ` +
       `${u.inputTokens} in / ${u.outputTokens} out / ${u.cacheReadTokens} cache-read tokens`,

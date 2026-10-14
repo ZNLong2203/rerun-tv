@@ -13,7 +13,7 @@ import { isPairCode, type Role } from "@rerun/core";
 import { Hono } from "hono";
 import { WebSocketServer, type WebSocket } from "ws";
 import { createApp, lanAddress } from "./app.js";
-import { Asker } from "./ask.js";
+import { createAsker } from "./ask.js";
 import { Catalog } from "./catalog.js";
 import { Rooms } from "./rooms.js";
 import { seedDemo } from "./seed.js";
@@ -39,7 +39,7 @@ const app = createApp({
   store,
   catalog,
   rooms,
-  asker: process.env.RERUN_ASK === "off" ? undefined : new Asker(),
+  asker: createAsker(),
   phoneDir: join(ROOT, "apps", "phone", "dist"),
   publicUrl: process.env.PUBLIC_URL,
   debugRooms: process.env.DEBUG_ROOMS === "1",
