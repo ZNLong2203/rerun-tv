@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "enrich": "tsx src/cli.ts",
-    "typecheck": "tsc --noEmit -p ."
+    "typecheck": "tsc --noEmit -p .",
+    "eval": "tsx src/eval.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",

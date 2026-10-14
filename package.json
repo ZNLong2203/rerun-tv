@@ -18,7 +18,8 @@
     "test": "vitest run",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "dev": "npm run dev -w @rerun/server",
-    "enrich": "npm run enrich -w @rerun/pipeline --"
+    "enrich": "npm run enrich -w @rerun/pipeline --",
+    "eval": "npm run eval -w @rerun/pipeline --"
   },
   "devDependencies": {
     "@types/node": "^22.18.0",
