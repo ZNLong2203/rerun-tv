@@ -19,6 +19,9 @@ home connection that measured ~160–300 KB/s to both Amazon's SDK host and Blen
 | FL-007 | Automation toolkit | Screenshot the player while a video surface exists | S2 | ~20 min | Avoided |
 | FL-008 | React Native for Vega | Lay out a 1080p design | S2 | ~15 min | Fixed |
 | FL-009 | Vega focus engine | Move Down from a full-width card to the first tile | S1 | ~10 min | Fixed |
+| FL-010 | react-native-kepler | Pause on OK with `useTVEventHandler` | S2 | ~45 min | Fixed |
+| FL-011 | react-native-kepler | Keep a `useTVEventHandler` subscription stable | S1 | ~10 min | Fixed |
+| FL-012 | Automation toolkit | Screenshot right after a UI change | S2 | ~30 min | Worked around |
 
 ---
 
@@ -143,3 +146,35 @@ not shown by default.
 - **Delight (S0):** The Amazon Devices Builder Tools agent skill `rn-tv-ui-best-practices` flagged, before we ran
   anything, that `useTVEventHandler` must come from `react-native-kepler` and that `manifest.toml` needs
   `com.amazon.inputd.service` or remote events never fire. That saved a silent failure.
+
+## FL-010: The OK key from a keyboard arrives as `enter`, while the type docs promise `select`
+
+- **Product / version:** `@amazon-devices/react-native-kepler` ~4.0.0, `useTVEventHandler`, VVD.
+- **Task attempted:** Pause the film on OK while nothing on screen has focus.
+- **Expected:** `TVTypes.d.ts` documents `select - This event is received when the RETURN DPaD control is triggered.`
+- **Actual:** RETURN (`KEY_ENTER`, what a keyboard and the automation toolkit send) arrives as `eventType: "enter"`; our
+  handler only knew `"select"`, so OK did nothing in the player while it still activated focused buttons elsewhere —
+  which made it look intermittent. Found by putting every event on screen.
+- **Severity:** S2 — **Time lost:** ~45 minutes.
+- **Fix:** Treat `"enter"` like `"select"` (`packages/core/src/remote.ts`).
+- **Actionable suggestion:** List the real `eventType` values per input device in the docs (remote, keyboard,
+  injected), and correct the `select` comment in `TVTypes.d.ts`.
+
+## FL-011: `useTVEventHandler` re-subscribes whenever the handler's identity changes
+
+- **Actual:** The hook's effect depends on the handler, so the natural inline arrow function unsubscribes and
+  resubscribes on every render — here, every time the subtitle line changed. Not broken, but presses that land during
+  the swap can be lost, and nothing in the docs says to memoise the handler.
+- **Fix:** One `useCallback` handler that reads the latest state through refs.
+- **Actionable suggestion:** Keep the latest handler in a ref inside the hook (as many React event hooks do), or
+  say "memoise the handler" in the docs and samples.
+
+## FL-012: `takeScreenshot` can return the frame from before the last change
+
+- **Product / version:** Automation toolkit JSON-RPC on the VVD.
+- **Actual:** A capture taken 1–3 s after a key press sometimes shows the screen as it was before the press (we
+  chased a "missing pause overlay" that was actually there). A second capture right after shows the current frame.
+  Separately, once a video surface has played, `takeScreenshot` blocks for every screen until the VVD restarts.
+- **Workaround:** `scripts/gallery.mjs` captures twice and keeps the second; screenshots are taken in still mode only.
+- **Actionable suggestion:** Capture the current composition on demand, or document that the result is the last
+  presented frame.
