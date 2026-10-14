@@ -72,7 +72,8 @@ Lingopie has a Fire TV app with dual subtitles and tap-a-word on its own catalog
 interactive subtitles to Netflix in a desktop browser. Rerun's take:
 
 1. **In-context explanations, not dictionary entries.** Gemini reads the whole script first, so "freaked out" is
-   explained as *Thom admitting he is scared of Celia's robot hand, half-joking* — in Vietnamese, Spanish or Indonesian.
+   explained as *Thom admitting he is scared of Celia's robot hand, half-joking* — in Vietnamese, Spanish, German, French,
+   Italian, Dutch, Polish, Portuguese or Indonesian.
 2. **Per-person, per-household.** Fire TV is a shared device; Rerun highlights what is new *for whoever is watching* —
    including several people at once, each in their own colour and language.
 3. **Flashcards that are film moments**, reviewed on the TV with the D-pad.
@@ -103,8 +104,15 @@ flowchart LR
   The model *names* each expression; deterministic code finds it in the line's tokens and drops anything that is not
   there, so the TV never highlights a word that does not exist. Outputs are validated with zod and cached, and the
   prepared tracks are committed — playback never waits on a model, and the app runs without an API key.
-- **Measured against humans.** The film ships with human Spanish and Indonesian subtitles; `npm run eval` scores
-  Rerun's translations against them with chrF, line by line, and lists the lines that disagree most for review.
+- **Measured against humans.** The film ships with human subtitles in eight languages; `npm run eval` scores Rerun's
+  translations against them with chrF, line by line, and lists the lines that disagree most for review. Tears of Steel,
+  all 76 lines (`content/tears-of-steel/eval.json`):
+
+  | es | it | de | fr | nl | pl | pt-PT | id |
+  |---|---|---|---|---|---|---|---|
+  | 72.2 | 70.0 | 69.8 | 65.4 | 64.2 | 61.6 | 52.4 | 51.7 |
+
+  Most low-scoring lines are fair alternatives ("Ahí está." for *There she is.* against "Allí está ella.").
 - **Remote first.** `packages/core` holds the pure logic — subtitle parsing, LEFT/RIGHT line navigation (with the
   "press twice for the line before" rule), the key map per player mode, per-learner difficulty, SM-2 scheduling and
   shadowing alignment — with unit tests. The TV app is a thin layer over it.
@@ -132,7 +140,7 @@ warning once). For a trusted certificate, put the server behind any HTTPS tunnel
 Preparing a new title (needs `GEMINI_API_KEY` in `.env.local`, see `.env.example`):
 
 ```bash
-npm run enrich -- tears-of-steel --langs vi,es,id
+npm run enrich -- tears-of-steel --langs vi,es,id,de,fr,it,nl,pl,pt-PT
 npm run eval -- tears-of-steel
 ```
 
@@ -152,11 +160,13 @@ Tests: `npm test` (core, pipeline, server).
 
 ## Open source
 
-`packages/core` and the learner subtitle component are released as a standalone library for React Native TV apps
-(link added at submission). Rerun itself is Apache-2.0.
+`packages/core` and the learner subtitle component (`packages/react-native`) are released as a standalone library for
+React Native TV apps: **[learner-subtitles](https://github.com/ZNLong2203/learner-subtitles)** — line navigation for a
+D-pad, per-viewer word marking, SM-2 and shadowing scoring, with tests and a Vega example. Rerun builds it from this
+repository with `scripts/export-oss.sh`, so the library is exactly the code Rerun runs. Rerun itself is Apache-2.0.
 
 ## Credits
 
 *Tears of Steel* — (CC) Blender Foundation | mango.blender.org, licensed
-[CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Spanish and Indonesian reference subtitles from the
+[CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Reference subtitles in eight languages from the
 Tears of Steel project. No other film content is included.
