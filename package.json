@@ -1,0 +1,28 @@
+{
+  "name": "rerun",
+  "private": true,
+  "description": "Learn a language from the films you already watch, with your Fire TV remote.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/server",
+    "apps/phone",
+    "pipeline"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "vitest run",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "dev": "npm run dev -w @rerun/server",
+    "enrich": "npm run enrich -w @rerun/pipeline --"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.4"
+  }
+}

@@ -1,0 +1,35 @@
+# ─────────────────────────────────────────────────────────────
+#  Private — never pushed. The repo goes public; these do not.
+# ─────────────────────────────────────────────────────────────
+/private/
+*.private.md
+
+# ─── Secrets ─────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ─── Dependencies / build ────────────────────────────────────
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+coverage/
+.pytest_cache/
+.ruff_cache/
+
+# ─── OS / editor ─────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+
+# ─── Large or regenerable local files ───────────────────────
+/media/
+/.cache/
