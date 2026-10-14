@@ -7,7 +7,17 @@ import { listen, speechSupport, type Listening } from "./speech";
 type Tab = "now" | "words" | "ask" | "household";
 
 /** Learner languages the prepared tracks ship notes in. */
-const LANGS: Record<string, string> = { vi: "Tiếng Việt", es: "Español", id: "Bahasa Indonesia" };
+const LANGS: Record<string, string> = {
+  vi: "Tiếng Việt",
+  es: "Español",
+  de: "Deutsch",
+  fr: "Français",
+  it: "Italiano",
+  nl: "Nederlands",
+  pl: "Polski",
+  "pt-PT": "Português",
+  id: "Bahasa Indonesia",
+};
 const LEVELS = [
   ["A1", "Just starting"],
   ["A2", "Everyday basics"],

@@ -18,6 +18,12 @@ const LANGUAGE_NAMES: Record<string, string> = {
   hi: "Hindi",
   id: "Indonesian",
   ja: "Japanese",
+  de: "German",
+  fr: "French",
+  it: "Italian",
+  nl: "Dutch",
+  pl: "Polish",
+  "pt-PT": "European Portuguese",
   en: "English",
 };
 

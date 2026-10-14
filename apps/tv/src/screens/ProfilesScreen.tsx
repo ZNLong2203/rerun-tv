@@ -10,7 +10,18 @@ import { Focusable } from "../components/Focusable";
 import { useRoomMessages } from "../room";
 import { colors, safe, type, dp } from "../theme";
 
-const LANG_NAMES: Record<string, string> = { vi: "Tiếng Việt", es: "Español", id: "Bahasa Indonesia", en: "English" };
+const LANG_NAMES: Record<string, string> = {
+  vi: "Tiếng Việt",
+  es: "Español",
+  de: "Deutsch",
+  fr: "Français",
+  it: "Italiano",
+  nl: "Nederlands",
+  pl: "Polski",
+  "pt-PT": "Português",
+  id: "Bahasa Indonesia",
+  en: "English",
+};
 
 export function ProfilesScreen({ onPick, onAdd }: { onPick: (p: Profile) => void; onAdd: () => void }) {
   const [profiles, setProfiles] = useState<Profile[]>();
