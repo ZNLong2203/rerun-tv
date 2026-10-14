@@ -18,9 +18,9 @@ import { colors } from "./theme";
 
 type Screen =
   | { name: "profiles" }
-  | { name: "home"; profile: Profile }
-  | { name: "player"; profile: Profile; titleId: string }
-  | { name: "rerun"; profile: Profile }
+  | { name: "home"; viewers: Profile[] }
+  | { name: "player"; viewers: Profile[]; titleId: string }
+  | { name: "rerun"; viewers: Profile[] }
   | { name: "pair"; back: Screen };
 
 export const App = () => {
@@ -56,7 +56,7 @@ export const App = () => {
     case "profiles":
       content = (
         <ProfilesScreen
-          onPick={(profile) => setScreen({ name: "home", profile })}
+          onPick={(viewers) => setScreen({ name: "home", viewers })}
           onAdd={() => setScreen({ name: "pair", back: screen })}
         />
       );
@@ -64,9 +64,9 @@ export const App = () => {
     case "home":
       content = (
         <HomeScreen
-          profile={screen.profile}
-          onPlay={(titleId) => setScreen({ name: "player", profile: screen.profile, titleId })}
-          onRerun={() => setScreen({ name: "rerun", profile: screen.profile })}
+          viewers={screen.viewers}
+          onPlay={(titleId) => setScreen({ name: "player", viewers: screen.viewers, titleId })}
+          onRerun={() => setScreen({ name: "rerun", viewers: screen.viewers })}
           onPair={() => setScreen({ name: "pair", back: screen })}
         />
       );
@@ -74,14 +74,15 @@ export const App = () => {
     case "player":
       content = (
         <PlayerScreen
-          profile={screen.profile}
+          viewers={screen.viewers}
           titleId={screen.titleId}
-          onExit={() => setScreen({ name: "home", profile: screen.profile })}
+          onExit={() => setScreen({ name: "home", viewers: screen.viewers })}
         />
       );
       break;
     case "rerun":
-      content = <RerunScreen profile={screen.profile} onDone={() => setScreen({ name: "home", profile: screen.profile })} />;
+      // The Daily Rerun is personal: it reviews the first viewer's deck.
+      content = <RerunScreen profile={screen.viewers[0]!} onDone={() => setScreen({ name: "home", viewers: screen.viewers })} />;
       break;
     case "pair":
       content = <PairScreen onDone={() => setScreen(screen.back)} />;

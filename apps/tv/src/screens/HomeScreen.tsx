@@ -1,11 +1,12 @@
 /**
  * A learner's home: today's Daily Rerun first, then the films, each with how
  * hard it is *for this person* — the same film reads "Stretch" for Minh and
- * "Comfortable" for Linh.
+ * "Comfortable" for Linh. Watching together, each film lists every viewer.
  */
 
 import React, { useEffect, useState } from "react";
 import { TVFocusGuideView } from "@amazon-devices/react-native-kepler";
+import type { TrackDifficulty } from "@rerun/core";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { api, type Profile, type TitleSummary } from "../api";
 import { Focusable } from "../components/Focusable";
@@ -14,26 +15,42 @@ import { useRoom } from "../room";
 import { colors, safe, type, dp } from "../theme";
 
 interface Props {
-  profile: Profile;
+  viewers: Profile[];
   onPlay: (titleId: string) => void;
   onRerun: () => void;
   onPair: () => void;
 }
 
-export function HomeScreen({ profile, onPlay, onRerun, onPair }: Props) {
+/** titleId -> viewerId -> how hard that film is for that viewer. */
+type Difficulty = Record<string, Record<string, TrackDifficulty | undefined>>;
+
+export function HomeScreen({ viewers, onPlay, onRerun, onPair }: Props) {
   const [titles, setTitles] = useState<TitleSummary[]>([]);
-  const [me, setMe] = useState(profile);
+  const [difficulty, setDifficulty] = useState<Difficulty>({});
+  const [people, setPeople] = useState(viewers);
   const room = useRoom();
+  const together = viewers.length > 1;
+  const ids = viewers.map((v) => v.id).join(",");
 
   useEffect(() => {
-    api.titles(profile.id).then(setTitles).catch(() => setTitles([]));
+    Promise.all(viewers.map((v) => api.titles(v.id)))
+      .then((lists) => {
+        setTitles(lists[0] ?? []);
+        const d: Difficulty = {};
+        lists.forEach((list, i) => {
+          for (const t of list) (d[t.id] ??= {})[viewers[i]!.id] = t.difficulty;
+        });
+        setDifficulty(d);
+      })
+      .catch(() => setTitles([]));
     api
       .profiles()
-      .then((ps) => setMe(ps.find((p) => p.id === profile.id) ?? profile))
+      .then((ps) => setPeople(viewers.map((v) => ps.find((p) => p.id === v.id) ?? v)))
       .catch(() => {});
-  }, [profile]);
+  }, [ids]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const due = me.stats.due;
+  const me = people[0]!;
+  const due = together ? 0 : me.stats.due;
   return (
     <ScrollView style={styles.root} contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -41,31 +58,46 @@ export function HomeScreen({ profile, onPlay, onRerun, onPair }: Props) {
           Rerun<Text style={{ color: colors.accent }}>.</Text>
         </Text>
         <View style={styles.headerRight}>
-          <Text style={styles.stats}>
-            {me.stats.saved} saved · {me.stats.known} known · {me.stats.reviewedToday} reviewed today
-          </Text>
-          <View style={[styles.avatar, { backgroundColor: me.color }]}>
-            <Text style={styles.initial}>{me.name[0]}</Text>
-          </View>
+          {!together && (
+            <Text style={styles.stats}>
+              {me.stats.saved} saved · {me.stats.known} known · {me.stats.reviewedToday} reviewed today
+            </Text>
+          )}
+          {people.map((p) => (
+            <View key={p.id} style={[styles.avatar, { backgroundColor: p.color }]}>
+              <Text style={styles.initial}>{p.name[0]}</Text>
+            </View>
+          ))}
         </View>
       </View>
 
-      <Focusable
-        ring={me.color}
-        hasTVPreferredFocus={due > 0}
-        onPress={due > 0 ? onRerun : undefined}
-        lift={1.015}
-        style={[styles.rerun, { borderLeftColor: me.color }]}
-        testID="daily-rerun"
-      >
-        <Text style={styles.rerunLabel}>DAILY RERUN</Text>
-        <Text style={styles.rerunTitle}>
-          {due > 0
-            ? `${due} ${due === 1 ? "word" : "words"} from your films ${due === 1 ? "is" : "are"} due, ${me.name}`
-            : "Nothing due — save words while you watch and they come back here"}
-        </Text>
-        {due > 0 && <Text style={styles.rerunHint}>Each card replays the moment you met the word. Press OK to start.</Text>}
-      </Focusable>
+      {together ? (
+        <View style={[styles.rerun, { borderLeftColor: me.color }]}>
+          <Text style={styles.rerunLabel}>WATCHING TOGETHER</Text>
+          <Text style={styles.rerunTitle}>{people.map((p) => p.name).join(" & ")}</Text>
+          <Text style={styles.rerunHint}>
+            Each of you sees your own new words, marked in your colour, with a translation in your language. Words you
+            save go to your own deck.
+          </Text>
+        </View>
+      ) : (
+        <Focusable
+          ring={me.color}
+          hasTVPreferredFocus={due > 0}
+          onPress={due > 0 ? onRerun : undefined}
+          lift={1.015}
+          style={[styles.rerun, { borderLeftColor: me.color }]}
+          testID="daily-rerun"
+        >
+          <Text style={styles.rerunLabel}>DAILY RERUN</Text>
+          <Text style={styles.rerunTitle}>
+            {due > 0
+              ? `${due} ${due === 1 ? "word" : "words"} from your films ${due === 1 ? "is" : "are"} due, ${me.name}`
+              : "Nothing due — save words while you watch and they come back here"}
+          </Text>
+          {due > 0 && <Text style={styles.rerunHint}>Each card replays the moment you met the word. Press OK to start.</Text>}
+        </Focusable>
+      )}
 
       <Text style={styles.section}>Your films</Text>
       {/* Down from the Daily Rerun lands on the first film, not the nearest tile. */}
@@ -85,11 +117,14 @@ export function HomeScreen({ profile, onPlay, onRerun, onPair }: Props) {
               <Text style={styles.titleMeta}>
                 {t.year} · {Math.round(t.runtimeSeconds / 60)} min · {t.lines} lines
               </Text>
-              {t.difficulty && (
-                <Text style={[styles.difficulty, { color: me.color }]}>
-                  {t.difficulty.label} for {me.name} · {t.difficulty.newItems} new words
-                </Text>
-              )}
+              {people.map((p) => {
+                const d = difficulty[t.id]?.[p.id];
+                return d ? (
+                  <Text key={p.id} style={[styles.difficulty, { color: p.color }]}>
+                    {d.label} for {p.name} · {d.newItems} new words
+                  </Text>
+                ) : null;
+              })}
               {!t.playable && <Text style={styles.titleMeta}>Not prepared yet</Text>}
               <Text style={styles.license}>{t.license.attribution}</Text>
             </View>
@@ -140,6 +175,7 @@ const styles = StyleSheet.create({
     width: dp(64),
     height: dp(64),
     borderRadius: dp(32),
+    marginLeft: dp(12),
     alignItems: "center",
     justifyContent: "center",
   },

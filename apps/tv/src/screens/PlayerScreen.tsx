@@ -17,8 +17,11 @@ import {
   previousLineTarget,
   type EnrichedCue,
   type LearningItem,
+  shouldAutoPause,
+  viewerLanguages,
   type PlayerCommand,
   type PlayerMode,
+  type Viewer,
 } from "@rerun/core";
 import { api, type Profile, type TitleDetail } from "../api";
 import { LearnerSubtitles } from "../components/LearnerSubtitles";
@@ -35,66 +38,93 @@ const KEY_DOWN = 0;
 const LEAD_IN = 0.08;
 
 interface Props {
-  profile: Profile;
+  /** Who is watching: one learner, or several watching together. */
+  viewers: Profile[];
   titleId: string;
   onExit: () => void;
 }
 
-export function PlayerScreen({ profile, titleId, onExit }: Props) {
+/** Per-viewer sets, keyed by profile id. */
+type PerViewer = Record<string, Set<string>>;
+
+const EMPTY = new Set<string>();
+
+function added(map: PerViewer, viewerId: string, value: string): PerViewer {
+  return { ...map, [viewerId]: new Set(map[viewerId] ?? EMPTY).add(value) };
+}
+
+export function PlayerScreen({ viewers, titleId, onExit }: Props) {
   const [detail, setDetail] = useState<TitleDetail>();
   const [loadError, setLoadError] = useState<string>();
-  const [known, setKnown] = useState<Set<string>>(new Set());
-  const [saved, setSaved] = useState<Set<string>>(new Set());
+  const [known, setKnown] = useState<PerViewer>({});
+  const [saved, setSaved] = useState<PerViewer>({});
+  const ids = viewers.map((v) => v.id).join(",");
 
   useEffect(() => {
     let alive = true;
-    Promise.all([api.title(titleId), api.known(profile.id), api.cards(profile.id)])
-      .then(([d, k, cards]) => {
+    Promise.all([api.title(titleId), Promise.all(viewers.map((v) => Promise.all([api.known(v.id), api.cards(v.id)])))])
+      .then(([d, perViewer]) => {
         if (!alive) return;
+        const k: PerViewer = {};
+        const s: PerViewer = {};
+        viewers.forEach((v, i) => {
+          const [lemmas, cards] = perViewer[i]!;
+          k[v.id] = new Set(lemmas);
+          s[v.id] = new Set(cards.filter((c) => c.titleId === titleId).map((c) => c.itemId));
+        });
         setDetail(d);
-        setKnown(new Set(k));
-        setSaved(new Set(cards.filter((c) => c.titleId === titleId).map((c) => c.itemId)));
+        setKnown(k);
+        setSaved(s);
       })
       .catch((e: unknown) => alive && setLoadError(String(e)));
     return () => {
       alive = false;
     };
-  }, [titleId, profile.id]);
+  }, [titleId, ids]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loadError) return <Centered text={`Could not load the film. ${loadError}`} />;
   if (!detail) return <Centered spinner text="Getting the film ready…" />;
   return (
     <Player
-      profile={profile}
+      viewers={viewers}
       detail={detail}
       known={known}
       saved={saved}
-      onKnown={(lemma) => setKnown((k) => new Set(k).add(lemma))}
-      onSaved={(itemId) => setSaved((s) => new Set(s).add(itemId))}
+      onKnown={(viewerId, lemma) => setKnown((k) => added(k, viewerId, lemma))}
+      onSaved={(viewerId, itemId) => setSaved((s) => added(s, viewerId, itemId))}
       onExit={onExit}
     />
   );
 }
 
 interface PlayerProps {
-  profile: Profile;
+  viewers: Profile[];
   detail: TitleDetail;
-  known: Set<string>;
-  saved: Set<string>;
-  onKnown: (lemma: string) => void;
-  onSaved: (itemId: string) => void;
+  known: PerViewer;
+  saved: PerViewer;
+  onKnown: (viewerId: string, lemma: string) => void;
+  onSaved: (viewerId: string, itemId: string) => void;
   onExit: () => void;
 }
 
-function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: PlayerProps) {
+function Player({ viewers, detail, known, saved, onKnown, onSaved, onExit }: PlayerProps) {
   const cues = detail.track.cues;
   const room = useRoom();
+  // The first viewer is the one the phone companion follows.
+  const profile = viewers[0]!;
+  const together = viewers.length > 1;
+  const langs = useMemo(() => viewerLanguages(viewers), [viewers]);
+  const marked: (Viewer & { name: string })[] = useMemo(
+    () => viewers.map((v) => ({ id: v.id, name: v.name, color: v.color, level: v.level, known: known[v.id] ?? EMPTY })),
+    [viewers, known],
+  );
+  const savedByAnyone = useMemo(() => new Set(Object.values(saved).flatMap((set) => [...set])), [saved]);
   const [cueIndex, setCueIndex] = useState(-1);
   const [mode, setMode] = useState<PlayerMode>("watch");
   const [wordCue, setWordCue] = useState<EnrichedCue>();
   const [card, setCard] = useState<LearningItem>();
   const [showTranslation, setShowTranslation] = useState(true);
-  const [autoPause, setAutoPause] = useState(profile.level === "A1" || profile.level === "A2");
+  const [autoPause, setAutoPause] = useState(() => shouldAutoPause(viewers));
   const [toast, setToast] = useState<ToastMessage>();
   const toastId = useRef(0);
   const replayUntil = useRef<number | undefined>(undefined);
@@ -264,13 +294,14 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
     setMode("card");
   };
 
-  const save = async () => {
+  const save = async (viewer: Profile) => {
     if (!card || !wordCue) return;
-    if (saved.has(card.id)) return;
+    if (saved[viewer.id]?.has(card.id)) return;
     try {
-      await api.saveCard(profile.id, room.code, { titleId: detail.meta.id, cueId: wordCue.id, itemId: card.id });
-      onSaved(card.id);
-      notify(room.phones > 0 ? `Saved “${card.surface}” — it is on your phone` : `Saved “${card.surface}” to ${profile.name}'s deck`, "good");
+      await api.saveCard(viewer.id, room.code, { titleId: detail.meta.id, cueId: wordCue.id, itemId: card.id });
+      onSaved(viewer.id, card.id);
+      const where = room.phones > 0 && viewer.id === profile.id ? " — it is on your phone" : ` to ${viewer.name}'s deck`;
+      notify(`Saved “${card.surface}”${where}`, "good");
     } catch {
       notify("Could not save — is the Rerun server running?", "muted");
     }
@@ -280,7 +311,7 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
     if (!card) return;
     try {
       await api.setKnown(profile.id, card.lemma, true);
-      onKnown(card.lemma);
+      onKnown(profile.id, card.lemma);
       notify(`Got it — “${card.surface}” won't be highlighted for ${profile.name}`, "muted");
       run({ type: "closeCard" });
     } catch {
@@ -314,11 +345,9 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
 
       <LearnerSubtitles
         cue={shownCue}
-        lang={profile.nativeLang}
-        level={profile.level}
-        known={known}
-        saved={saved}
-        accent={profile.color}
+        viewers={marked}
+        langs={langs}
+        saved={savedByAnyone}
         showTranslation={showTranslation}
         wordMode={mode === "words"}
         beside={mode === "card"}
@@ -329,11 +358,13 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
         <View style={styles.hud} pointerEvents="none">
           <View style={styles.hudTop}>
             <Text style={styles.title}>{detail.meta.title}</Text>
-            <View style={[styles.who, { borderColor: profile.color }]}>
-              <Text style={styles.whoText}>
-                {profile.name} · {profile.level}
-              </Text>
-            </View>
+            {viewers.map((v) => (
+              <View key={v.id} style={[styles.who, { borderColor: v.color }]}>
+                <Text style={styles.whoText}>
+                  {v.name} · {v.level}
+                </Text>
+              </View>
+            ))}
           </View>
           <Text style={styles.credit}>
             {detail.meta.license.attribution} · {detail.meta.license.name}
@@ -345,11 +376,13 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
       {mode === "card" && card && (
         <WordCard
           item={card}
-          lang={profile.nativeLang}
-          accent={profile.color}
-          saved={saved.has(card.id)}
-          onSave={save}
-          onKnown={markKnown}
+          viewers={viewers}
+          savedFor={new Set(viewers.filter((v) => saved[v.id]?.has(card.id)).map((v) => v.id))}
+          onSave={(id) => {
+            const viewer = viewers.find((v) => v.id === id);
+            if (viewer) void save(viewer);
+          }}
+          onKnown={together ? undefined : markKnown}
           onReplay={replayLine}
         />
       )}
