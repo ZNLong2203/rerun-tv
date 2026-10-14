@@ -8,7 +8,9 @@ import type { IncomingMessage } from "node:http";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serve } from "@hono/node-server";
+import { logger } from "hono/logger";
 import { isPairCode, type Role } from "@rerun/core";
+import { Hono } from "hono";
 import { WebSocketServer, type WebSocket } from "ws";
 import { createApp, lanAddress } from "./app.js";
 import { Asker } from "./ask.js";
@@ -43,7 +45,11 @@ const app = createApp({
   port,
 });
 
-const server = serve({ fetch: app.fetch, port, hostname: "0.0.0.0" }, () => {
+const root = new Hono();
+if (process.env.LOG_REQUESTS !== "off") root.use(logger());
+root.route("/", app);
+
+const server = serve({ fetch: root.fetch, port, hostname: "0.0.0.0" }, () => {
   const lan = lanAddress();
   console.log(`Rerun server on http://localhost:${port}${lan ? `  (LAN http://${lan}:${port})` : ""}`);
   console.log(`titles: ${catalog.list().map((t) => `${t.meta.id}${t.track ? "" : " (no track)"}${t.videoPath ? "" : " (no video)"}`).join(", ") || "none"}`);

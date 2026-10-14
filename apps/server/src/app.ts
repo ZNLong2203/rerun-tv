@@ -132,6 +132,13 @@ export function createApp(deps: Deps) {
     return c.json({ meta: title.meta, track: title.track });
   });
 
+  // Players pick a demuxer from the URL's extension, so the film is also served as video.mp4.
+  app.get("/media/:id/video.mp4", (c) => {
+    const path = catalog.get(c.req.param("id"))?.videoPath;
+    if (!path) return c.json({ error: "video not prepared" }, 404);
+    return serveFile(path, c.req.header("range"));
+  });
+
   app.get("/media/:id/video", (c) => {
     const path = catalog.get(c.req.param("id"))?.videoPath;
     if (!path) return c.json({ error: "video not prepared" }, 404);
