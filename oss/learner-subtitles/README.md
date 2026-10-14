@@ -49,10 +49,10 @@ if (cmd.type === "previousLine") player.currentTime = previousLineTarget(cues, p
 <LearnerSubtitles
   cue={track.cues[index]}
   viewers={[
-    { id: "linh", name: "Linh", color: "#F59E0B", level: "B1", known: linhKnows },
-    { id: "minh", name: "Minh", color: "#38BDF8", level: "A2", known: minhKnows },
+    { id: "camille", name: "Camille", color: "#F59E0B", level: "B1", known: camilleKnows },
+    { id: "hugo", name: "Hugo", color: "#38BDF8", level: "A2", known: hugoKnows },
   ]}
-  langs={["vi"]}
+  langs={["fr"]}
   wordMode={mode === "words"}
   onSelectItem={(item) => openCard(item)}
   theme={{ fontSize: 23 }}
@@ -88,7 +88,7 @@ Learned the hard way while building Rerun (details in its
 | learning | `isNewFor`, `newForViewers`, `trackDifficulty`, `segmentLine`, `viewerLanguages`, `shouldAutoPause`, `EnrichedTrack` |
 | srs | `newCard`, `review`, `isDue`, `isMastered`, `sortForReview` |
 | shadowing | `scoreShadowing` |
-| protocol | `RoomMessage`, `parseRoomMessage`, `isPairCode` — messages for a phone companion paired by code (optional) |
+| protocol | `RoomMessage`, `parseRoomMessage`, `isPairCode` — messages for a phone companion paired by code (optional); `CardView` (a saved word, or a line to hear again) and `lineItemId` |
 | react-native | `LearnerSubtitles`, `FocusChip`, `defaultTheme`, `SubtitleTheme` |
 
 ## Develop

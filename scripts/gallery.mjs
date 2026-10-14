@@ -74,8 +74,14 @@ await shot("05-word-card");
 await keys("select");
 await shot("06-saved", 600);
 
+// Back to the film: ◀ hears the line again, and it joins the Daily Rerun.
+await keys("back", "back");
+await sleep(1000);
+await keys("left");
+await shot("17-heard-again", 1600);
+
 // Back home, then the pairing screen and the Daily Rerun.
-await keys("back", "back", "back");
+await keys("back");
 await sleep(2000);
 await keys("down", "right", "select");
 await shot("07-pair-phone", 2000);
@@ -85,6 +91,15 @@ await keys("up", "up", "select");
 await shot("08-daily-rerun", 3000);
 await keys("select");
 await shot("09-daily-rerun-answer", 2500);
+// Grade the word cards ("Knew it" has focus) until the listening card comes up.
+await keys("select");
+for (let i = 0; i < 3; i++) {
+  await sleep(1500);
+  await keys("select", "select");
+}
+await shot("18-listening-card", 3000);
+await keys("select");
+await shot("19-listening-answer", 1500);
 await keys("back");
 
 // Watch together: three people, one film.
@@ -92,7 +107,7 @@ await keys("back"); // home → "Who's learning tonight?"
 await sleep(2000);
 await keys("down", "select"); // 👥 Watch together
 await sleep(800);
-await keys("select", "right", "select", "right", "select"); // Linh, Minh, Ana
+await keys("select", "right", "select", "right", "select"); // Camille, Hugo, Ana
 await shot("10-watch-together-pick");
 await keys("down", "select");
 await shot("11-watch-together-home", 4500);

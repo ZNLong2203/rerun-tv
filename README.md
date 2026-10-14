@@ -4,8 +4,8 @@
 
 Rerun is a learning layer for Fire TV, built on Vega OS. It turns any film with a subtitle track into a lesson you
 control from the sofa: hear a line again with ◀, step into its words with ▲, and get an explanation of what a phrase
-means *in this scene*, in your own language. Words you save come back in the **Daily Rerun** — spaced-repetition
-flashcards where every card is the moment in the film where you met the word.
+means *in this scene*, in your own language. Words you save, and lines you had to hear twice, come back in the
+**Daily Rerun** — spaced-repetition flashcards where every card is a moment in the film.
 
 > Track: **Fire TV** · Mini challenge: **Open Source** · Runs on the Vega Virtual Device (Vega SDK 0.24)
 
@@ -13,25 +13,32 @@ flashcards where every card is the moment in the film where you met the word.
 
 | | |
 |---|---|
-| ![Learner subtitles on Fire TV: the line, its Vietnamese translation, and "freaked out" underlined as new for this viewer](docs/images/03-learner-subtitles.jpg) | ![The word card: what "freaked out" means in this scene, in Vietnamese, with an everyday example](docs/images/05-word-card.jpg) |
+| ![Learner subtitles on Fire TV: the line, its French translation, and "freaked out" underlined as new for this viewer](docs/images/03-learner-subtitles.jpg) | ![The word card: what "freaked out" means in this scene, in French, with an everyday example](docs/images/05-word-card.jpg) |
 | **Learner subtitles.** New-for-you words are underlined in your colour. | **Word card.** ▲ then OK: the meaning *in this scene*, in your language. |
 | ![Who's learning tonight? One profile per person in the household](docs/images/01-who-is-learning.jpg) | ![Daily Rerun: the flashcard replays the moment in the film where you met the word](docs/images/09-daily-rerun-answer.jpg) |
 | **Who's learning tonight?** Each person has a language and a level. | **Daily Rerun.** Flashcards are film moments, graded with the D-pad. |
 
-**Watching together.** Linh (B1, Vietnamese), Minh (A2, Vietnamese) and Ana (B2, Spanish) watch one film. Each person's
-new words carry their colour — "robotics" is new for Linh and Minh, "awesome" only for Minh — with a translation line
-per language, and each word card saves to each person's own deck.
+**Watching together.** Camille (B1, French), Hugo (A2, French) and Ana (B2, Spanish) watch one film. Each person's
+new words carry their colour — "robotics" is new for Camille and Hugo, "awesome" only for Hugo — with a translation
+line per language, and each word card saves to each person's own deck.
 
 | | |
 |---|---|
-| ![One film, three levels: Stretch for Linh, Hard for Minh, Easy for Ana](docs/images/11-watch-together-home.jpg) | ![Subtitles for three viewers: coloured dots per person, Vietnamese and Spanish translations](docs/images/12-watch-together-subtitles.jpg) |
+| ![One film, three levels: Stretch for Camille, Hard for Hugo, Easy for Ana](docs/images/11-watch-together-home.jpg) | ![Subtitles for three viewers: coloured dots per person, French and Spanish translations](docs/images/12-watch-together-subtitles.jpg) |
+
+**Lines you hear again come back.** Every ◀ counts. A line you needed to hear twice returns in your Daily Rerun as a
+listening card: the clip plays, the text stays hidden — *what did they say?* — until you ask for it.
+
+| | |
+|---|---|
+| ![After ◀, the TV says the line will come back in the Daily Rerun](docs/images/17-heard-again.jpg) | ![A listening card in the Daily Rerun: the clip plays and the line stays hidden](docs/images/18-listening-card.jpg) |
 
 **Phone companion.** Scan the QR code on the TV — nothing to install. Say the line back and the TV shows your score;
 a word saved on the TV is on the phone a second later.
 
 | | |
 |---|---|
-| ![Say it back: the film pauses, the phone scores every word, and the TV shows "Linh said it: 88"](docs/images/14-say-it-back.jpg) | ![A word saved on the TV appears at the top of the phone's word list](docs/images/15-saved-to-phone.jpg) |
+| ![Say it back: the film pauses, the phone scores every word, and the TV shows "Camille said it: 88"](docs/images/14-say-it-back.jpg) | ![A word saved on the TV appears at the top of the phone's word list](docs/images/15-saved-to-phone.jpg) |
 
 <sub>Screenshots from the Vega Virtual Device (Vega SDK 0.24), captured by `scripts/gallery.mjs`; phone screens from
 `scripts/phone-sim.mjs`, which pairs a phone-sized Chrome with the TV.</sub>
@@ -56,7 +63,7 @@ pause button. Watching *with* the remote is the gap.
 
 | On the remote | While watching | |
 |---|---|---|
-| **◀** | Hear the line again (twice quickly: the line before) | Built for listening practice |
+| **◀** | Hear the line again (twice quickly: the line before) | It comes back in your Daily Rerun |
 | **▶** | Jump to the next line | |
 | **▲** | **Word mode**: the film pauses and the line's learnable expressions become stops | |
 | **OK** on a word | A card: what it means here, in your language, plus an everyday example | Save it, or tell Rerun you know it |
@@ -64,15 +71,16 @@ pause button. Watching *with* the remote is the gap.
 | **☰** | Auto-pause after every line | On by default for A1–A2 |
 
 - **Who's learning tonight?** Each person in the household has a profile with their own language and level. The same
-  film underlines different words for Linh (B1, Vietnamese) and Minh (A2, Vietnamese), and the library shows how hard
-  each film is *for that person*.
+  film underlines different words for Camille (B1, French) and Hugo (A2, French), and the library shows how hard each
+  film is *for that person*.
 - **Watch together.** Pick several people: one film, everyone's own new words in their own colour, a translation line
   per language, and a save button per person. Auto-pause follows whoever finds the film hardest.
 - **Phone companion, no install.** Scan the QR code on the TV. Saved words land on the phone instantly; say the line
   on screen back to the phone and get a word-by-word score on the TV; ask "is this rude?" about any line; add family
   members (typing on a phone beats typing with a remote).
 - **Daily Rerun.** Spaced repetition on the TV: the clip plays, you recall the meaning, reveal it, and grade yourself
-  with the D-pad. Words you master stop being highlighted.
+  with the D-pad. Words you master stop being highlighted. Lines you replayed while watching come back as listening
+  cards, with the text hidden until you ask for it.
 
 ![The phone companion: a remote and speaking practice, questions about any line, and the household](docs/images/16-phone-companion.jpg)
 
@@ -82,12 +90,13 @@ Lingopie has a Fire TV app with dual subtitles and tap-a-word on its own catalog
 interactive subtitles to Netflix in a desktop browser. Rerun's take:
 
 1. **In-context explanations, not dictionary entries.** Gemini reads the whole script first, so "freaked out" is
-   explained as *Thom admitting he is scared of Celia's robot hand, half-joking* — in Vietnamese, Spanish, German, French,
-   Italian, Dutch, Polish, Portuguese or Indonesian.
+   explained as *Thom admitting he is scared of Celia's robot hand, half-joking* — in French, Spanish, German, Italian,
+   Dutch, Polish, Portuguese, Indonesian or Vietnamese.
 2. **Per-person, per-household.** Fire TV is a shared device; Rerun highlights what is new *for whoever is watching* —
    including several people at once, each in their own colour and language.
 3. **Flashcards that are film moments**, reviewed on the TV with the D-pad.
-4. **Listening and speaking**, not just reading: replay-a-line is the default key, and shadowing is scored.
+4. **Listening and speaking**, not just reading: replay-a-line is the default key, the lines you replay become
+   listening practice, and shadowing is scored.
 5. **A layer, not a catalog.** The remote-first subtitle model is an open-source library any React Native TV app can
    use (see [Open source](#open-source)).
 
