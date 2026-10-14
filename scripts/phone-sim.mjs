@@ -191,7 +191,7 @@ await step("follows the film on the TV", async () => {
 });
 
 await step("phone remote: next line", async () => {
-  await sleep(3000); // let the player start before seeking
+  // Straight away: a seek sent before the film has loaded must still land.
   await page.getByRole("button", { name: "Next line" }).click();
   await page.waitForFunction(() => {
     const t = document.querySelector(".line-card .line")?.textContent;
@@ -219,6 +219,25 @@ await step("say it back: the TV pauses, the phone scores, the TV shows it", asyn
   const toast = texts.find((t) => t.includes("said it"));
   if (!toast) throw new Error(`phone scored ${score}, but the TV shows no result (${texts.slice(0, 6).join(" | ")})`);
   return `phone ${score} (${missed} word missed); TV: "${toast}"`;
+});
+
+await step("hear it again: the line joins the Daily Rerun", async () => {
+  const line = await lineText();
+  const who = (await page.locator(".who > span:last-child").textContent()).trim();
+  const profile = (await (await fetch(`${SERVER}/api/profiles`)).json()).find((p) => who.startsWith(`${p.name} ·`));
+  await page.getByRole("button", { name: "Replay line" }).click();
+  // The TV counts the line once the "press twice for the line before" window has passed.
+  let toast;
+  for (let i = 0; i < 15 && !toast; i++) {
+    await sleep(300);
+    toast = (await tvTexts()).find((t) => t.includes("Daily Rerun"));
+  }
+  if (!toast) throw new Error("the TV did not say the line comes back");
+  await tvShot("tv-heard-again");
+  const deck = await (await fetch(`${SERVER}/api/profiles/${profile.id}/cards`)).json();
+  const card = deck.find((c) => c.kind === "line" && c.line === line);
+  if (!card) throw new Error(`no listening card for "${line}"`);
+  return `TV: "${toast}"; ${profile.name}'s deck has "${line}"`;
 });
 
 await step("words saved on the TV appear on the phone", async () => {
