@@ -34,3 +34,4 @@ coverage/
 /media/
 /.cache/
 /.data/
+/oss/**/node_modules/

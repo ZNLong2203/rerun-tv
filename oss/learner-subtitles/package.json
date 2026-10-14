@@ -1,0 +1,31 @@
+{
+  "name": "learner-subtitles",
+  "version": "0.1.0",
+  "description": "Remote-first language-learning subtitles for React Native TV apps: parse SRT/WebVTT, step line by line with a D-pad, mark the words that are new for each viewer, review them with spaced repetition. Built for Vega OS (Fire TV), works with react-native-tvos.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "keywords": ["subtitles", "language-learning", "react-native", "tv", "fire-tv", "vega", "kepler", "d-pad", "spaced-repetition", "srt", "webvtt"],
+  "exports": {
+    ".": "./src/core/index.ts",
+    "./react-native": "./src/react-native/index.ts"
+  },
+  "files": ["src", "README.md", "LICENSE"],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-native": ">=0.72"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "react-native": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "react-native": "0.83.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.4"
+  }
+}
