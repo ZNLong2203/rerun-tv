@@ -1,0 +1,141 @@
+# Rerun
+
+**Learn a language from the films you already watch — with your Fire TV remote.**
+
+Rerun is a learning layer for Fire TV, built on Vega OS. It turns any film with a subtitle track into a lesson you
+control from the sofa: hear a line again with ◀, step into its words with ▲, and get an explanation of what a phrase
+means *in this scene*, in your own language. Words you save come back in the **Daily Rerun** — spaced-repetition
+flashcards where every card is the moment in the film where you met the word.
+
+> Track: **Fire TV** · Mini challenge: **Open Source** · Runs on the Vega Virtual Device (Vega SDK 0.24)
+
+<!-- Screenshots and the demo video link go here once recorded. -->
+
+---
+
+## Why
+
+People learn languages from films — and they watch films on the TV. The tools that make a film a lesson
+(interactive subtitles, click-a-word, replay-a-line) live in desktop browser extensions; on the TV you get a
+pause button. Watching *with* the remote is the gap.
+
+- In Vietnam, where this was built, English proficiency is "moderate" (EF EPI 2025: 500/800, rank 64 of 123), and
+  **listening (470) and speaking (461) are the weakest skills** — exactly what re-hearing a line and saying it back
+  train.
+- Fire TV has sold well over 250 million devices worldwide, and 22% of US residents speak a language other than
+  English at home. Households share one TV but not one level of English.
+- Subtitled viewing builds vocabulary (Peters & Webb, 2018), and spaced review makes it stick (Cepeda et al., 2006,
+  across 317 experiments).
+
+## What it does
+
+| On the remote | While watching | |
+|---|---|---|
+| **◀** | Hear the line again (twice quickly: the line before) | Built for listening practice |
+| **▶** | Jump to the next line | |
+| **▲** | **Word mode**: the film pauses and the line's learnable expressions become stops | |
+| **OK** on a word | A card: what it means here, in your language, plus an everyday example | Save it, or tell Rerun you know it |
+| **▼** | Translation on/off | |
+| **☰** | Auto-pause after every line | On by default for A1–A2 |
+
+- **Who's learning tonight?** Each person in the household has a profile with their own language and level. The same
+  film underlines different words for Linh (B1, Vietnamese) and Minh (A2, Vietnamese), and the library shows how hard
+  each film is *for that person*.
+- **Phone companion, no install.** Scan the QR code on the TV. Saved words land on the phone instantly; say the line
+  on screen back to the phone and get a word-by-word score on the TV; ask "is this rude?" about any line; add family
+  members (typing on a phone beats typing with a remote).
+- **Daily Rerun.** Spaced repetition on the TV: the clip plays, you recall the meaning, reveal it, and grade yourself
+  with the D-pad. Words you master stop being highlighted.
+
+## How it is different
+
+Lingopie has a Fire TV app with dual subtitles and tap-a-word on its own catalog, and Language Reactor brings
+interactive subtitles to Netflix in a desktop browser. Rerun's take:
+
+1. **In-context explanations, not dictionary entries.** Claude reads the whole script first, so "freaked out" is
+   explained as *Thom admitting he is scared of Celia's robot hand, half-joking* — in Vietnamese, Spanish or Indonesian.
+2. **Per-person, per-household.** Fire TV is a shared device; Rerun highlights what is new *for whoever is watching*.
+3. **Flashcards that are film moments**, reviewed on the TV with the D-pad.
+4. **Listening and speaking**, not just reading: replay-a-line is the default key, and shadowing is scored.
+5. **A layer, not a catalog.** The remote-first subtitle model is an open-source library any React Native TV app can
+   use (see [Open source](#open-source)).
+
+## How it works
+
+```mermaid
+flowchart LR
+  subgraph Prepare["Prepare a title (once, offline)"]
+    SRT[English subtitles] --> P1[Claude pass 1:<br/>what is worth learning<br/>in each line]
+    P1 --> A[Code anchors each<br/>expression to its tokens]
+    A --> P2[Claude pass 2:<br/>translations + notes<br/>per learner language]
+    P2 --> T[(track.json)]
+  end
+  subgraph Run
+    T --> S[Rerun server<br/>Hono + SQLite]
+    S -- titles, decks, byte-range video --> TV[Fire TV app<br/>React Native for Vega<br/>W3C media player]
+    S -- pairing room over WebSocket --> TV
+    S <--> Phone[Phone companion<br/>web, Web Speech API]
+    Phone <-- pairing room --> TV
+  end
+```
+
+- **AI runs before you watch.** The pipeline (`pipeline/`) sends the full script to Claude in two structured passes.
+  The model *names* each expression; deterministic code finds it in the line's tokens and drops anything that is not
+  there, so the TV never highlights a word that does not exist. Outputs are validated with zod and cached, and the
+  prepared tracks are committed — playback never waits on a model, and the app runs without an API key.
+- **Measured against humans.** The film ships with human Spanish and Indonesian subtitles; `npm run eval` scores
+  Rerun's translations against them with chrF, line by line, and lists the lines that disagree most for review.
+- **Remote first.** `packages/core` holds the pure logic — subtitle parsing, LEFT/RIGHT line navigation (with the
+  "press twice for the line before" rule), the key map per player mode, per-learner difficulty, SM-2 scheduling and
+  shadowing alignment — with unit tests. The TV app is a thin layer over it.
+- **One player, many uses.** The Vega W3C media `VideoPlayer` plays the film; the Daily Rerun reuses it to play just
+  the seconds of each card's line.
+
+## Run it
+
+Requirements: Node 22.13+, ffmpeg, and for the TV app the [Vega SDK](https://developer.amazon.com/docs/vega/0.24/install-vega-sdk.html)
+(macOS on Apple Silicon or Ubuntu).
+
+```bash
+npm ci
+scripts/prepare-media.sh tears-of-steel   # downloads the CC BY film, makes an MP4 and a poster
+npm run build -w @rerun/phone             # the phone companion, served by the server at /m
+npm run dev                               # Rerun server on :8787 with a demo household
+```
+
+The TV app and the Vega Virtual Device: see [docs/run-on-vega.md](docs/run-on-vega.md).
+
+Phones need HTTPS for the microphone. Put the server behind any HTTPS tunnel and set `PUBLIC_URL` in `.env.local` so
+the QR code points there.
+
+Preparing a new title (needs Claude credentials in `.env.local`, see `.env.example`):
+
+```bash
+npm run enrich -- tears-of-steel --langs vi,es,id
+npm run eval -- tears-of-steel
+```
+
+Tests: `npm test` (core, pipeline, server).
+
+## Repository
+
+| Path | What |
+|---|---|
+| `apps/tv` | Fire TV app, React Native for Vega |
+| `apps/phone` | Phone companion (Vite + React), served at `/m` |
+| `apps/server` | API, decks, pairing rooms, byte-range video (Hono, `node:sqlite`, `ws`) |
+| `packages/core` | Remote-first learning logic shared by all three, with tests |
+| `pipeline` | Claude enrichment and translation evaluation |
+| `content` | Titles: metadata, subtitles, prepared tracks |
+| `docs` | Friction log, product feedback, Vega notes |
+
+## Open source
+
+`packages/core` and the learner subtitle component are released as a standalone library for React Native TV apps
+(link added at submission). Rerun itself is Apache-2.0.
+
+## Credits
+
+*Tears of Steel* — (CC) Blender Foundation | mango.blender.org, licensed
+[CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Spanish and Indonesian reference subtitles from the
+Tears of Steel project. No other film content is included.
