@@ -12,7 +12,8 @@
  *   node scripts/gallery.mjs [outDir]          # default docs/images
  *
  * Shots are PNG; the README uses JPEG copies
- * (sips -s format jpeg -s formatOptions 85 in.png --out out.jpg).
+ * (sips -s format jpeg -s formatOptions 85 in.png --out out.jpg). The phone
+ * shots come from `node scripts/phone-sim.mjs --test --tv-shots`.
  */
 
 import { mkdir, writeFile } from "node:fs/promises";
@@ -85,3 +86,20 @@ await shot("08-daily-rerun", 3000);
 await keys("select");
 await shot("09-daily-rerun-answer", 2500);
 await keys("back");
+
+// Watch together: three people, one film.
+await keys("back"); // home → "Who's learning tonight?"
+await sleep(2000);
+await keys("down", "select"); // 👥 Watch together
+await sleep(800);
+await keys("select", "right", "select", "right", "select"); // Linh, Minh, Ana
+await shot("10-watch-together-pick");
+await keys("down", "select");
+await shot("11-watch-together-home", 4500);
+await keys("down", "select");
+await sleep(3500);
+await keys("right", "right", "right"); // "…you have your robotics, and I just want to be awesome in space."
+await shot("12-watch-together-subtitles", 2500);
+await keys("up", "select");
+await shot("13-watch-together-card");
+await keys("back", "back", "back");

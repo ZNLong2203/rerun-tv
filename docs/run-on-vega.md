@@ -68,6 +68,18 @@ DEBUG_ROOMS=1 npm run dev                       # lets the test find the TV's ro
 node scripts/smoke-vvd.mjs                      # saves a word on the TV, expects it on the "phone"
 ```
 
+`scripts/phone-sim.mjs` is a phone for the pairing room: Google Chrome with a Pixel-sized screen, opened at the link
+the TV's QR code shows (it uses the Chrome installed on the machine through `playwright-core`).
+
+```bash
+node scripts/phone-sim.mjs                      # a phone window to use by hand (the Mac's microphone)
+node scripts/phone-sim.mjs --test               # TV and phone together: remote, speaking, words, questions
+node scripts/phone-sim.mjs --test --tv-shots    # with STILL_VIDEO=1: also capture the TV at each moment
+```
+
+In `--test`, speech recognition is replaced by a stand-in that says the line on screen with one word missing, so the
+score is repeatable; the scoring, the room messages and the TV's toast are the real ones.
+
 ## Remote
 
 | Key | Watching | Word mode | Card |
