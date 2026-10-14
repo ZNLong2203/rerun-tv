@@ -43,6 +43,10 @@ categories = ["com.amazon.category.main"]
 [[wants.service]]
 id = "com.amazon.inputd.service"
 
+# Network state for the media pipeline's HTTP source.
+[[wants.service]]
+id = "com.amazon.network.service"
+
 # W3C media playback (VideoPlayer) and its surfaces.
 [[wants.service]]
 id = "com.amazon.media.server"

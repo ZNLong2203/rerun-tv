@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { BackHandler } from "@amazon-devices/react-native-kepler";
+import { BackHandler, useHideSplashScreenCallback, usePreventHideSplashScreen } from "@amazon-devices/react-native-kepler";
 import { StyleSheet, View } from "react-native";
 import type { Profile } from "./api";
 import { RoomProvider } from "./room";
@@ -25,6 +25,15 @@ type Screen =
 
 export const App = () => {
   const [screen, setScreen] = useState<Screen>({ name: "profiles" });
+
+  // Vega keeps the app in its launch transition until the splash screen is
+  // hidden; an app that never hides it is moved to the background once the
+  // transition times out, and its video surface is then rejected.
+  usePreventHideSplashScreen();
+  const hideSplashScreen = useHideSplashScreenCallback();
+  useEffect(() => {
+    hideSplashScreen();
+  }, [hideSplashScreen]);
 
   // Player, Rerun and Pair handle BACK themselves; here only the menus do.
   useEffect(() => {
