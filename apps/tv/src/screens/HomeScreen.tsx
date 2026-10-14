@@ -1,7 +1,7 @@
 /**
  * A learner's home: today's Daily Rerun first, then the films, each with how
- * hard it is *for this person* — the same film reads "Stretch" for Minh and
- * "Comfortable" for Linh. Watching together, each film lists every viewer.
+ * hard it is *for this person* — the same film reads "Hard" for Hugo and
+ * "Stretch" for Camille. Watching together, each film lists every viewer.
  */
 
 import React, { useEffect, useState } from "react";
@@ -51,6 +51,7 @@ export function HomeScreen({ viewers, onPlay, onRerun, onPair }: Props) {
 
   const me = people[0]!;
   const due = together ? 0 : me.stats.due;
+  const dueLines = together ? 0 : me.stats.dueLines;
   return (
     <ScrollView style={styles.root} contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -60,7 +61,7 @@ export function HomeScreen({ viewers, onPlay, onRerun, onPair }: Props) {
         <View style={styles.headerRight}>
           {!together && (
             <Text style={styles.stats}>
-              {me.stats.saved} saved · {me.stats.known} known · {me.stats.reviewedToday} reviewed today
+              {me.stats.saved} words · {me.stats.lines} lines · {me.stats.known} known · {me.stats.reviewedToday} reviewed today
             </Text>
           )}
           {people.map((p) => (
@@ -92,10 +93,10 @@ export function HomeScreen({ viewers, onPlay, onRerun, onPair }: Props) {
           <Text style={styles.rerunLabel}>DAILY RERUN</Text>
           <Text style={styles.rerunTitle}>
             {due > 0
-              ? `${due} ${due === 1 ? "word" : "words"} from your films ${due === 1 ? "is" : "are"} due, ${me.name}`
-              : "Nothing due — save words while you watch and they come back here"}
+              ? `${dueSummary(due - dueLines, dueLines)} from your films ${due === 1 ? "is" : "are"} due, ${me.name}`
+              : "Nothing due — save words, or hear a line again with ◀, and they come back here"}
           </Text>
-          {due > 0 && <Text style={styles.rerunHint}>Each card replays the moment you met the word. Press OK to start.</Text>}
+          {due > 0 && <Text style={styles.rerunHint}>Each card replays its moment in the film. Press OK to start.</Text>}
         </Focusable>
       )}
 
@@ -141,6 +142,12 @@ export function HomeScreen({ viewers, onPlay, onRerun, onPair }: Props) {
       </TVFocusGuideView>
     </ScrollView>
   );
+}
+
+/** "3 words and 1 line", "2 lines", "1 word". */
+function dueSummary(words: number, lines: number): string {
+  const part = (n: number, one: string) => (n > 0 ? `${n} ${one}${n === 1 ? "" : "s"}` : "");
+  return [part(words, "word"), part(lines, "line")].filter(Boolean).join(" and ");
 }
 
 const styles = StyleSheet.create({

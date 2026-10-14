@@ -170,6 +170,43 @@ describe("cards and the Daily Rerun", () => {
     expect(res.status).toBe(404);
   });
 
+  it("turns a line heard again into a listening card, once", async () => {
+    const camille = store.createProfile({ name: "Camille", nativeLang: "fr", level: "B1", color: "#000000" });
+    const first = await post(`/api/profiles/${camille.id}/replays`, { titleId: "demo", cueId: 1 });
+    expect(first.status).toBe(201);
+    const body = (await first.json()) as { count: number; created: boolean; card: { id: string; kind: string } };
+    expect(body).toMatchObject({ count: 1, created: true, card: { kind: "line" } });
+
+    const again = await post(`/api/profiles/${camille.id}/replays`, { titleId: "demo", cueId: 1 });
+    expect(again.status).toBe(200);
+    expect(await again.json()).toMatchObject({ count: 2, created: false, card: { id: body.card.id } });
+
+    const [due] = (await (await app.request(`/api/profiles/${camille.id}/review`)).json()) as Record<string, unknown>[];
+    expect(due).toMatchObject({
+      kind: "line",
+      surface: "",
+      line: "Look Celia, we have to follow our passions;",
+      // No French in the fixture: the translation falls back to another language rather than nothing.
+      lineTranslation: "Nghe này Celia, ta phải theo đuổi đam mê;",
+    });
+
+    // Lines never mark a word as known, however well they are heard.
+    for (const grade of ["good", "good", "easy", "easy", "easy"]) {
+      await post(`/api/cards/${body.card.id}/review`, { grade });
+      now += 400 * 86_400_000;
+    }
+    expect(store.knownLemmas(camille.id).size).toBe(0);
+    expect(store.stats(camille.id)).toMatchObject({ saved: 0, lines: 1 });
+  });
+
+  it("counts words and lines separately in the stats", async () => {
+    const camille = store.createProfile({ name: "Camille", nativeLang: "fr", level: "B1", color: "#000000" });
+    await post(`/api/profiles/${camille.id}/cards`, { titleId: "demo", cueId: 0, itemId: "c0-jerk" });
+    await post(`/api/profiles/${camille.id}/replays`, { titleId: "demo", cueId: 0 });
+    expect(store.stats(camille.id)).toMatchObject({ saved: 1, lines: 1, due: 2, dueLines: 1 });
+    expect((await post(`/api/profiles/${camille.id}/replays`, { titleId: "demo", cueId: 9 })).status).toBe(404);
+  });
+
   it("tells the paired phones when a word is saved", async () => {
     const linh = store.createProfile({ name: "Linh", nativeLang: "vi", level: "B1", color: "#000000" });
     const { code } = (await (await post("/api/pair", {})).json()) as { code: string };

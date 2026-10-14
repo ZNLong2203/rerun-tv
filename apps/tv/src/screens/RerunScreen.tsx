@@ -1,7 +1,9 @@
 /**
- * Daily Rerun: spaced repetition where every flashcard is the moment in the
- * film where the learner met the word. The clip plays, the learner tries to
- * recall the meaning, reveals it, and says how well they knew it.
+ * Daily Rerun: spaced repetition where every flashcard is a moment in a film.
+ * A word card plays the moment the learner met the word: recall the meaning,
+ * reveal it, say how well you knew it. A listening card is a line the learner
+ * had to hear again while watching: the clip plays with the text hidden, and
+ * the line appears only when they ask for it.
  */
 
 import { KeplerVideoSurfaceView } from "@amazon-devices/react-native-w3cmedia";
@@ -51,8 +53,10 @@ export function RerunScreen({ profile, onDone }: { profile: Profile; onDone: () 
   if (!card) {
     return (
       <View style={[styles.root, styles.center]}>
-        <Text style={styles.doneTitle}>{reviewed > 0 ? `${reviewed} words rerun. Nice, ${profile.name}.` : "Nothing due right now."}</Text>
-        <Text style={styles.doneBody}>Words you knew come back later; the ones you forgot come back sooner.</Text>
+        <Text style={styles.doneTitle}>
+          {reviewed > 0 ? `${reviewed} ${reviewed === 1 ? "card" : "cards"} rerun. Nice, ${profile.name}.` : "Nothing due right now."}
+        </Text>
+        <Text style={styles.doneBody}>What you knew comes back later; what you forgot comes back sooner.</Text>
         <Focusable hasTVPreferredFocus ring={profile.color} onPress={onDone} style={styles.button}>
           <Text style={styles.buttonText}>Back to films</Text>
         </Focusable>
@@ -112,7 +116,8 @@ function Review({ profile, card, position, onGraded }: { profile: Profile; card:
     }
   };
 
-  const at = card.line.toLowerCase().indexOf(card.surface.toLowerCase());
+  const listening = card.kind === "line";
+  const at = listening ? -1 : card.line.toLowerCase().indexOf(card.surface.toLowerCase());
   return (
     <View style={styles.root}>
       <View style={styles.videoBox}>
@@ -120,25 +125,34 @@ function Review({ profile, card, position, onGraded }: { profile: Profile; card:
         {video.ready && card.frameUrl && <StillFrame uri={`${card.frameUrl}?t=${video.frameTime}`} fit="cover" />}
       </View>
       <View style={styles.panel}>
-        <Text style={styles.label}>DAILY RERUN · {position}</Text>
-        <Text style={styles.line}>
-          {at >= 0 ? (
-            <>
-              {card.line.slice(0, at)}
-              <Text style={{ color: profile.color, fontWeight: "800" }}>{card.line.slice(at, at + card.surface.length)}</Text>
-              {card.line.slice(at + card.surface.length)}
-            </>
-          ) : (
-            card.line
-          )}
+        <Text style={styles.label}>
+          DAILY RERUN · {position}
+          {listening ? " · LISTENING" : ""}
         </Text>
+        {listening && !revealed ? (
+          <Text style={[styles.line, styles.hidden]}>What did they say?</Text>
+        ) : (
+          <Text style={styles.line}>
+            {at >= 0 ? (
+              <>
+                {card.line.slice(0, at)}
+                <Text style={{ color: profile.color, fontWeight: "800" }}>{card.line.slice(at, at + card.surface.length)}</Text>
+                {card.line.slice(at + card.surface.length)}
+              </>
+            ) : (
+              card.line
+            )}
+          </Text>
+        )}
 
         {!revealed ? (
           <>
-            <Text style={styles.question}>What does “{card.surface}” mean here?</Text>
+            <Text style={styles.question}>
+              {listening ? "You played this line again while watching. Listen, then check." : `What does “${card.surface}” mean here?`}
+            </Text>
             <View style={styles.actions}>
               <Focusable hasTVPreferredFocus ring={colors.text} onPress={() => setRevealed(true)} style={[styles.button, { backgroundColor: profile.color }]} testID="reveal">
-                <Text style={[styles.buttonText, { color: colors.bg }]}>Show meaning</Text>
+                <Text style={[styles.buttonText, { color: colors.bg }]}>{listening ? "Show the line" : "Show meaning"}</Text>
               </Focusable>
               <Focusable ring={profile.color} onPress={playClip} style={styles.button}>
                 <Text style={styles.buttonText}>↺ Hear it again</Text>
@@ -147,8 +161,8 @@ function Review({ profile, card, position, onGraded }: { profile: Profile; card:
           </>
         ) : (
           <>
-            <Text style={styles.meaning}>{card.meaning}</Text>
-            <Text style={styles.translation}>{card.lineTranslation}</Text>
+            {!listening && <Text style={styles.meaning}>{card.meaning}</Text>}
+            <Text style={[styles.translation, listening && styles.lineTranslation]}>{card.lineTranslation}</Text>
             <View style={styles.actions}>
               {GRADES.map((g) => (
                 <Focusable
@@ -208,6 +222,13 @@ const styles = StyleSheet.create({
     lineHeight: (type.title - dp(6)) * 1.35,
     fontWeight: "600",
     marginTop: dp(18),
+  },
+  hidden: {
+    color: colors.muted,
+  },
+  lineTranslation: {
+    fontSize: type.translation,
+    marginTop: dp(20),
   },
   question: {
     color: colors.muted,

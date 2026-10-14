@@ -54,6 +54,7 @@ const CardInput = z.object({
   itemId: z.string(),
 });
 
+const ReplayInput = z.object({ titleId: z.string(), cueId: z.number().int().nonnegative() });
 const ReviewInput = z.object({ grade: z.enum(["again", "hard", "good", "easy"]) });
 const KnownInput = z.object({ lemma: z.string().min(1), known: z.boolean() });
 const AskInput = z.object({
@@ -83,10 +84,34 @@ export function cardView(
   videoUrl = "",
 ): CardView | undefined {
   const cue = track?.cues.find((c) => c.id === card.cueId);
-  const item = cue?.items.find((i) => i.id === card.itemId);
-  if (!cue || !item) return undefined;
+  if (!cue) return undefined;
+  const line = {
+    line: cue.text,
+    lineTranslation: pickLang(cue.translations, lang),
+    start: cue.start,
+    end: cue.end,
+    due: card.state.due,
+    videoUrl,
+  };
+  if (card.kind === "line") {
+    return {
+      id: card.id,
+      kind: "line",
+      profileId: card.profileId,
+      titleId: card.titleId,
+      cueId: cue.id,
+      itemId: card.itemId,
+      surface: "",
+      lemma: "",
+      meaning: "",
+      ...line,
+    };
+  }
+  const item = cue.items.find((i) => i.id === card.itemId);
+  if (!item) return undefined;
   return {
     id: card.id,
+    kind: "word",
     profileId: card.profileId,
     titleId: card.titleId,
     cueId: cue.id,
@@ -94,12 +119,7 @@ export function cardView(
     surface: item.surface,
     lemma: item.lemma,
     meaning: pickLang(item.meaning, lang),
-    line: cue.text,
-    lineTranslation: pickLang(cue.translations, lang),
-    start: cue.start,
-    end: cue.end,
-    due: card.state.due,
-    videoUrl,
+    ...line,
   };
 }
 
@@ -259,6 +279,18 @@ export function createApp(deps: Deps) {
     const room = c.req.query("room");
     if (room && created) rooms.publish(room, { type: "card.saved", card: view });
     return c.json(view, created ? 201 : 200);
+  });
+
+  /** The TV heard a line again for this viewer (◀): it comes back as a listening card. */
+  app.post("/api/profiles/:id/replays", async (c) => {
+    const input = await json(c, ReplayInput);
+    if (input instanceof Response) return input;
+    const profile = store.getProfile(c.req.param("id"));
+    const title = catalog.get(input.titleId);
+    if (!profile || !title?.track?.cues.some((q) => q.id === input.cueId)) return c.json({ error: "not found" }, 404);
+    const { count, card, created } = store.recordReplay({ profileId: profile.id, ...input });
+    const view = cardView(card, title.track, profile.nativeLang, videoUrlFor(title.meta, baseUrl(c)))!;
+    return c.json({ count, created, card: view }, created ? 201 : 200);
   });
 
   app.delete("/api/cards/:id", (c) =>

@@ -1,7 +1,8 @@
 /**
  * Watching with learner subtitles. The remote is the whole interface:
- * ◀ hear the line again, ▶ next line, ▲ step into the line's words,
- * OK on a word for its card, ▼ translation, ☰ pause after every line.
+ * ◀ hear the line again (it comes back in the Daily Rerun), ▶ next line,
+ * ▲ step into the line's words, OK on a word for its card, ▼ translation,
+ * ☰ pause after every line.
  */
 
 import { KeplerVideoSurfaceView } from "@amazon-devices/react-native-w3cmedia";
@@ -15,6 +16,7 @@ import {
   lastStartedCueIndex,
   nextLineTarget,
   previousLineTarget,
+  RESTART_GRACE_SECONDS,
   type EnrichedCue,
   type LearningItem,
   shouldAutoPause,
@@ -189,12 +191,36 @@ function Player({ viewers, detail, known, saved, onKnown, onSaved, onExit }: Pla
     [video],
   );
 
+  // A line heard again comes back in the Daily Rerun as a listening card. ◀
+  // twice quickly means "the line before", so only the line the viewer
+  // settles on counts, once the restart window has passed.
+  const pendingReplay = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const cancelReplay = () => {
+    if (pendingReplay.current !== undefined) clearTimeout(pendingReplay.current);
+  };
+  useEffect(() => cancelReplay, []);
+  const hearAgain = useCallback(
+    (target: EnrichedCue | undefined) => {
+      if (!target) return;
+      playLine(target);
+      cancelReplay();
+      pendingReplay.current = setTimeout(() => {
+        void Promise.all(
+          viewers.map((v) => api.replay(v.id, { titleId: detail.meta.id, cueId: target.id }).catch(() => undefined)),
+        ).then((results) => {
+          if (results.some((r) => r?.created)) notify("↺ This line comes back in your Daily Rerun");
+        });
+      }, RESTART_GRACE_SECONDS * 1000);
+    },
+    [playLine, viewers, detail.meta.id, notify],
+  );
+
   const run = useCallback(
     (cmd: PlayerCommand) => {
       const t = video.time.current;
       switch (cmd.type) {
         case "previousLine":
-          playLine(previousLineTarget(cues, t) as EnrichedCue | undefined);
+          hearAgain(previousLineTarget(cues, t) as EnrichedCue | undefined);
           break;
         case "nextLine":
           playLine(nextLineTarget(cues, t) as EnrichedCue | undefined);
@@ -249,7 +275,7 @@ function Player({ viewers, detail, known, saved, onKnown, onSaved, onExit }: Pla
           break;
       }
     },
-    [cues, video, playLine, notify, onExit],
+    [cues, video, playLine, hearAgain, notify, onExit],
   );
 
   // Vega re-subscribes whenever the handler changes, so keep one stable
@@ -280,8 +306,8 @@ function Player({ viewers, detail, known, saved, onKnown, onSaved, onExit }: Pla
       if (msg.action === "toggle") video.toggle();
       else if (msg.action === "play") video.play();
       else if (msg.action === "pause") video.pause();
-      else if (msg.action === "replay") playLine(cues[lastStartedCueIndex(cues, t)]);
-      else if (msg.action === "previous") playLine(previousLineTarget(cues, t) as EnrichedCue | undefined);
+      else if (msg.action === "replay") hearAgain(cues[lastStartedCueIndex(cues, t)]);
+      else if (msg.action === "previous") hearAgain(previousLineTarget(cues, t) as EnrichedCue | undefined);
       else if (msg.action === "next") playLine(nextLineTarget(cues, t) as EnrichedCue | undefined);
     } else if (msg.type === "shadow.result") {
       const verdict = msg.score >= 90 ? "spot on" : msg.score >= 70 ? "nearly there" : "try once more";

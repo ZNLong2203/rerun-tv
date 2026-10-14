@@ -6,7 +6,7 @@ export interface Profile {
   nativeLang: string;
   level: CefrLevel;
   color: string;
-  stats?: { saved: number; due: number; reviewedToday: number; known: number };
+  stats?: { saved: number; lines: number; due: number; dueLines: number; reviewedToday: number; known: number };
 }
 
 async function call<T>(path: string, init?: RequestInit): Promise<T> {

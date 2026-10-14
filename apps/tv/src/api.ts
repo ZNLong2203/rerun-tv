@@ -7,7 +7,8 @@ export interface Profile {
   nativeLang: string;
   level: "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
   color: string;
-  stats: { saved: number; due: number; reviewedToday: number; known: number };
+  /** saved counts words; lines counts lines to hear again; due counts both. */
+  stats: { saved: number; lines: number; due: number; dueLines: number; reviewedToday: number; known: number };
 }
 
 export interface TitleSummary {
@@ -56,6 +57,12 @@ export const api = {
       body: JSON.stringify(card),
     }),
   cards: (profileId: string) => call<CardView[]>(`/api/profiles/${profileId}/cards`),
+  /** Heard a line again: it becomes a listening card the first time. */
+  replay: (profileId: string, line: { titleId: string; cueId: number }) =>
+    call<{ count: number; created: boolean; card: CardView }>(`/api/profiles/${profileId}/replays`, {
+      method: "POST",
+      body: JSON.stringify(line),
+    }),
   due: (profileId: string) => call<CardView[]>(`/api/profiles/${profileId}/review?limit=10`),
   grade: (cardId: string, grade: "again" | "hard" | "good" | "easy") =>
     call<{ intervalDays: number }>(`/api/cards/${cardId}/review`, { method: "POST", body: JSON.stringify({ grade }) }),

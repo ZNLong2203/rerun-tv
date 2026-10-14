@@ -463,3 +463,12 @@ mark {
   border: none;
   font-weight: 700;
 }
+
+.section-label {
+  margin: 18px 4px 2px;
+}
+
+.line-card-small .in-line {
+  font-size: 17px;
+  font-weight: 600;
+}

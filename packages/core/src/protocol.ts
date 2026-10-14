@@ -7,9 +7,20 @@ export type Role = "tv" | "phone";
 
 export type RemoteAction = "play" | "pause" | "toggle" | "replay" | "previous" | "next";
 
-/** A saved word as the phone shows it. */
+export type CardKind = "word" | "line";
+
+/** The item id of the listening card for a line: one per line and person. */
+export function lineItemId(cueId: number): string {
+  return `line:${cueId}`;
+}
+
+/**
+ * A card in someone's deck, as the TV and the phone show it: a word they
+ * saved, or a line they had to hear again (`kind: "line"`, with no word).
+ */
 export interface CardView {
   id: string;
+  kind: CardKind;
   profileId: string;
   titleId: string;
   cueId: number;

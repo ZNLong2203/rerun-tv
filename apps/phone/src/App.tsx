@@ -271,9 +271,16 @@ function WordsTab({ profile, fresh }: { profile: Profile | undefined; fresh: Car
     );
   }
 
+  const words = cards.filter((c) => c.kind !== "line");
+  const lines = cards.filter((c) => c.kind === "line");
+  const remove = async (id: string) => {
+    await api.deleteCard(id);
+    setCards((cs) => cs.filter((x) => x.id !== id));
+  };
+
   return (
     <section className="cards">
-      {cards.map((c) => (
+      {words.map((c) => (
         <article key={c.id} className={`card ${freshIds.has(c.id) ? "fresh" : ""}`}>
           <div className="card-head">
             <h3>{c.surface}</h3>
@@ -288,13 +295,7 @@ function WordsTab({ profile, fresh }: { profile: Profile | undefined; fresh: Car
             <button onClick={() => setPlaying(playing === c.id ? undefined : c.id)}>
               {playing === c.id ? "Hide scene" : "▶ Scene"}
             </button>
-            <button
-              className="ghost"
-              onClick={async () => {
-                await api.deleteCard(c.id);
-                setCards((cs) => cs.filter((x) => x.id !== c.id));
-              }}
-            >
+            <button className="ghost" onClick={() => remove(c.id)}>
               Remove
             </button>
           </div>
@@ -303,6 +304,28 @@ function WordsTab({ profile, fresh }: { profile: Profile | undefined; fresh: Car
           )}
         </article>
       ))}
+      {lines.length > 0 && (
+        <>
+          <div className="label section-label">Lines you heard again · in your Daily Rerun</div>
+          {lines.map((c) => (
+            <article key={c.id} className="card line-card-small">
+              <p className="in-line">{c.line}</p>
+              <p className="translation small">{c.lineTranslation}</p>
+              <div className="card-actions">
+                <button onClick={() => setPlaying(playing === c.id ? undefined : c.id)}>
+                  {playing === c.id ? "Hide scene" : "▶ Scene"}
+                </button>
+                <button className="ghost" onClick={() => remove(c.id)}>
+                  Remove
+                </button>
+              </div>
+              {playing === c.id && (
+                <video className="clip" src={clipUrl(c.titleId, c.start, c.end)} autoPlay controls playsInline />
+              )}
+            </article>
+          ))}
+        </>
+      )}
     </section>
   );
 }
@@ -400,7 +423,8 @@ function HouseholdTab({ profiles, onCreated }: { profiles: Profile[]; onCreated:
             <div>
               <strong>{p.name}</strong>
               <div className="muted small">
-                {p.level} · {LANGS[p.nativeLang] ?? p.nativeLang} · {p.stats?.saved ?? 0} words · {p.stats?.known ?? 0} known
+                {p.level} · {LANGS[p.nativeLang] ?? p.nativeLang} · {p.stats?.saved ?? 0} words · {p.stats?.lines ?? 0} lines ·{" "}
+                {p.stats?.known ?? 0} known
               </div>
             </div>
           </div>

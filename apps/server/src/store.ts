@@ -7,9 +7,11 @@ import { randomUUID } from "node:crypto";
 import { DatabaseSync } from "node:sqlite";
 import {
   CEFR_LEVELS,
+  lineItemId,
   newCard,
   review,
   isMastered,
+  type CardKind,
   type CardState,
   type CefrLevel,
   type Grade,
@@ -27,6 +29,8 @@ export interface Profile {
 
 export interface StoredCard {
   id: string;
+  /** A saved word, or a line the learner had to hear again. */
+  kind: CardKind;
   profileId: string;
   titleId: string;
   cueId: number;
@@ -64,9 +68,18 @@ CREATE TABLE IF NOT EXISTS cards (
   streak INTEGER NOT NULL,
   lapses INTEGER NOT NULL,
   step INTEGER NOT NULL,
+  kind TEXT NOT NULL DEFAULT 'word',
   UNIQUE (profile_id, title_id, item_id)
 );
 CREATE INDEX IF NOT EXISTS cards_due ON cards (profile_id, due);
+CREATE TABLE IF NOT EXISTS replays (
+  profile_id TEXT NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+  title_id TEXT NOT NULL,
+  cue_id INTEGER NOT NULL,
+  count INTEGER NOT NULL,
+  last_at INTEGER NOT NULL,
+  PRIMARY KEY (profile_id, title_id, cue_id)
+);
 CREATE TABLE IF NOT EXISTS reviews (
   card_id TEXT NOT NULL REFERENCES cards(id) ON DELETE CASCADE,
   grade TEXT NOT NULL,
@@ -90,6 +103,7 @@ function toProfile(r: Row): Profile {
 function toCard(r: Row): StoredCard {
   return {
     id: String(r.id),
+    kind: r.kind === "line" ? "line" : "word",
     profileId: String(r.profile_id),
     titleId: String(r.title_id),
     cueId: Number(r.cue_id),
@@ -114,6 +128,9 @@ export class Store {
     this.db = new DatabaseSync(path);
     this.db.exec("PRAGMA foreign_keys = ON; PRAGMA journal_mode = WAL;");
     this.db.exec(SCHEMA);
+    // Databases from before listening cards have no kind column.
+    const columns = this.db.prepare("PRAGMA table_info(cards)").all() as Row[];
+    if (!columns.some((c) => c.name === "kind")) this.db.exec("ALTER TABLE cards ADD COLUMN kind TEXT NOT NULL DEFAULT 'word'");
   }
 
   close() {
@@ -172,7 +189,7 @@ export class Store {
   // ── Cards ───────────────────────────────────────────────────
 
   /** Save a word; saving it again returns the existing card unchanged. */
-  saveCard(input: { profileId: string; titleId: string; cueId: number; itemId: string; lemma: string }): {
+  saveCard(input: { profileId: string; titleId: string; cueId: number; itemId: string; lemma: string; kind?: CardKind }): {
     card: StoredCard;
     created: boolean;
   } {
@@ -182,15 +199,37 @@ export class Store {
     if (existing) return { card: toCard(existing), created: false };
 
     const now = this.now();
-    const card: StoredCard = { id: randomUUID(), createdAt: now, state: newCard(now), ...input };
+    const card: StoredCard = { id: randomUUID(), createdAt: now, state: newCard(now), ...input, kind: input.kind ?? "word" };
     const s = card.state;
     this.db
       .prepare(
-        `INSERT INTO cards (id, profile_id, title_id, cue_id, item_id, lemma, created_at, due, interval_days, ease, streak, lapses, step)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO cards (id, kind, profile_id, title_id, cue_id, item_id, lemma, created_at, due, interval_days, ease, streak, lapses, step)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
-      .run(card.id, card.profileId, card.titleId, card.cueId, card.itemId, card.lemma, now, s.due, s.intervalDays, s.ease, s.streak, s.lapses, s.step);
+      .run(card.id, card.kind, card.profileId, card.titleId, card.cueId, card.itemId, card.lemma, now, s.due, s.intervalDays, s.ease, s.streak, s.lapses, s.step);
     return { card, created: true };
+  }
+
+  /**
+   * Count that someone heard a line again. A line you needed twice becomes a
+   * listening card in your Daily Rerun; hearing it more only adds to the count.
+   */
+  recordReplay(input: { profileId: string; titleId: string; cueId: number }): { count: number; card: StoredCard; created: boolean } {
+    this.db
+      .prepare(
+        `INSERT INTO replays (profile_id, title_id, cue_id, count, last_at) VALUES (?, ?, ?, 1, ?)
+         ON CONFLICT (profile_id, title_id, cue_id) DO UPDATE SET count = count + 1, last_at = excluded.last_at`,
+      )
+      .run(input.profileId, input.titleId, input.cueId, this.now());
+    const count = Number(
+      (this.db.prepare("SELECT count FROM replays WHERE profile_id = ? AND title_id = ? AND cue_id = ?").get(
+        input.profileId,
+        input.titleId,
+        input.cueId,
+      ) as Row).count,
+    );
+    const { card, created } = this.saveCard({ ...input, itemId: lineItemId(input.cueId), lemma: "", kind: "line" });
+    return { count, card, created };
   }
 
   getCard(id: string): StoredCard | undefined {
@@ -224,18 +263,21 @@ export class Store {
       .prepare("UPDATE cards SET due = ?, interval_days = ?, ease = ?, streak = ?, lapses = ?, step = ? WHERE id = ?")
       .run(s.due, s.intervalDays, s.ease, s.streak, s.lapses, s.step, id);
     this.db.prepare("INSERT INTO reviews (card_id, grade, at) VALUES (?, ?, ?)").run(id, grade, now);
-    if (isMastered(s)) this.setKnown(card.profileId, card.lemma, true);
+    if (card.kind === "word" && isMastered(s)) this.setKnown(card.profileId, card.lemma, true);
     return { ...card, state: s };
   }
 
-  stats(profileId: string): { saved: number; due: number; reviewedToday: number; known: number } {
+  /** saved counts words; lines counts listening cards; due and dueLines count both kinds and lines only. */
+  stats(profileId: string): { saved: number; lines: number; due: number; dueLines: number; reviewedToday: number; known: number } {
     const dayStart = new Date(this.now());
     dayStart.setHours(0, 0, 0, 0);
     const one = (sql: string, ...args: (string | number)[]) =>
       Number((this.db.prepare(sql).get(...args) as Row).n);
     return {
-      saved: one("SELECT COUNT(*) AS n FROM cards WHERE profile_id = ?", profileId),
+      saved: one("SELECT COUNT(*) AS n FROM cards WHERE profile_id = ? AND kind = 'word'", profileId),
+      lines: one("SELECT COUNT(*) AS n FROM cards WHERE profile_id = ? AND kind = 'line'", profileId),
       due: one("SELECT COUNT(*) AS n FROM cards WHERE profile_id = ? AND due <= ?", profileId, this.now()),
+      dueLines: one("SELECT COUNT(*) AS n FROM cards WHERE profile_id = ? AND kind = 'line' AND due <= ?", profileId, this.now()),
       reviewedToday: one(
         "SELECT COUNT(*) AS n FROM reviews r JOIN cards c ON c.id = r.card_id WHERE c.profile_id = ? AND r.at >= ?",
         profileId,
