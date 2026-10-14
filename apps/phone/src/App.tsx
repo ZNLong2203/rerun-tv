@@ -29,6 +29,11 @@ const LEVELS = [
 ] as const;
 const COLORS = ["#F59E0B", "#38BDF8", "#A78BFA", "#34D399", "#F472B6", "#F87171"];
 
+/** "1 word", "3 words". */
+function count(n: number, noun: string): string {
+  return `${n} ${noun}${n === 1 ? "" : "s"}`;
+}
+
 function codeFromHash(): string | undefined {
   const code = location.hash.replace(/^#/, "").trim().toUpperCase();
   return code || undefined;
@@ -85,6 +90,7 @@ export function App() {
         {tab === "household" && (
           <HouseholdTab
             profiles={profiles}
+            defaultLang={profile?.nativeLang}
             onCreated={(p) => {
               setProfiles((ps) => [...ps, p]);
               room.send({ type: "profiles.changed" });
@@ -405,9 +411,18 @@ function AskTab({ now, profile }: { now: Now | undefined; profile: Profile | und
 
 // ── Household: profiles, created on the phone because typing on a TV hurts ─
 
-function HouseholdTab({ profiles, onCreated }: { profiles: Profile[]; onCreated: (p: Profile) => void }) {
+function HouseholdTab({
+  profiles,
+  defaultLang,
+  onCreated,
+}: {
+  profiles: Profile[];
+  /** A household usually shares a language: start from the watcher's. */
+  defaultLang: string | undefined;
+  onCreated: (p: Profile) => void;
+}) {
   const [name, setName] = useState("");
-  const [nativeLang, setNativeLang] = useState("vi");
+  const [nativeLang, setNativeLang] = useState(defaultLang && LANGS[defaultLang] ? defaultLang : Object.keys(LANGS)[0]!);
   const [level, setLevel] = useState<Profile["level"]>("B1");
   const [color, setColor] = useState(COLORS[profiles.length % COLORS.length]!);
   const [error, setError] = useState<string>();
@@ -423,8 +438,8 @@ function HouseholdTab({ profiles, onCreated }: { profiles: Profile[]; onCreated:
             <div>
               <strong>{p.name}</strong>
               <div className="muted small">
-                {p.level} · {LANGS[p.nativeLang] ?? p.nativeLang} · {p.stats?.saved ?? 0} words · {p.stats?.lines ?? 0} lines ·{" "}
-                {p.stats?.known ?? 0} known
+                {p.level} · {LANGS[p.nativeLang] ?? p.nativeLang} · {count(p.stats?.saved ?? 0, "word")} ·{" "}
+                {count(p.stats?.lines ?? 0, "line")} · {p.stats?.known ?? 0} known
               </div>
             </div>
           </div>

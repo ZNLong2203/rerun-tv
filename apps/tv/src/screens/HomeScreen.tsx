@@ -61,7 +61,8 @@ export function HomeScreen({ viewers, onPlay, onRerun, onPair }: Props) {
         <View style={styles.headerRight}>
           {!together && (
             <Text style={styles.stats}>
-              {me.stats.saved} words · {me.stats.lines} lines · {me.stats.known} known · {me.stats.reviewedToday} reviewed today
+              {count(me.stats.saved, "word")} · {count(me.stats.lines, "line")} · {me.stats.known} known · {me.stats.reviewedToday}{" "}
+              reviewed today
             </Text>
           )}
           {people.map((p) => (
@@ -144,10 +145,14 @@ export function HomeScreen({ viewers, onPlay, onRerun, onPair }: Props) {
   );
 }
 
+/** "1 word", "3 words". */
+function count(n: number, noun: string): string {
+  return `${n} ${noun}${n === 1 ? "" : "s"}`;
+}
+
 /** "3 words and 1 line", "2 lines", "1 word". */
 function dueSummary(words: number, lines: number): string {
-  const part = (n: number, one: string) => (n > 0 ? `${n} ${one}${n === 1 ? "" : "s"}` : "");
-  return [part(words, "word"), part(lines, "line")].filter(Boolean).join(" and ");
+  return [words > 0 ? count(words, "word") : "", lines > 0 ? count(lines, "line") : ""].filter(Boolean).join(" and ");
 }
 
 const styles = StyleSheet.create({
