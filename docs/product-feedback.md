@@ -51,8 +51,9 @@ virtual device we developed and recorded on, port forwarding, log streaming, cra
 **Used for:** playing the film, seeking line by line (◀ ▶), auto-pause after each line, and replaying a single line in
 the Daily Rerun.
 
-**What worked well:** familiar `HTMLMediaElement` API (`currentTime`, `play`, `pause`, events); seeking a progressive
-MP4 over HTTPS was quick enough to jump line to line (~2.5 s).
+**What worked well:** familiar `HTMLMediaElement` API (`currentTime`, `play`, `pause`, events). Blender's original
+720p `.mov` (H.264 with MP3 audio) played straight from their HTTPS server with no transcoding, started in about 3 s,
+and seeking to the next line took under a second — fast enough that ◀ ▶ feel like part of watching.
 
 **What needs work**
 - Cleartext HTTP sources and extension-less paths fail with `MEDIA_ERR_SRC_NOT_SUPPORTED` and an empty message, before

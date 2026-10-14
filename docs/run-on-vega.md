@@ -31,8 +31,9 @@ API.
 
 **Video must come over HTTPS.** Vega's URL-mode player rejects cleartext HTTP sources without fetching them, so each
 title can name an HTTPS copy in `content/<id>/meta.json` → `video.streamUrl`, and the server hands that URL to the TV.
-Tears of Steel points at the Internet Archive's copy. To play the local MP4 instead, serve the server over HTTPS (any
-tunnel) and set `PUBLIC_URL`; the server then hands out `PUBLIC_URL/media/<id>/video.mp4`.
+Tears of Steel points at Blender's own copy (`download.blender.org`, 1280×534 H.264 in a `.mov` with MP3 audio,
+which the player handles). To play the local MP4 instead, serve the server over HTTPS (any tunnel) and set
+`PUBLIC_URL`; the server then hands out `PUBLIC_URL/media/<id>/video.mp4`.
 
 ## 3. Build, install, launch
 
