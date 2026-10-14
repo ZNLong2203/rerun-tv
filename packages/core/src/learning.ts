@@ -152,3 +152,33 @@ export function segmentLine(cue: Pick<EnrichedCue, "text" | "items">): LineSegme
   if (run.length) out.push({ kind: "text", tokens: run });
   return out;
 }
+
+/** Someone watching: their level, what they know, and the colour that marks their words. */
+export interface Viewer extends Pick<LearnerProfile, "level" | "known"> {
+  id: string;
+  color: string;
+}
+
+/**
+ * For a household watching together: for each learnable item in a line, the
+ * viewers for whom it is new, in viewer order. Items new for nobody are left
+ * out, so a renderer can mark exactly what each person should notice.
+ */
+export function newForViewers(items: readonly LearningItem[], viewers: readonly Viewer[]): Map<string, Viewer[]> {
+  const out = new Map<string, Viewer[]>();
+  for (const item of items) {
+    const who = viewers.filter((v) => isNewFor(item, v));
+    if (who.length) out.set(item.id, who);
+  }
+  return out;
+}
+
+/** Distinct learner languages among the viewers, first viewer's first. */
+export function viewerLanguages(viewers: readonly { nativeLang: string }[]): string[] {
+  return [...new Set(viewers.map((v) => v.nativeLang))];
+}
+
+/** Auto-pause suits whoever finds the film hardest: on if anyone is at A1–A2. */
+export function shouldAutoPause(viewers: readonly Pick<LearnerProfile, "level">[]): boolean {
+  return viewers.some((v) => levelRank(v.level) <= levelRank("A2"));
+}

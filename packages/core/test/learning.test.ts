@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { isNewFor, pickLang, trackDifficulty, type EnrichedCue, type LearningItem } from "../src/learning.js";
+import {
+  isNewFor,
+  newForViewers,
+  pickLang,
+  shouldAutoPause,
+  trackDifficulty,
+  viewerLanguages,
+  type EnrichedCue,
+  type LearningItem,
+} from "../src/learning.js";
 
 function item(lemma: string, level: LearningItem["level"], kind: LearningItem["kind"] = "word"): LearningItem {
   return {
@@ -64,5 +73,25 @@ describe("pickLang", () => {
     expect(pickLang({ en: "hi" }, "vi")).toBe("hi");
     expect(pickLang({ es: "hola" }, "vi")).toBe("hola");
     expect(pickLang({}, "vi")).toBe("");
+  });
+});
+
+describe("watching together", () => {
+  const linh = { id: "linh", color: "#F59E0B", level: "B1" as const, known: new Set<string>() };
+  const minh = { id: "minh", color: "#38BDF8", level: "A2" as const, known: new Set<string>(["jerk"]) };
+
+  it("marks each item with the viewers it is new for, in viewer order", () => {
+    const items = [item("awesome", "B1"), item("freak out", "B2", "phrasal_verb"), item("jerk", "B2"), item("Thom", "C2", "name")];
+    const map = newForViewers(items, [linh, minh]);
+    expect(map.get("awesome")?.map((v) => v.id)).toEqual(["minh"]);
+    expect(map.get("freak out")?.map((v) => v.id)).toEqual(["linh", "minh"]);
+    expect(map.get("jerk")?.map((v) => v.id)).toEqual(["linh"]);
+    expect(map.has("Thom")).toBe(false);
+  });
+
+  it("lists each learner language once and pauses for the least advanced viewer", () => {
+    expect(viewerLanguages([{ nativeLang: "vi" }, { nativeLang: "es" }, { nativeLang: "vi" }])).toEqual(["vi", "es"]);
+    expect(shouldAutoPause([{ level: "B1" }, { level: "B2" }])).toBe(false);
+    expect(shouldAutoPause([{ level: "B1" }, { level: "A2" }])).toBe(true);
   });
 });
