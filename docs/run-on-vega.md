@@ -80,6 +80,24 @@ node scripts/phone-sim.mjs --test --tv-shots    # with STILL_VIDEO=1: also captu
 In `--test`, speech recognition is replaced by a stand-in that says the line on screen with one word missing, so the
 score is repeatable; the scoring, the room messages and the TV's toast are the real ones.
 
+## Recording the demo
+
+`scripts/demo.mjs` plays the video script on the TV and a phone window beside it, slowly enough to talk over, while
+you record the screen. It finds its way by the line on screen, not by timing.
+
+```bash
+vega virtual-device stop && vega virtual-device start      # a fresh VVD: no "Creating surfaces" kills mid-take
+vega exec vda shell "touch /tmp/automation-toolkit.enable"
+vega device start-port-forwarding --port 8383 --forward true
+mv .data .data.bak-$(date +%s)                              # a fresh household: Camille, Hugo and Ana
+DEBUG_ROOMS=1 npm run dev
+vega device launch-app --appName com.rerun.tv.main
+node scripts/demo.mjs --step                                # Enter before each scene; --pace 1.2 for slower
+```
+
+Scenes: who is learning → watching with ◀ ▶ → a word card, saved to the phone → saying the line back (speak when the
+script says so, or pass `--stand-in-voice`) → watching together → the Daily Rerun, ending on a listening card.
+
 ## Remote
 
 | Key | Watching | Word mode | Card |
