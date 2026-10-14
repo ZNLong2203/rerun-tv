@@ -15,7 +15,7 @@ home connection that measured ~160–300 KB/s to both Amazon's SDK host and Blen
 | FL-003 | Vega SDK installer | Download SDK 0.24 on a slow link | S3 | ~1.5 h | Retried |
 | FL-004 | W3C media (URL mode) | Play an MP4 from the dev server | S3 | ~2 h | Worked around |
 | FL-005 | W3C media (URL mode) | Play an MP4 from a path without an extension | S2 | ~20 min | Fixed |
-| FL-006 | Vega Virtual Device | Keep a playing app alive after the VVD sat idle | S3 | ~1 h | Worked around |
+| FL-006 | Vega Virtual Device | Keep a playing app alive after the VVD sat idle | S3 | ~1 h, then 13 restarts | Worked around |
 | FL-007 | Automation toolkit | Screenshot the player while a video surface exists | S2 | ~20 min | Avoided |
 | FL-008 | React Native for Vega | Lay out a 1080p design | S2 | ~15 min | Fixed |
 | FL-009 | Vega focus engine | Move Down from a full-width card to the first tile | S1 | ~10 min | Fixed |
@@ -111,7 +111,10 @@ not shown by default.
   in background` and an ACR with `CrashReason: AppNotResponding`, `LCM_ANR_REASON: Lifecycle Callback`,
   `Screen: Off`. Apps without video stay on screen, so the problem only shows up when playback starts — and the crash
   report blames the app.
-- **Severity:** S3 — **Time lost:** ~1 hour.
+- **How often:** it kept coming back. The VVD holds 13 ACRs for Rerun from one afternoon (19:23 to 22:43, UTC+7),
+  every one `AppNotResponding` during `Creating surfaces`, each after the VVD had been idle for a while — during
+  development, screenshot capture and the end-to-end tests alike.
+- **Severity:** S3 — **Time lost:** ~1 hour to diagnose, then a restart and new port forwards (~3 minutes) each time.
 - **Workaround:** `vega virtual-device stop` / `start`, then redo the port forwards.
 - **Actionable suggestion:** Keep the VVD display awake while it is running (or wake it on `launch-app`), and when an
   ANR is caused by the display being off, say so in the ACR instead of `AppNotResponding`.
