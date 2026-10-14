@@ -90,8 +90,13 @@ const scenes = [
       await sleep(2500); // most of the line, then the microphone pauses the film on it
       await phone.getByRole("button", { name: /Tap, then say the line/ }).click();
       log(standInVoice ? "the stand-in says the line" : ">>> SAY THE LINE NOW <<<");
-      await phone.locator(".result .score span").waitFor({ timeout: 20_000 });
-      await hold(4); // the score on the phone, and on the TV
+      try {
+        await phone.locator(".result .score span").waitFor({ timeout: 20_000 });
+        await hold(4); // the score on the phone, and on the TV
+      } catch {
+        // Keep the take going: this scene can be shot again on a real phone.
+        log("no speech heard — carrying on (try --stand-in-voice, or film this scene on a phone)");
+      }
     },
   ],
   [
