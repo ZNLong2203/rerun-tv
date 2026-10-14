@@ -41,8 +41,11 @@ const app = createApp({
   rooms,
   asker: createAsker(),
   phoneDir: join(ROOT, "apps", "phone", "dist"),
-  publicUrl: process.env.PUBLIC_URL,
+  // An empty PUBLIC_URL= line in .env.local means "not set".
+  publicUrl: process.env.PUBLIC_URL?.trim() || undefined,
   debugRooms: process.env.DEBUG_ROOMS === "1",
+  stillVideo: process.env.STILL_VIDEO === "1",
+  frameCacheDir: join(ROOT, ".cache", "frames"),
   port,
 });
 

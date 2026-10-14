@@ -216,3 +216,36 @@ describe("rooms", () => {
     expect(rooms.has(code)).toBe(false);
   });
 });
+
+describe("still frames", () => {
+  it("snaps requested times to a half-second grid", async () => {
+    const { frameSecond } = await import("../src/frames.js");
+    expect(frameSecond(23.26)).toBe(23.5);
+    expect(frameSecond(23.2)).toBe(23);
+    expect(frameSecond(-4)).toBe(0);
+  });
+
+  it("only offers still playback when asked to", async () => {
+    const body = (await (await app.request("/api/titles/demo")).json()) as { meta: { playback: string; frameUrl?: string } };
+    expect(body.meta.playback).toBe("video");
+    expect(body.meta.frameUrl).toBeUndefined();
+  });
+});
+
+describe("public URL", () => {
+  it("treats an empty PUBLIC_URL as unset, so QR codes and media URLs stay absolute", async () => {
+    const { contentDir, mediaDir } = fixture();
+    const blank = createApp({ store, catalog: new Catalog(contentDir, mediaDir), rooms, port: 8787, publicUrl: "  " });
+    const pair = (await (await blank.request("/api/pair", { method: "POST" })).json()) as { url: string };
+    expect(pair.url).toMatch(/^http:\/\/[^/]+:8787\/m\/#/);
+    const detail = (await (await blank.request("http://tv.local:8787/api/titles/demo")).json()) as { meta: { videoUrl: string } };
+    expect(detail.meta.videoUrl).toBe("http://tv.local:8787/media/demo/video.mp4");
+  });
+
+  it("uses PUBLIC_URL without a trailing slash when set", async () => {
+    const { contentDir, mediaDir } = fixture();
+    const pub = createApp({ store, catalog: new Catalog(contentDir, mediaDir), rooms, port: 8787, publicUrl: "https://rerun.example/" });
+    const pair = (await (await pub.request("/api/pair", { method: "POST" })).json()) as { url: string };
+    expect(pair.url).toMatch(/^https:\/\/rerun\.example\/m\/#[A-Z0-9]{5}$/);
+  });
+});

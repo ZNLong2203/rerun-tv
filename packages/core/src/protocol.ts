@@ -24,6 +24,8 @@ export interface CardView {
   due: number;
   /** Where the film plays from, so the card can replay its moment. */
   videoUrl: string;
+  /** Set when the server runs in still mode: frames instead of video. */
+  frameUrl?: string;
 }
 
 export type RoomMessage =

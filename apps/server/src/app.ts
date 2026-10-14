@@ -13,6 +13,7 @@ import { CEFR_LEVELS, pickLang, type CardView, type EnrichedTrack, type Grade } 
 import { z } from "zod";
 import { AskUnavailableError, type Asker } from "./ask.js";
 import type { Catalog, TitleMeta } from "./catalog.js";
+import { frameAt } from "./frames.js";
 import { serveFile } from "./media.js";
 import type { Rooms } from "./rooms.js";
 import type { StoredCard, Store } from "./store.js";
@@ -28,6 +29,13 @@ export interface Deps {
   publicUrl?: string;
   /** Expose GET /api/debug/rooms for on-device smoke tests. Never in production. */
   debugRooms?: boolean;
+  /**
+   * Tell the TV to show still frames instead of a video surface, so the
+   * player can be screenshotted (STILL_VIDEO=1). Needs the local video.
+   */
+  stillVideo?: boolean;
+  /** Where cut frames are cached. */
+  frameCacheDir?: string;
   port: number;
 }
 
@@ -108,7 +116,8 @@ async function json<T extends z.ZodType>(c: Context, schema: T): Promise<z.infer
 export function createApp(deps: Deps) {
   const { store, catalog, rooms } = deps;
   const app = new Hono();
-  const baseUrl = (c: Context) => deps.publicUrl ?? new URL(c.req.url).origin;
+  const publicUrl = deps.publicUrl?.trim().replace(/\/+$/, "") || undefined;
+  const baseUrl = (c: Context) => publicUrl ?? new URL(c.req.url).origin;
 
   // The TV app and the phone are served from different origins in development.
   app.use("/api/*", async (c, next) => {
@@ -144,7 +153,16 @@ export function createApp(deps: Deps) {
   app.get("/api/titles/:id", (c) => {
     const title = catalog.get(c.req.param("id"));
     if (!title?.track) return c.json({ error: "not found" }, 404);
-    return c.json({ meta: { ...title.meta, videoUrl: videoUrlFor(title.meta, baseUrl(c)) }, track: title.track });
+    const still = Boolean(deps.stillVideo && title.videoPath);
+    return c.json({
+      meta: {
+        ...title.meta,
+        videoUrl: videoUrlFor(title.meta, baseUrl(c)),
+        playback: still ? "still" : "video",
+        frameUrl: still ? `${baseUrl(c)}/media/${title.meta.id}/frame` : undefined,
+      },
+      track: title.track,
+    });
   });
 
   // Players pick a demuxer from the URL's extension, so the film is also served as video.mp4.
@@ -158,6 +176,14 @@ export function createApp(deps: Deps) {
     const path = catalog.get(c.req.param("id"))?.videoPath;
     if (!path) return c.json({ error: "video not prepared" }, 404);
     return serveFile(path, c.req.header("range"));
+  });
+
+  app.get("/media/:id/frame", async (c) => {
+    const title = catalog.get(c.req.param("id"));
+    const t = Number(c.req.query("t") ?? 0);
+    if (!title?.videoPath || !Number.isFinite(t) || !deps.frameCacheDir) return c.json({ error: "no frames" }, 404);
+    const path = await frameAt(title.videoPath, join(deps.frameCacheDir, title.meta.id), t);
+    return serveFile(path, undefined);
   });
 
   app.get("/media/:id/poster", (c) => {
@@ -207,7 +233,9 @@ export function createApp(deps: Deps) {
     return cards.flatMap((card) => {
       const title = catalog.get(card.titleId);
       if (!title) return [];
-      return cardView(card, title.track, lang, videoUrlFor(title.meta, baseUrl(c))) ?? [];
+      const view = cardView(card, title.track, lang, videoUrlFor(title.meta, baseUrl(c)));
+      if (!view) return [];
+      return deps.stillVideo && title.videoPath ? { ...view, frameUrl: `${baseUrl(c)}/media/${title.meta.id}/frame` } : view;
     });
   };
 
@@ -255,7 +283,7 @@ export function createApp(deps: Deps) {
   app.post("/api/pair", (c) => {
     const code = rooms.create();
     console.log(`pairing room ${code} opened`);
-    const base = deps.publicUrl ?? `http://${lanAddress() ?? "localhost"}:${deps.port}`;
+    const base = publicUrl ?? `http://${lanAddress() ?? "localhost"}:${deps.port}`;
     return c.json({ code, url: `${base}/m/#${code}` }, 201);
   });
 
