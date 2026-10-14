@@ -3,7 +3,7 @@
  * profile turns it into "words that are new for you".
  */
 
-import type { Cue } from "./subtitles.js";
+import type { Cue } from "./subtitles";
 
 export const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
 export type CefrLevel = (typeof CEFR_LEVELS)[number];

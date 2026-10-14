@@ -7,7 +7,7 @@
  * what a "previous track" button does on every music player.
  */
 
-import type { Cue } from "./subtitles.js";
+import type { Cue } from "./subtitles";
 
 /** Index of the cue showing at time t, or -1 between cues. */
 export function cueIndexAt(cues: readonly Cue[], t: number): number {

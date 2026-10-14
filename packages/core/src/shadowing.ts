@@ -6,7 +6,7 @@
  * instead.
  */
 
-import { tokenize } from "./tokenize.js";
+import { tokenize } from "./tokenize";
 
 export type WordOutcome = "hit" | "missed" | "substituted";
 
