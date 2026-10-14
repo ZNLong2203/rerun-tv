@@ -125,8 +125,9 @@ npm run dev                               # Rerun server on :8787 with a demo ho
 
 The TV app and the Vega Virtual Device: see [docs/run-on-vega.md](docs/run-on-vega.md).
 
-Phones need HTTPS for the microphone. Put the server behind any HTTPS tunnel and set `PUBLIC_URL` in `.env.local` so
-the QR code points there.
+Phones need HTTPS for the microphone. On a home network, start the server with `HTTPS=1 npm run dev`: it also serves
+on :8788 with a self-signed certificate for its LAN address, and the QR code on the TV points phones there (accept the
+warning once). For a trusted certificate, put the server behind any HTTPS tunnel and set `PUBLIC_URL` instead.
 
 Preparing a new title (needs `GEMINI_API_KEY` in `.env.local`, see `.env.example`):
 

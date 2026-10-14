@@ -248,4 +248,14 @@ describe("public URL", () => {
     const pair = (await (await pub.request("/api/pair", { method: "POST" })).json()) as { url: string };
     expect(pair.url).toMatch(/^https:\/\/rerun\.example\/m\/#[A-Z0-9]{5}$/);
   });
+
+  it("sends phones to the HTTPS listener when there is one, so the microphone works", async () => {
+    const { contentDir, mediaDir } = fixture();
+    const lan = createApp({ store, catalog: new Catalog(contentDir, mediaDir), rooms, port: 8787, phoneUrl: "https://192.168.1.6:8788" });
+    const pair = (await (await lan.request("/api/pair", { method: "POST" })).json()) as { url: string };
+    expect(pair.url).toMatch(/^https:\/\/192\.168\.1\.6:8788\/m\/#[A-Z0-9]{5}$/);
+    // The TV keeps loading media from where it asked.
+    const detail = (await (await lan.request("http://tv.local:8787/api/titles/demo")).json()) as { meta: { videoUrl: string } };
+    expect(detail.meta.videoUrl).toBe("http://tv.local:8787/media/demo/video.mp4");
+  });
 });

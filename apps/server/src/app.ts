@@ -27,6 +27,8 @@ export interface Deps {
   phoneDir?: string;
   /** Public base URL for QR codes; otherwise the LAN address is used. */
   publicUrl?: string;
+  /** Base URL of the HTTPS listener (HTTPS=1), so the phone gets a microphone. */
+  phoneUrl?: string;
   /** Expose GET /api/debug/rooms for on-device smoke tests. Never in production. */
   debugRooms?: boolean;
   /**
@@ -283,7 +285,7 @@ export function createApp(deps: Deps) {
   app.post("/api/pair", (c) => {
     const code = rooms.create();
     console.log(`pairing room ${code} opened`);
-    const base = publicUrl ?? `http://${lanAddress() ?? "localhost"}:${deps.port}`;
+    const base = publicUrl ?? deps.phoneUrl ?? `http://${lanAddress() ?? "localhost"}:${deps.port}`;
     return c.json({ code, url: `${base}/m/#${code}` }, 201);
   });
 
