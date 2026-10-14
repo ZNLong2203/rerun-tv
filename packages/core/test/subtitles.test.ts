@@ -50,6 +50,12 @@ intro
     expect(parseSubtitles(srt)).toEqual([{ id: 0, start: 1, end: 2, text: "Hi" }]);
   });
 
+  it("accepts a single-dash arrow, as some hand-made SRT files use", () => {
+    expect(parseSubtitles("1\n00:00:23,000 -> 00:00:24,500\nVocê é um idiota, Thom.\n")).toEqual([
+      { id: 0, start: 23, end: 24.5, text: "Você é um idiota, Thom." },
+    ]);
+  });
+
   it("round-trips through WebVTT", () => {
     const cues = parseSubtitles(SRT);
     expect(parseSubtitles(toWebVtt(cues))).toEqual(cues);

@@ -2,6 +2,7 @@
  * Subtitle parsing for SRT and WebVTT.
  *
  * Both formats reduce to the same thing for a learner: a list of timed lines.
+ * Real-world files are forgiving about the arrow ("->" as well as "-->").
  * Styling tags are stripped, line breaks inside a cue become spaces, and cues
  * are returned sorted by start time with stable, zero-based ids.
  */
@@ -18,7 +19,7 @@ export interface Cue {
 }
 
 const TIMESTAMP =
-  /(?:(\d{1,2}):)?(\d{1,2}):(\d{2})[,.](\d{1,3})\s*-->\s*(?:(\d{1,2}):)?(\d{1,2}):(\d{2})[,.](\d{1,3})/;
+  /(?:(\d{1,2}):)?(\d{1,2}):(\d{2})[,.](\d{1,3})\s*--?>\s*(?:(\d{1,2}):)?(\d{1,2}):(\d{2})[,.](\d{1,3})/;
 
 function toSeconds(h: string | undefined, m: string, s: string, ms: string): number {
   return (
