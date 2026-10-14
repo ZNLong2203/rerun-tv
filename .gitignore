@@ -33,3 +33,4 @@ coverage/
 # ─── Large or regenerable local files ───────────────────────
 /media/
 /.cache/
+/.data/
