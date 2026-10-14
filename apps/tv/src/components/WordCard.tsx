@@ -113,7 +113,8 @@ export function WordCard({ item, viewers, savedFor, onSave, onKnown, onReplay }:
 const styles = StyleSheet.create({
   card: {
     position: "absolute",
-    top: dp(96),
+    // Below the toast row (top right), so "saved — it is on your phone" never covers the word.
+    top: dp(140),
     right: dp(96),
     width: dp(760),
     backgroundColor: colors.panel,
