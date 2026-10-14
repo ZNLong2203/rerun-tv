@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { scoreShadowing, type CardView, type ShadowScore } from "@rerun/core";
 import { api, clipUrl, type Profile } from "./api";
+import { inlineRuns } from "./markdown";
 import { useRoom, type Now } from "./room";
 import { listen, speechSupport, type Listening } from "./speech";
 
@@ -165,6 +166,8 @@ function NowTab({ now, profile, send }: { now: Now | undefined; profile: Profile
     if (!cue) return;
     setResult(undefined);
     setHeard("");
+    // Hold the line on screen, and keep the film's sound out of the microphone.
+    send({ type: "remote", action: "pause" });
     const l = listen(
       "en-US",
       setHeard,
@@ -214,6 +217,7 @@ function NowTab({ now, profile, send }: { now: Now | undefined; profile: Profile
             </button>
             {heard && !result && <p className="heard">“{heard}”</p>}
             {result && <ShadowResult result={result} />}
+            {!listening && !result && <p className="muted small">The film pauses while you speak.</p>}
           </>
         ) : (
           <p className="muted">
@@ -366,7 +370,11 @@ function AskTab({ now, profile }: { now: Now | undefined; profile: Profile | und
         <input value={question} onChange={(e) => setQuestion(e.target.value)} placeholder="Ask in any language" />
         <button disabled={busy || !question.trim()}>{busy ? "…" : "Ask"}</button>
       </form>
-      {answer && <div className="answer">{answer}</div>}
+      {answer && (
+        <div className="answer">
+          {inlineRuns(answer).map((r, i) => (r.bold ? <strong key={i}>{r.text}</strong> : r.italic ? <em key={i}>{r.text}</em> : r.text))}
+        </div>
+      )}
       {error && <p className="warn">{error}</p>}
     </section>
   );

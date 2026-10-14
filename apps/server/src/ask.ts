@@ -101,6 +101,7 @@ export class Asker {
       `You help someone learning English while they watch the film "${input.title}" on a TV. ` +
       `Answer in ${language}, in at most 3 short sentences that fit on a TV card. ` +
       `Explain the English in this scene; quote English words in their original form. ` +
+      `Write plain text for a small screen: no Markdown, asterisks, headings or lists. ` +
       `If the question is not about the film or its language, say briefly that you can only help with the film.`;
     const user = `Line on screen [${cue.id}]: "${cue.text}"\n\nQuestion: ${input.question}`;
 
