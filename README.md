@@ -18,6 +18,14 @@ flashcards where every card is the moment in the film where you met the word.
 | ![Who's learning tonight? One profile per person in the household](docs/images/01-who-is-learning.jpg) | ![Daily Rerun: the flashcard replays the moment in the film where you met the word](docs/images/09-daily-rerun-answer.jpg) |
 | **Who's learning tonight?** Each person has a language and a level. | **Daily Rerun.** Flashcards are film moments, graded with the D-pad. |
 
+**Watching together.** Linh (B1, Vietnamese), Minh (A2, Vietnamese) and Ana (B2, Spanish) watch one film. Each person's
+new words carry their colour — "robotics" is new for Linh and Minh, "awesome" only for Minh — with a translation line
+per language, and each word card saves to each person's own deck.
+
+| | |
+|---|---|
+| ![One film, three levels: Stretch for Linh, Hard for Minh, Easy for Ana](docs/images/11-watch-together-home.jpg) | ![Subtitles for three viewers: coloured dots per person, Vietnamese and Spanish translations](docs/images/12-watch-together-subtitles.jpg) |
+
 <sub>Screenshots from the Vega Virtual Device (Vega SDK 0.24), captured by `scripts/gallery.mjs`.</sub>
 
 ---
@@ -50,6 +58,8 @@ pause button. Watching *with* the remote is the gap.
 - **Who's learning tonight?** Each person in the household has a profile with their own language and level. The same
   film underlines different words for Linh (B1, Vietnamese) and Minh (A2, Vietnamese), and the library shows how hard
   each film is *for that person*.
+- **Watch together.** Pick several people: one film, everyone's own new words in their own colour, a translation line
+  per language, and a save button per person. Auto-pause follows whoever finds the film hardest.
 - **Phone companion, no install.** Scan the QR code on the TV. Saved words land on the phone instantly; say the line
   on screen back to the phone and get a word-by-word score on the TV; ask "is this rude?" about any line; add family
   members (typing on a phone beats typing with a remote).
@@ -63,7 +73,8 @@ interactive subtitles to Netflix in a desktop browser. Rerun's take:
 
 1. **In-context explanations, not dictionary entries.** Gemini reads the whole script first, so "freaked out" is
    explained as *Thom admitting he is scared of Celia's robot hand, half-joking* — in Vietnamese, Spanish or Indonesian.
-2. **Per-person, per-household.** Fire TV is a shared device; Rerun highlights what is new *for whoever is watching*.
+2. **Per-person, per-household.** Fire TV is a shared device; Rerun highlights what is new *for whoever is watching* —
+   including several people at once, each in their own colour and language.
 3. **Flashcards that are film moments**, reviewed on the TV with the D-pad.
 4. **Listening and speaking**, not just reading: replay-a-line is the default key, and shadowing is scored.
 5. **A layer, not a catalog.** The remote-first subtitle model is an open-source library any React Native TV app can
