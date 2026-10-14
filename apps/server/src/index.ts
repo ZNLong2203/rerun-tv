@@ -47,6 +47,12 @@ const app = createApp({
 
 const root = new Hono();
 if (process.env.LOG_REQUESTS !== "off") root.use(logger());
+if (process.env.DEBUG_MEDIA) {
+  root.use("/media/*", async (c, next) => {
+    console.log("media request", c.req.method, c.req.url, JSON.stringify(Object.fromEntries(c.req.raw.headers)));
+    await next();
+  });
+}
 root.route("/", app);
 
 const server = serve({ fetch: root.fetch, port, hostname: "0.0.0.0" }, () => {

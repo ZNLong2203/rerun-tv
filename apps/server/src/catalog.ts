@@ -14,7 +14,11 @@ export interface TitleMeta {
   year: number;
   runtimeSeconds: number;
   synopsis: string;
-  video: { file: string; sourceUrl: string };
+  /**
+   * file: the local MP4 the server streams. streamUrl: an HTTPS copy for
+   * players that refuse cleartext HTTP (Vega's URL-mode player does).
+   */
+  video: { file: string; sourceUrl: string; streamUrl?: string };
   license: { name: string; url: string; attribution: string };
 }
 

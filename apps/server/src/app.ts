@@ -12,7 +12,7 @@ import { serveStatic } from "@hono/node-server/serve-static";
 import { CEFR_LEVELS, pickLang, type CardView, type EnrichedTrack, type Grade } from "@rerun/core";
 import { z } from "zod";
 import { AskUnavailableError, type Asker } from "./ask.js";
-import type { Catalog } from "./catalog.js";
+import type { Catalog, TitleMeta } from "./catalog.js";
 import { serveFile } from "./media.js";
 import type { Rooms } from "./rooms.js";
 import type { StoredCard, Store } from "./store.js";
@@ -59,7 +59,17 @@ export function lanAddress(): string | undefined {
   return undefined;
 }
 
-export function cardView(card: StoredCard, track: EnrichedTrack | undefined, lang: string): CardView | undefined {
+/** The URL a player should load for a title: its HTTPS copy if it has one. */
+export function videoUrlFor(meta: TitleMeta, base: string): string {
+  return meta.video.streamUrl ?? `${base}/media/${meta.id}/video.mp4`;
+}
+
+export function cardView(
+  card: StoredCard,
+  track: EnrichedTrack | undefined,
+  lang: string,
+  videoUrl = "",
+): CardView | undefined {
   const cue = track?.cues.find((c) => c.id === card.cueId);
   const item = cue?.items.find((i) => i.id === card.itemId);
   if (!cue || !item) return undefined;
@@ -77,6 +87,7 @@ export function cardView(card: StoredCard, track: EnrichedTrack | undefined, lan
     start: cue.start,
     end: cue.end,
     due: card.state.due,
+    videoUrl,
   };
 }
 
@@ -95,6 +106,7 @@ async function json<T extends z.ZodType>(c: Context, schema: T): Promise<z.infer
 export function createApp(deps: Deps) {
   const { store, catalog, rooms } = deps;
   const app = new Hono();
+  const baseUrl = (c: Context) => deps.publicUrl ?? new URL(c.req.url).origin;
 
   // The TV app and the phone are served from different origins in development.
   app.use("/api/*", async (c, next) => {
@@ -118,6 +130,7 @@ export function createApp(deps: Deps) {
     return c.json(
       catalog.list().map((t) => ({
         ...t.meta,
+        videoUrl: videoUrlFor(t.meta, baseUrl(c)),
         playable: Boolean(t.track && t.videoPath),
         lines: t.track?.cues.length ?? 0,
         learnerLangs: t.track?.learnerLangs ?? [],
@@ -129,7 +142,7 @@ export function createApp(deps: Deps) {
   app.get("/api/titles/:id", (c) => {
     const title = catalog.get(c.req.param("id"));
     if (!title?.track) return c.json({ error: "not found" }, 404);
-    return c.json({ meta: title.meta, track: title.track });
+    return c.json({ meta: { ...title.meta, videoUrl: videoUrlFor(title.meta, baseUrl(c)) }, track: title.track });
   });
 
   // Players pick a demuxer from the URL's extension, so the film is also served as video.mp4.
@@ -186,15 +199,19 @@ export function createApp(deps: Deps) {
 
   // ── Cards ───────────────────────────────────────────────────
 
-  const viewsFor = (profileId: string, cards: StoredCard[]) => {
+  const viewsFor = (c: Context, profileId: string, cards: StoredCard[]) => {
     const profile = store.getProfile(profileId);
     const lang = profile?.nativeLang ?? "en";
-    return cards.flatMap((card) => cardView(card, catalog.get(card.titleId)?.track, lang) ?? []);
+    return cards.flatMap((card) => {
+      const title = catalog.get(card.titleId);
+      if (!title) return [];
+      return cardView(card, title.track, lang, videoUrlFor(title.meta, baseUrl(c))) ?? [];
+    });
   };
 
   app.get("/api/profiles/:id/cards", (c) => {
     const id = c.req.param("id");
-    return c.json(viewsFor(id, store.listCards(id)));
+    return c.json(viewsFor(c, id, store.listCards(id)));
   });
 
   app.post("/api/profiles/:id/cards", async (c) => {
@@ -206,7 +223,7 @@ export function createApp(deps: Deps) {
     if (!profile || !track || !item) return c.json({ error: "not found" }, 404);
 
     const { card, created } = store.saveCard({ profileId: profile.id, ...input, lemma: item.lemma });
-    const view = cardView(card, track, profile.nativeLang)!;
+    const view = cardView(card, track, profile.nativeLang, videoUrlFor(catalog.get(input.titleId)!.meta, baseUrl(c)))!;
     const room = c.req.query("room");
     if (room && created) rooms.publish(room, { type: "card.saved", card: view });
     return c.json(view, created ? 201 : 200);
@@ -220,7 +237,7 @@ export function createApp(deps: Deps) {
   app.get("/api/profiles/:id/review", (c) => {
     const id = c.req.param("id");
     const limit = Math.min(Number(c.req.query("limit") ?? 10) || 10, 50);
-    return c.json(viewsFor(id, store.dueCards(id, limit)));
+    return c.json(viewsFor(c, id, store.dueCards(id, limit)));
   });
 
   app.post("/api/cards/:id/review", async (c) => {
@@ -235,6 +252,7 @@ export function createApp(deps: Deps) {
 
   app.post("/api/pair", (c) => {
     const code = rooms.create();
+    console.log(`pairing room ${code} opened`);
     const base = deps.publicUrl ?? `http://${lanAddress() ?? "localhost"}:${deps.port}`;
     return c.json({ code, url: `${base}/m/#${code}` }, 201);
   });

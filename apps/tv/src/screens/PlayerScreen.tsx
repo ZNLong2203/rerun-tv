@@ -20,7 +20,7 @@ import {
   type PlayerCommand,
   type PlayerMode,
 } from "@rerun/core";
-import { api, videoUrl, type Profile, type TitleDetail } from "../api";
+import { api, type Profile, type TitleDetail } from "../api";
 import { LearnerSubtitles } from "../components/LearnerSubtitles";
 import { Toast, type ToastMessage } from "../components/Toast";
 import { WordCard } from "../components/WordCard";
@@ -107,7 +107,7 @@ function Player({ profile, detail, known, saved, onKnown, onSaved, onExit }: Pla
   }, []);
 
   const video = useVideo(
-    videoUrl(detail.meta.id),
+    detail.meta.videoUrl,
     useCallback(
       (previous: number, current: number) => {
         const index = cueIndexAt(cues, current);

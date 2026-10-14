@@ -19,6 +19,8 @@ export interface TitleSummary {
   playable: boolean;
   lines: number;
   license: { name: string; attribution: string };
+  /** What the player should load: an HTTPS copy when the title has one. */
+  videoUrl: string;
   difficulty?: TrackDifficulty;
 }
 
@@ -54,7 +56,3 @@ export const api = {
     call<{ intervalDays: number }>(`/api/cards/${cardId}/review`, { method: "POST", body: JSON.stringify({ grade }) }),
   pair: () => call<{ code: string; url: string }>("/api/pair", { method: "POST" }),
 };
-
-export function videoUrl(titleId: string): string {
-  return `${SERVER_URL}/media/${titleId}/video.mp4`;
-}

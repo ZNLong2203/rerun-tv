@@ -4,11 +4,17 @@
   "year": 2012,
   "runtimeSeconds": 734,
   "synopsis": "In a future Amsterdam, scientists and warriors gather in an old church to re-stage a moment from the past: the day Thom broke up with Celia, the robotics student who later built the machines now destroying the world. If Thom can say sorry this time, maybe the robots never happen.",
-  "subtitles": { "en": "subtitles.en.srt" },
-  "references": { "es": "reference.es.srt", "id": "reference.id.srt" },
+  "subtitles": {
+    "en": "subtitles.en.srt"
+  },
+  "references": {
+    "es": "reference.es.srt",
+    "id": "reference.id.srt"
+  },
   "video": {
     "file": "tears_of_steel_720p.mp4",
-    "sourceUrl": "https://download.blender.org/demo/movies/ToS/tears_of_steel_720p.mov"
+    "sourceUrl": "https://download.blender.org/demo/movies/ToS/tears_of_steel_720p.mov",
+    "streamUrl": "https://archive.org/download/Tears-of-Steel/tears_of_steel_720p.mp4"
   },
   "license": {
     "name": "CC BY 3.0",

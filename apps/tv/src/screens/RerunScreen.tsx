@@ -9,7 +9,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { BackHandler } from "@amazon-devices/react-native-kepler";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import type { CardView, Grade } from "@rerun/core";
-import { api, videoUrl, type Profile } from "../api";
+import { api, type Profile } from "../api";
 import { Focusable } from "../components/Focusable";
 import { useVideo } from "../player/useVideo";
 import { colors, safe, type, dp } from "../theme";
@@ -78,7 +78,7 @@ function Review({ profile, card, position, onGraded }: { profile: Profile; card:
   const [revealed, setRevealed] = useState(false);
   const stopAt = useRef<number | undefined>(undefined);
   const video = useVideo(
-    videoUrl(card.titleId),
+    card.videoUrl,
     useCallback((_prev: number, current: number) => {
       if (stopAt.current !== undefined && current >= stopAt.current) {
         stopAt.current = undefined;

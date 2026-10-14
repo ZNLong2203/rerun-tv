@@ -22,6 +22,8 @@ export interface CardView {
   start: number;
   end: number;
   due: number;
+  /** Where the film plays from, so the card can replay its moment. */
+  videoUrl: string;
 }
 
 export type RoomMessage =
