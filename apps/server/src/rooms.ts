@@ -94,6 +94,13 @@ export class Rooms {
     return room ? { tv: room.tv.size > 0, phones: room.phones.size } : undefined;
   }
 
+  /** Every room, oldest first. For local testing only (DEBUG_ROOMS). */
+  list(): { code: string; tv: boolean; phones: number; createdAt: number }[] {
+    return [...this.rooms.values()]
+      .sort((a, b) => a.createdAt - b.createdAt)
+      .map((r) => ({ code: r.code, tv: r.tv.size > 0, phones: r.phones.size, createdAt: r.createdAt }));
+  }
+
   private broadcastPresence(room: Room) {
     this.publish(room.code, { type: "presence", tv: room.tv.size > 0, phones: room.phones.size });
   }

@@ -42,6 +42,7 @@ const app = createApp({
   asker: process.env.RERUN_ASK === "off" ? undefined : new Asker(),
   phoneDir: join(ROOT, "apps", "phone", "dist"),
   publicUrl: process.env.PUBLIC_URL,
+  debugRooms: process.env.DEBUG_ROOMS === "1",
   port,
 });
 

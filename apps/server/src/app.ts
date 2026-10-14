@@ -26,6 +26,8 @@ export interface Deps {
   phoneDir?: string;
   /** Public base URL for QR codes; otherwise the LAN address is used. */
   publicUrl?: string;
+  /** Expose GET /api/debug/rooms for on-device smoke tests. Never in production. */
+  debugRooms?: boolean;
   port: number;
 }
 
@@ -261,6 +263,8 @@ export function createApp(deps: Deps) {
     const presence = rooms.presence(c.req.param("code").toUpperCase());
     return presence ? c.json(presence) : c.json({ error: "unknown code" }, 404);
   });
+
+  if (deps.debugRooms) app.get("/api/debug/rooms", (c) => c.json(rooms.list()));
 
   // ── Live questions ──────────────────────────────────────────
 
