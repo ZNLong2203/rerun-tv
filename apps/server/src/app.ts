@@ -282,11 +282,14 @@ export function createApp(deps: Deps) {
 
   // ── Pairing ─────────────────────────────────────────────────
 
+  /** What the QR code on the TV opens: the phone page, as reachable from a phone. */
+  const phoneLink = (code: string) =>
+    `${publicUrl ?? deps.phoneUrl ?? `http://${lanAddress() ?? "localhost"}:${deps.port}`}/m/#${code}`;
+
   app.post("/api/pair", (c) => {
     const code = rooms.create();
     console.log(`pairing room ${code} opened`);
-    const base = publicUrl ?? deps.phoneUrl ?? `http://${lanAddress() ?? "localhost"}:${deps.port}`;
-    return c.json({ code, url: `${base}/m/#${code}` }, 201);
+    return c.json({ code, url: phoneLink(code) }, 201);
   });
 
   app.get("/api/pair/:code", (c) => {
@@ -294,7 +297,7 @@ export function createApp(deps: Deps) {
     return presence ? c.json(presence) : c.json({ error: "unknown code" }, 404);
   });
 
-  if (deps.debugRooms) app.get("/api/debug/rooms", (c) => c.json(rooms.list()));
+  if (deps.debugRooms) app.get("/api/debug/rooms", (c) => c.json(rooms.list().map((r) => ({ ...r, url: phoneLink(r.code) }))));
 
   // ── Live questions ──────────────────────────────────────────
 

@@ -258,4 +258,14 @@ describe("public URL", () => {
     const detail = (await (await lan.request("http://tv.local:8787/api/titles/demo")).json()) as { meta: { videoUrl: string } };
     expect(detail.meta.videoUrl).toBe("http://tv.local:8787/media/demo/video.mp4");
   });
+
+  it("lists rooms with the QR link only when debugging is on", async () => {
+    const { contentDir, mediaDir } = fixture();
+    const catalog = new Catalog(contentDir, mediaDir);
+    expect((await createApp({ store, catalog, rooms, port: 8787 }).request("/api/debug/rooms")).status).toBe(404);
+    const debug = createApp({ store, catalog, rooms, port: 8787, debugRooms: true, phoneUrl: "https://192.168.1.6:8788" });
+    const pair = (await (await debug.request("/api/pair", { method: "POST" })).json()) as { code: string; url: string };
+    const listed = (await (await debug.request("/api/debug/rooms")).json()) as { code: string; url: string; tv: boolean }[];
+    expect(listed.find((r) => r.code === pair.code)).toMatchObject({ url: pair.url, tv: false });
+  });
 });
