@@ -1,0 +1,13 @@
+{
+  "name": "@rerun/react-native",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "Remote-first learner subtitles for React Native TV apps (Vega OS, react-native-tvos).",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "peerDependencies": {
+    "react": ">=18",
+    "react-native": ">=0.72"
+  }
+}

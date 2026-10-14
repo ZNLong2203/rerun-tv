@@ -5,7 +5,11 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@rerun/core": ["../../packages/core/src"]
+      "@rerun/core": ["../../packages/core/src"],
+      "@rerun/react-native": ["../../packages/react-native/src"],
+      "react": ["./node_modules/@types/react"],
+      "react/*": ["./node_modules/@types/react/*"],
+      "react-native": ["./node_modules/react-native"]
     }
   },
   "include": ["src", "index.js"]
