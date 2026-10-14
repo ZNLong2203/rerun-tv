@@ -11,13 +11,14 @@
 
 export type PlayerMode = "watch" | "words" | "card";
 
-/** Key names as Vega's TV event handler reports them. */
+/** Key names as Vega's TV event handler reports them (useTVEventHandler eventType). */
 export type RemoteKey =
   | "left"
   | "right"
   | "up"
   | "down"
   | "select"
+  | "enter"
   | "playpause"
   | "play"
   | "pause"
@@ -60,7 +61,10 @@ export function commandFor(mode: PlayerMode, key: string): PlayerCommand {
           return { type: "enterWords" };
         case "down":
           return { type: "toggleTranslation" };
+        // A remote's centre key arrives as "select"; Enter on a keyboard (and
+        // injected KEY_ENTER in automation) as "enter".
         case "select":
+        case "enter":
         case "playpause":
           return { type: "toggle" };
         case "play":

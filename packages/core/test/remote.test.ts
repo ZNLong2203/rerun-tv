@@ -9,13 +9,14 @@ describe("commandFor", () => {
     expect(commandFor("watch", "up")).toEqual({ type: "enterWords" });
     expect(commandFor("watch", "down")).toEqual({ type: "toggleTranslation" });
     expect(commandFor("watch", "select")).toEqual({ type: "toggle" });
+    expect(commandFor("watch", "enter")).toEqual({ type: "toggle" });
     expect(commandFor("watch", "skip_backward")).toEqual({ type: "seekBy", seconds: -10 });
     expect(commandFor("watch", "back")).toEqual({ type: "exit" });
     expect(commandFor("watch", "unknown")).toEqual({ type: "none" });
   });
 
   it("leaves arrows and OK to the focus engine in word mode and on a card", () => {
-    for (const key of ["left", "right", "up", "select"]) {
+    for (const key of ["left", "right", "up", "select", "enter"]) {
       expect(commandFor("words", key)).toEqual({ type: "none" });
       expect(commandFor("card", key)).toEqual({ type: "none" });
     }
