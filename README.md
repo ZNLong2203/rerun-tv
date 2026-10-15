@@ -40,8 +40,7 @@ a word saved on the TV is on the phone a second later.
 |---|---|
 | ![Say it back: the film pauses, the phone scores every word, and the TV shows "Camille said it: 88"](docs/images/14-say-it-back.jpg) | ![A word saved on the TV appears at the top of the phone's word list](docs/images/15-saved-to-phone.jpg) |
 
-<sub>Screenshots from the Vega Virtual Device (Vega SDK 0.24), captured by `scripts/gallery.mjs`; phone screens from
-`scripts/phone-sim.mjs`, which pairs a phone-sized Chrome with the TV.</sub>
+<sub>Screenshots from the Vega Virtual Device (Vega SDK 0.24), captured by `scripts/gallery.mjs`.</sub>
 
 ---
 
@@ -160,8 +159,6 @@ The TV app and the Vega Virtual Device: see [docs/run-on-vega.md](docs/run-on-ve
 Phones need HTTPS for the microphone. On a home network, start the server with `HTTPS=1 npm run dev`: it also serves
 on :8788 with a self-signed certificate for its LAN address, and the QR code on the TV points phones there (accept the
 warning once). For a trusted certificate, put the server behind any HTTPS tunnel and set `PUBLIC_URL` instead.
-No phone at hand: with `DEBUG_ROOMS=1`, `node scripts/phone-sim.mjs` opens a phone-sized Chrome window paired with
-the TV.
 
 Preparing a new title (needs `GEMINI_API_KEY` in `.env.local`, see `.env.example`):
 
@@ -170,9 +167,8 @@ npm run enrich -- tears-of-steel --langs vi,es,id,de,fr,it,nl,pl,pt-PT
 npm run eval -- tears-of-steel
 ```
 
-Tests: `npm test` (core, pipeline, server, phone). On the Vega Virtual Device, `node scripts/smoke-vvd.mjs` and
-`node scripts/phone-sim.mjs --test` drive the real app with remote keys next to a phone (see
-[docs/run-on-vega.md](docs/run-on-vega.md)).
+Tests: `npm test` (core, pipeline, server, phone). On the Vega Virtual Device, `node scripts/smoke-vvd.mjs` drives
+the real app with remote keys (see [docs/run-on-vega.md](docs/run-on-vega.md)).
 
 ## Repository
 
