@@ -153,12 +153,17 @@ function NowTab({ now, profile, send }: { now: Now | undefined; profile: Profile
   const [listening, setListening] = useState<Listening>();
   const [heard, setHeard] = useState("");
   const [result, setResult] = useState<ShadowScore>();
+  const [practised, setPractised] = useState<NonNullable<Now["cue"]>>();
   const cue = now?.cue;
+  // The TV can stop between lines (it pauses while you speak): keep the line being
+  // practised, and its score, until the TV moves on to another line.
+  const shown = cue ?? (listening || result ? practised : undefined);
 
   useEffect(() => {
+    if (!cue || cue.id === practised?.id) return;
     setResult(undefined);
     setHeard("");
-  }, [cue?.id]);
+  }, [cue?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!now?.titleId) {
     return (
@@ -172,6 +177,7 @@ function NowTab({ now, profile, send }: { now: Now | undefined; profile: Profile
     if (!cue) return;
     setResult(undefined);
     setHeard("");
+    setPractised(cue);
     // Hold the line on screen, and keep the film's sound out of the microphone.
     send({ type: "remote", action: "pause" });
     const l = listen(
@@ -191,8 +197,8 @@ function NowTab({ now, profile, send }: { now: Now | undefined; profile: Profile
     <section>
       <div className="line-card">
         <div className="label">On screen</div>
-        <p className="line">{cue?.text ?? "…"}</p>
-        {cue?.translation && <p className="translation">{cue.translation}</p>}
+        <p className="line">{shown?.text ?? "…"}</p>
+        {shown?.translation && <p className="translation">{shown.translation}</p>}
       </div>
 
       <div className="remote">
@@ -216,7 +222,7 @@ function NowTab({ now, profile, send }: { now: Now | undefined; profile: Profile
           <>
             <button
               className={`mic ${listening ? "live" : ""}`}
-              disabled={!cue}
+              disabled={!cue && !listening}
               onClick={() => (listening ? listening.stop() : start())}
             >
               {listening ? "Listening… tap to stop" : "🎙  Tap, then say the line"}
