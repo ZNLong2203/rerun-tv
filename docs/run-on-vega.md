@@ -24,10 +24,15 @@ npm run dev                                 # http://localhost:8787, prints the 
 vega virtual-device start
 ```
 
-Point the TV app at the server: set `SERVER_URL` in `apps/tv/src/config.ts` to the LAN address the server printed
-(`http://192.168.x.y:8787`). A real Fire TV on the same Wi-Fi uses the same address. For the simulator alone,
-`vega device start-port-forwarding --port 8787 --forward false` also lets the app use `http://127.0.0.1:8787` for the
-API.
+The TV app talks to the server at `http://127.0.0.1:8787` (`apps/tv/src/config.ts`). On the simulator, forward that
+port to the computer once per VVD start, which keeps working when the computer changes networks:
+
+```bash
+vega device start-port-forwarding --port 8787 --forward false
+```
+
+A real Fire TV on the same Wi-Fi needs `SERVER_URL` set to the LAN address the server prints
+(`http://192.168.x.y:8787`).
 
 **Video must come over HTTPS.** Vega's URL-mode player rejects cleartext HTTP sources without fetching them, so each
 title can name an HTTPS copy in `content/<id>/meta.json` → `video.streamUrl`, and the server hands that URL to the TV.
@@ -89,6 +94,7 @@ you record the screen. It finds its way by the line on screen, not by timing.
 vega virtual-device stop && vega virtual-device start      # a fresh VVD: no "Creating surfaces" kills mid-take
 vega exec vda shell "touch /tmp/automation-toolkit.enable"
 vega device start-port-forwarding --port 8383 --forward true
+vega device start-port-forwarding --port 8787 --forward false   # the TV reaches the server
 mv .data .data.bak-$(date +%s)                              # a fresh household: Camille, Hugo and Ana
 DEBUG_ROOMS=1 npm run dev
 vega device launch-app --appName com.rerun.tv.main
