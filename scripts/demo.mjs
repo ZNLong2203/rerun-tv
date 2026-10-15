@@ -98,7 +98,7 @@ const scenes = [
     async () => {
       await press("back", "back"); // close the card, back to the film
       await phone.getByRole("button", { name: "Replay line" }).click(); // hear it once more
-      await sleep(2500); // most of the line, then the microphone pauses the film on it
+      await sleep(1000); // part of the line, then the microphone pauses the film on it
       await phone.getByRole("button", { name: /Tap, then say the line/ }).click();
       log(standInVoice ? "the stand-in says the line" : ">>> SAY THE LINE NOW <<<");
       try {
