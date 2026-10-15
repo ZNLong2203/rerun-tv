@@ -22,6 +22,7 @@ home connection that measured ~160–300 KB/s to both Amazon's SDK host and Blen
 | FL-010 | react-native-kepler | Pause on OK with `useTVEventHandler` | S2 | ~45 min | Fixed |
 | FL-011 | react-native-kepler | Keep a `useTVEventHandler` subscription stable | S1 | ~10 min | Fixed |
 | FL-012 | Automation toolkit | Screenshot right after a UI change | S2 | ~30 min | Worked around |
+| FL-013 | Vega Virtual Device | Record a smooth demo video of playback | S2 | ~1.5 h | Accepted |
 
 ---
 
@@ -181,3 +182,22 @@ not shown by default.
 - **Workaround:** `scripts/gallery.mjs` captures twice and keeps the second; screenshots are taken in still mode only.
 - **Actionable suggestion:** Capture the current composition on demand, or document that the result is the last
   presented frame.
+
+## FL-013: Video on the VVD runs at 10–15 frames per second, so demo recordings look choppy
+
+- **Product / version:** Vega Virtual Device, SDK 0.24.12112, macOS arm64 (Apple Silicon), GUI window.
+- **Task attempted:** Record the demo video for this hackathon on the VVD — the rules accept the simulator for the
+  Fire TV track — with the film playing in our app (Tears of Steel, 1280×534 H.264 at 24 fps, over HTTPS).
+- **Steps taken:** Recorded only the VVD window with ScreenCaptureKit and counted frames over 8-second stretches of a
+  scene with movement. Varied the capture scale (1×, 1.5×, 2×), the device resolution (`--display-res 1280,720` and
+  the default 1920×1080) and whether the window was in front or covered. Network was not the limit (108 Mbit/s, no
+  `Pipeline is buffering` lines during the take).
+- **Expected:** Playback close to the film's 24 fps, as on a Fire TV, or a note that VVD video is not representative.
+- **Actual:** 10–15 fps in every combination (one run reached 21), with frame gaps of 130–240 ms at the 90th
+  percentile. UI animation is fine; only video playback is affected, so a demo of a video app looks choppier than the
+  app is.
+- **Severity:** S2 — **Time lost:** ~1.5 hours measuring before accepting it.
+- **Workaround:** None on the VVD. We play the footage at real speed in the edit (speeding it up made it worse).
+- **Actionable suggestion:** Say in the VVD docs what playback frame rate to expect, and offer a way to record the
+  device's own output — a `vega device record-screen`, like `adb shell screenrecord` — so developers can show their
+  app as it runs on a TV.

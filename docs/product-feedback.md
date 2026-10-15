@@ -105,5 +105,6 @@ first run; 45 expressions, 0 anchoring failures; translations scored 52–72 chr
 | A reason in `MediaError.message`, and documented source rules (HTTPS, extension) | Two hours lost to a silent `SRC_NOT_SUPPORTED` | Important |
 | Speech recognition API for apps on Vega | Rerun's speaking practice has to run on the phone today | Important |
 | Documented automation-toolkit JSON-RPC methods, and screenshots that work with video | On-device tests and store screenshots in CI | Important |
+| Screen recording from the VVD at the device's frame rate (`vega device record-screen`) | Video on the VVD window runs at 10–15 fps (FL-013), so demo videos of video apps look choppy | Important |
 | `eventType` reference per input device | `enter` vs `select` surprises | Nice to have |
 | A captions-track API that lets apps style individual words | Learner subtitles could ride on the platform's caption track | Nice to have |
