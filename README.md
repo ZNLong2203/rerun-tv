@@ -51,6 +51,11 @@ People learn languages from films — and they watch films on the TV. The tools 
 (interactive subtitles, click-a-word, replay-a-line) live in desktop browser extensions; on the TV you get a
 pause button. Watching *with* the remote is the gap.
 
+- **Five learners interviewed for Rerun** (October 2026) all watch films on a TV. Four skip at least three in four of
+  the lines they don't understand, because pausing and looking words up breaks the film; three share the TV with
+  someone at a different level; none keeps reviewing the words they do look up. *"Every time I pause to look up a bit
+  of slang, my wife sighs: 'why is watching a film so exhausting?'"* — Tuấn D., 31, project manager (translated from
+  Vietnamese).
 - In Vietnam, where this was built, English proficiency is "moderate" (EF EPI 2025: 500/800, rank 64 of 123), and
   **listening (470) and speaking (461) are the weakest skills** — exactly what re-hearing a line and saying it back
   train.
