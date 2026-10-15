@@ -85,8 +85,8 @@ export async function openPhone({ headless = false, standInVoice = false, waitMs
     ...devices["Pixel 7"],
     ignoreHTTPSErrors: true, // the LAN listener's certificate is self-signed
     permissions: ["microphone"],
-    // The phone's screen as a video, at twice the CSS size so text stays sharp.
-    ...(recordVideoDir ? { recordVideo: { dir: recordVideoDir, size: { width: 824, height: 1830 } } } : {}),
+    // The phone's screen as a video; Playwright records it at the viewport's CSS size.
+    ...(recordVideoDir ? { recordVideo: { dir: recordVideoDir, size: devices["Pixel 7"].viewport } } : {}),
   });
   if (standInVoice) await context.addInitScript(standInSpeech);
   const page = await context.newPage();
