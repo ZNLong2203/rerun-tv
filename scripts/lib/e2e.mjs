@@ -8,7 +8,9 @@
  * and the toolkit forwarded (see docs/run-on-vega.md).
  */
 
+import { spawnSync } from "node:child_process";
 import { writeFileSync } from "node:fs";
+import { homedir } from "node:os";
 import { chromium, devices } from "playwright-core";
 
 export const SERVER = process.env.RERUN_SERVER ?? "http://127.0.0.1:8787";
@@ -20,13 +22,33 @@ export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const t0 = Date.now();
 export const log = (...a) => console.log(((Date.now() - t0) / 1000).toFixed(1).padStart(6), ...a);
 
+/**
+ * The forward to the toolkit lives in the vda server and vanishes whenever the
+ * VVD's connection blips (a restart, sometimes an app launch). Put it back.
+ */
+function restoreToolkit() {
+  const env = { ...process.env, PATH: `${homedir()}/vega/bin:${process.env.PATH}` };
+  const vega = (...a) => spawnSync("vega", a, { env, stdio: "ignore", timeout: 30_000 });
+  vega("exec", "vda", "shell", "touch /tmp/automation-toolkit.enable");
+  vega("device", "start-port-forwarding", "--port", "8383", "--forward", "true");
+}
+
 async function rpc(method, params = {}) {
-  const res = await fetch(RPC, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
-  });
-  return (await res.json()).result;
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const res = await fetch(RPC, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
+      });
+      return (await res.json()).result;
+    } catch (e) {
+      if (attempt >= 3) throw e;
+      log(`toolkit unreachable (${e.cause?.code ?? e.message}); restoring the port forward`);
+      restoreToolkit();
+      await sleep(1000);
+    }
+  }
 }
 
 /** Press remote keys on the TV, 0.7 s apart. */
