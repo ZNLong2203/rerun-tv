@@ -9,11 +9,15 @@
  *   node scripts/demo.mjs --pace 1.3        30% slower (0.8 for faster)
  *   node scripts/demo.mjs --stand-in-voice  the phone "hears" the line instead of the microphone
  *   node scripts/demo.mjs --phone-at 1400,60  where the phone window opens on screen
+ *   node scripts/demo.mjs --record <dir>    headless phone, recorded to <dir> with a scene timeline
+ *                                           (pair it with a recording of the TV for the video)
  *
  * Start from a fresh household with the server on DEBUG_ROOMS=1 and the TV
  * app just launched on "Who's learning tonight?" (docs/run-on-vega.md).
  */
 
+import { mkdirSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import { createInterface } from "node:readline/promises";
 import { log, openPhone, press, sleep, tvTexts } from "./lib/e2e.mjs";
 
@@ -22,6 +26,8 @@ const option = (name) => (args.includes(name) ? args[args.indexOf(name) + 1] : u
 const pace = Number(option("--pace") ?? 1);
 const stepping = args.includes("--step");
 const standInVoice = args.includes("--stand-in-voice");
+const recordDir = option("--record");
+if (recordDir) mkdirSync(recordDir, { recursive: true });
 
 /** Leave the screen alone for a while, scaled by --pace. */
 const hold = (seconds) => sleep(seconds * pace * 1000);
@@ -31,7 +37,12 @@ if (!(await showing("Who's learning tonight?"))) {
   console.error("Open Rerun on the TV first: the demo starts on \"Who's learning tonight?\".");
   process.exit(1);
 }
-const { browser, page: phone } = await openPhone({ standInVoice, position: option("--phone-at") });
+const { browser, context, page: phone, openedAt } = await openPhone({
+  standInVoice,
+  position: option("--phone-at"),
+  headless: Boolean(recordDir),
+  recordVideoDir: recordDir,
+});
 const tab = (name) => phone.locator("nav.tabs button", { hasText: name }).click();
 /** The line on the TV, as the phone shows it. */
 const line = async () => (await phone.locator(".line-card .line").first().textContent().catch(() => "")) ?? "";
@@ -148,12 +159,21 @@ const scenes = [
   ],
 ];
 
+const timeline = [];
 const rl = stepping ? createInterface({ input: process.stdin, output: process.stdout }) : undefined;
 for (const [i, [name, play]] of scenes.entries()) {
   if (rl) await rl.question(`\nScene ${i + 1}/${scenes.length}: ${name} — Enter to play `);
   log(`scene ${i + 1}: ${name}`);
+  timeline.push({ scene: i + 1, name, startMs: Date.now() });
   await play();
 }
 rl?.close();
+const endMs = Date.now();
 log("demo finished");
+await context.close(); // finishes the phone video
+if (recordDir) {
+  const phoneVideo = await phone.video()?.path();
+  writeFileSync(join(recordDir, "timeline.json"), JSON.stringify({ phoneVideo, phoneStartMs: openedAt, scenes: timeline, endMs }, null, 2));
+  log(`timeline and phone video in ${recordDir}`);
+}
 await browser.close();

@@ -76,7 +76,7 @@ export async function tvRoom(waitMs) {
  * With `standInVoice`, speech recognition is replaced by a stand-in that says
  * the line on screen with one word missing.
  */
-export async function openPhone({ headless = false, standInVoice = false, waitMs = 30_000, position } = {}) {
+export async function openPhone({ headless = false, standInVoice = false, waitMs = 30_000, position, recordVideoDir } = {}) {
   const room = await tvRoom(waitMs);
   log(`TV room ${room.code}: ${room.url}`);
   const windowArgs = ["--window-size=460,980", ...(position ? [`--window-position=${position}`] : [])];
@@ -85,11 +85,14 @@ export async function openPhone({ headless = false, standInVoice = false, waitMs
     ...devices["Pixel 7"],
     ignoreHTTPSErrors: true, // the LAN listener's certificate is self-signed
     permissions: ["microphone"],
+    // The phone's screen as a video, at twice the CSS size so text stays sharp.
+    ...(recordVideoDir ? { recordVideo: { dir: recordVideoDir, size: { width: 824, height: 1830 } } } : {}),
   });
   if (standInVoice) await context.addInitScript(standInSpeech);
   const page = await context.newPage();
+  const openedAt = Date.now(); // the phone video starts about here
   await page.goto(room.url);
-  return { browser, page, room };
+  return { browser, context, page, room, openedAt };
 }
 
 /**
