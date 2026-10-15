@@ -150,6 +150,7 @@ const scenes = [
         await hold(1.5);
         await press("select", "select");
       }
+      marks.push({ name: "listening", ms: Date.now() }); // lets the edit line the voice up with this card
       await hold(5); // the clip plays with the text hidden
       await press("select"); // show the line
       await hold(4);
@@ -160,6 +161,7 @@ const scenes = [
 ];
 
 const timeline = [];
+const marks = [];
 const rl = stepping ? createInterface({ input: process.stdin, output: process.stdout }) : undefined;
 for (const [i, [name, play]] of scenes.entries()) {
   if (rl) await rl.question(`\nScene ${i + 1}/${scenes.length}: ${name} — Enter to play `);
@@ -173,7 +175,7 @@ log("demo finished");
 await context.close(); // finishes the phone video
 if (recordDir) {
   const phoneVideo = await phone.video()?.path();
-  writeFileSync(join(recordDir, "timeline.json"), JSON.stringify({ phoneVideo, phoneStartMs: openedAt, scenes: timeline, endMs }, null, 2));
+  writeFileSync(join(recordDir, "timeline.json"), JSON.stringify({ phoneVideo, phoneStartMs: openedAt, scenes: timeline, marks, endMs }, null, 2));
   log(`timeline and phone video in ${recordDir}`);
 }
 await browser.close();
