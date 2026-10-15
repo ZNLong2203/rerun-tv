@@ -145,7 +145,9 @@ function Player({ viewers, detail, known, saved, onKnown, onSaved, onExit }: Pla
     detail.meta.videoUrl,
     useCallback(
       (previous: number, current: number) => {
-        const index = cueIndexAt(cues, current);
+        // Lines start LEAD_IN early when we seek to them; count that as the line, so a
+        // pause right after ◀ still has the line on screen (and on the phone).
+        const index = cueIndexAt(cues, current + LEAD_IN + 0.02); // a hair more, for rounding in the seek
         setCueIndex((old) => (old === index ? old : index));
         if (replayUntil.current !== undefined && current >= replayUntil.current) {
           replayUntil.current = undefined;
