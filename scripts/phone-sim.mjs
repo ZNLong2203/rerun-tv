@@ -89,7 +89,11 @@ await step("phone remote: next line", async () => {
   }, null, { timeout: 15_000 });
   const first = await lineText();
   await page.getByRole("button", { name: "Next line" }).click();
-  await page.waitForFunction((prev) => document.querySelector(".line-card .line")?.textContent !== prev, first, { timeout: 15_000 });
+  // The gap between two lines shows "…": wait for the next real line.
+  await page.waitForFunction((prev) => {
+    const t = document.querySelector(".line-card .line")?.textContent;
+    return t && t !== "…" && t !== prev;
+  }, first, { timeout: 15_000 });
   const second = await lineText();
   await sleep(300);
   await shot(page, "phone-now");
@@ -97,6 +101,8 @@ await step("phone remote: next line", async () => {
 });
 
 await step("say it back: the TV pauses, the phone scores, the TV shows it", async () => {
+  if ((await lineText()) === "…") await page.getByRole("button", { name: "Replay line" }).click();
+  await page.waitForFunction(() => (document.querySelector(".line-card .line")?.textContent ?? "…") !== "…", null, { timeout: 10_000 });
   const line = await lineText();
   await page.getByRole("button", { name: /Tap, then say the line/ }).click();
   await page.locator(".result .score span").waitFor({ timeout: 15_000 });
@@ -115,6 +121,8 @@ await step("hear it again: the line joins the Daily Rerun", async () => {
   const line = await lineText();
   const who = (await page.locator(".who > span:last-child").textContent()).trim();
   const profile = (await (await fetch(`${SERVER}/api/profiles`)).json()).find((p) => who.startsWith(`${p.name} ·`));
+  const before = await (await fetch(`${SERVER}/api/profiles/${profile.id}/cards`)).json();
+  const known = before.some((c) => c.kind === "line" && c.line === line); // the TV only says so the first time
   await page.getByRole("button", { name: "Replay line" }).click();
   // The TV counts the line once the "press twice for the line before" window has passed.
   let toast;
@@ -122,7 +130,8 @@ await step("hear it again: the line joins the Daily Rerun", async () => {
     await sleep(300);
     toast = (await tvTexts()).find((t) => t.includes("Daily Rerun"));
   }
-  if (!toast) throw new Error("the TV did not say the line comes back");
+  if (!toast && !known) throw new Error("the TV did not say the line comes back");
+  if (!toast) toast = "(already in the deck, so no toast)";
   await tvShot("tv-heard-again");
   const deck = await (await fetch(`${SERVER}/api/profiles/${profile.id}/cards`)).json();
   const card = deck.find((c) => c.kind === "line" && c.line === line);
@@ -146,7 +155,10 @@ await step("words saved on the TV appear on the phone", async () => {
     if (first && !deck.has(first.id)) target = first;
     else {
       await page.getByRole("button", { name: "Next line" }).click();
-      await page.waitForFunction((prev) => document.querySelector(".line-card .line")?.textContent !== prev, text, { timeout: 15_000 });
+      await page.waitForFunction((prev) => {
+        const t = document.querySelector(".line-card .line")?.textContent;
+        return t && t !== "…" && t !== prev;
+      }, text, { timeout: 15_000 });
     }
   }
   if (!target) throw new Error("no line with an unsaved word nearby");

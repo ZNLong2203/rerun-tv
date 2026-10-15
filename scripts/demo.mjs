@@ -9,7 +9,7 @@
  *   node scripts/demo.mjs --pace 1.3        30% slower (0.8 for faster)
  *   node scripts/demo.mjs --stand-in-voice  the phone "hears" the line instead of the microphone
  *   node scripts/demo.mjs --phone-at 1400,60  where the phone window opens on screen
- *   node scripts/demo.mjs --record <dir>    headless phone, recorded to <dir> with a scene timeline
+ *   node scripts/demo.mjs --record <dir>    headless phone, its screen captured to <dir>/phone with a scene timeline
  *                                           (pair it with a recording of the TV for the video)
  *
  * Start from a fresh household with the server on DEBUG_ROOMS=1 and the TV
@@ -37,12 +37,32 @@ if (!(await showing("Who's learning tonight?"))) {
   console.error("Open Rerun on the TV first: the demo starts on \"Who's learning tonight?\".");
   process.exit(1);
 }
-const { browser, context, page: phone, openedAt } = await openPhone({
+const { browser, context, page: phone } = await openPhone({
   standInVoice,
   position: option("--phone-at"),
   headless: Boolean(recordDir),
-  recordVideoDir: recordDir,
 });
+
+// The phone's screen, as screenshots with the time each was taken: a screenshot
+// is the page as it is at that moment, where a screencast can lag behind it when
+// the computer is also recording the TV.
+const shots = [];
+let capturing = Boolean(recordDir);
+const capture = (async () => {
+  if (!recordDir) return;
+  mkdirSync(join(recordDir, "phone"), { recursive: true });
+  while (capturing) {
+    const ms = Date.now();
+    const file = `phone/${String(shots.length).padStart(5, "0")}.jpg`;
+    try {
+      await phone.screenshot({ path: join(recordDir, file), type: "jpeg", quality: 85 });
+      shots.push({ file, ms });
+    } catch {
+      // A screenshot during a navigation can fail; the next one will do.
+    }
+    await sleep(Math.max(0, 160 - (Date.now() - ms)));
+  }
+})();
 const tab = (name) => phone.locator("nav.tabs button", { hasText: name }).click();
 /** The line on the TV, as the phone shows it. */
 const line = async () => (await phone.locator(".line-card .line").first().textContent().catch(() => "")) ?? "";
@@ -172,10 +192,11 @@ for (const [i, [name, play]] of scenes.entries()) {
 rl?.close();
 const endMs = Date.now();
 log("demo finished");
-await context.close(); // finishes the phone video
+capturing = false;
+await capture;
+await context.close();
 if (recordDir) {
-  const phoneVideo = await phone.video()?.path();
-  writeFileSync(join(recordDir, "timeline.json"), JSON.stringify({ phoneVideo, phoneStartMs: openedAt, scenes: timeline, marks, endMs }, null, 2));
-  log(`timeline and phone video in ${recordDir}`);
+  writeFileSync(join(recordDir, "timeline.json"), JSON.stringify({ phoneFrames: shots, scenes: timeline, marks, endMs }, null, 2));
+  log(`timeline and ${shots.length} phone frames in ${recordDir}`);
 }
 await browser.close();
