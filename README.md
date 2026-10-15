@@ -41,8 +41,7 @@ a word saved on the TV is on the phone a second later.
 | ![Say it back: the film pauses, the phone scores every word, and the TV shows "Camille said it: 88"](docs/images/14-say-it-back.jpg) | ![A word saved on the TV appears at the top of the phone's word list](docs/images/15-saved-to-phone.jpg) |
 
 <sub>Screenshots from the Vega Virtual Device (Vega SDK 0.24), captured by `scripts/gallery.mjs`; phone screens from
-`scripts/phone-sim.mjs`, which pairs a phone-sized Chrome with the TV (its speech input is simulated there; on a
-phone the page uses the browser's speech recognition).</sub>
+`scripts/phone-sim.mjs`, which pairs a phone-sized Chrome with the TV.</sub>
 
 ---
 
